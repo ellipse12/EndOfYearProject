@@ -12,8 +12,9 @@ public class Main {
             Main main = new Main();
             main.init();
             long window = new DisplayManager().create();
+            GL.createCapabilities();
             glClearColor(0.0f,0.0f,1.0f, 0.0f);
-            while(glfwWindowShouldClose(window)){
+            while(!glfwWindowShouldClose(window)){
                 main.loop(window);
             }
 
@@ -23,7 +24,7 @@ public class Main {
             if ( !glfwInit() ) {
                 throw new IllegalStateException("Unable to initialize GLFW");
             }
-            GL.createCapabilities();
+
         }
         public  void loop(long window){
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
