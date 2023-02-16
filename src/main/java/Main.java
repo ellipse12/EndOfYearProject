@@ -1,4 +1,5 @@
 import Engine.DisplayManager;
+import Engine.TestLoop;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
@@ -15,7 +16,7 @@ public class Main {
             GL.createCapabilities();
             glClearColor(0.0f,0.0f,1.0f, 0.0f);
             while(!glfwWindowShouldClose(window)){
-                main.loop(window);
+                TestLoop.loop(window);
             }
 
         }
@@ -26,12 +27,6 @@ public class Main {
             }
 
         }
-        public  void loop(long window){
-                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                glfwSwapBuffers(window);
-
-                glfwPollEvents();
-        }
 
 }
