@@ -1,0 +1,155 @@
+Index: src/main/java/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import Engine.DisplayManager;\r\nimport org.lwjgl.glfw.GLFWErrorCallback;\r\nimport org.lwjgl.opengl.GL;\r\nimport org.lwjgl.opengl.GL11;\r\n\r\nimport static org.lwjgl.glfw.GLFW.*;\r\nimport static org.lwjgl.opengl.GL11.*;\r\n\r\npublic class Main {\r\n\r\n        public static void main(String[] args){\r\n            Main main = new Main();\r\n            main.init();\r\n            long window = new DisplayManager().create();\r\n            glClearColor(0.0f,0.0f,1.0f, 0.0f);\r\n            while(glfwWindowShouldClose(window)){\r\n                main.loop(window);\r\n            }\r\n\r\n        }\r\n        public  void init(){\r\n            GLFWErrorCallback.createPrint(System.err).set();\r\n            if ( !glfwInit() ) {\r\n                throw new IllegalStateException(\"Unable to initialize GLFW\");\r\n            }\r\n            GL.createCapabilities();\r\n        }\r\n        public  void loop(long window){\r\n                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);\r\n\r\n                glfwSwapBuffers(window);\r\n\r\n                glfwPollEvents();\r\n        }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Main.java b/src/main/java/Main.java
+--- a/src/main/java/Main.java	(revision aa1513cd0d71d442084d8c44615fbc5fc019ee37)
++++ b/src/main/java/Main.java	(date 1676580380017)
+@@ -1,36 +1,35 @@
+ import Engine.DisplayManager;
+ import org.lwjgl.glfw.GLFWErrorCallback;
+ import org.lwjgl.opengl.GL;
+-import org.lwjgl.opengl.GL11;
+ 
++import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
+ import static org.lwjgl.glfw.GLFW.*;
+ import static org.lwjgl.opengl.GL11.*;
+ 
+ public class Main {
+-
+         public static void main(String[] args){
+-            Main main = new Main();
+-            main.init();
+-            long window = new DisplayManager().create();
+-            glClearColor(0.0f,0.0f,1.0f, 0.0f);
+-            while(glfwWindowShouldClose(window)){
+-                main.loop(window);
++            init();
++            long window = DisplayManager.create();
++            GL.createCapabilities();
++            glClearColor(1.0f,0.0f,0.5f, 0.0f);
++            while(!glfwWindowShouldClose(window)){
++                loop(window);
+             }
+-
++            glfwFreeCallbacks(window);
++            glfwDestroyWindow(window);
++            glfwTerminate();
++            glfwSetErrorCallback(null).free();
+         }
+-        public  void init(){
++        public static void init(){
+             GLFWErrorCallback.createPrint(System.err).set();
+             if ( !glfwInit() ) {
+                 throw new IllegalStateException("Unable to initialize GLFW");
+             }
+-            GL.createCapabilities();
+         }
+-        public  void loop(long window){
+-                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+-
+-                glfwSwapBuffers(window);
+-
+-                glfwPollEvents();
++        public static void loop(long window) {
++            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
++            glfwSwapBuffers(window);
++            glfwPollEvents();
+         }
+ 
+ }
+\ No newline at end of file
+Index: src/main/java/Engine/DisplayManager.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Engine;\r\nimport org.lwjgl.*;\r\nimport org.lwjgl.glfw.*;\r\nimport org.lwjgl.opengl.*;\r\nimport org.lwjgl.system.*;\r\n\r\nimport java.nio.*;\r\n\r\nimport static org.lwjgl.glfw.Callbacks.*;\r\nimport static org.lwjgl.glfw.GLFW.*;\r\nimport static org.lwjgl.opengl.GL11.*;\r\nimport static org.lwjgl.system.MemoryStack.*;\r\nimport static org.lwjgl.system.MemoryUtil.*;\r\n\r\npublic class DisplayManager {\r\n    public  long create(){\r\n        glfwDefaultWindowHints();\r\n        glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);\r\n        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);\r\n        long window = glfwCreateWindow(300, 300, \"test\", NULL, NULL);\r\n        if(window == NULL){\r\n            throw new RuntimeException(\"Unable to create window\");\r\n        }\r\n        glfwSetKeyCallback(window, (win, key, scancode, action, mods)->{\r\n            if(key==GLFW_KEY_ESCAPE&&action==GLFW_RELEASE){\r\n                glfwSetWindowShouldClose(window, true);\r\n            }\r\n        });\r\n        try ( MemoryStack stack = stackPush() ) {\r\n            IntBuffer pWidth = stack.mallocInt(1); // int*\r\n            IntBuffer pHeight = stack.mallocInt(1); // int*\r\n            glfwGetWindowSize(window, pWidth, pHeight);\r\n            GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());\r\n            glfwSetWindowPos(\r\n                    window,\r\n                    (vidmode.width() - pWidth.get(0)) / 2,\r\n                    (vidmode.height() - pHeight.get(0)) / 2\r\n            );\r\n        }\r\n        glfwMakeContextCurrent(window);\r\n        glfwSwapInterval(1);\r\n        glfwShowWindow(window);\r\n        return window;\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Engine/DisplayManager.java b/src/main/java/Engine/DisplayManager.java
+--- a/src/main/java/Engine/DisplayManager.java	(revision aa1513cd0d71d442084d8c44615fbc5fc019ee37)
++++ b/src/main/java/Engine/DisplayManager.java	(date 1675889517884)
+@@ -13,7 +13,7 @@
+ import static org.lwjgl.system.MemoryUtil.*;
+ 
+ public class DisplayManager {
+-    public  long create(){
++    public static long create(){
+         glfwDefaultWindowHints();
+         glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
+         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+@@ -23,12 +23,10 @@
+         }
+         glfwSetKeyCallback(window, (win, key, scancode, action, mods)->{
+             if(key==GLFW_KEY_ESCAPE&&action==GLFW_RELEASE){
+-                glfwSetWindowShouldClose(window, true);
+-            }
+-        });
++                glfwSetWindowShouldClose(window, true);}});
+         try ( MemoryStack stack = stackPush() ) {
+-            IntBuffer pWidth = stack.mallocInt(1); // int*
+-            IntBuffer pHeight = stack.mallocInt(1); // int*
++            IntBuffer pWidth = stack.mallocInt(1);
++            IntBuffer pHeight = stack.mallocInt(1);
+             glfwGetWindowSize(window, pWidth, pHeight);
+             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+             glfwSetWindowPos(
+@@ -41,6 +39,5 @@
+         glfwSwapInterval(1);
+         glfwShowWindow(window);
+         return window;
+-
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2b67e046-1b03-4c70-8784-dde86489cd87\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/Engine/DisplayManager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/gradle.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/gradle.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build.gradle\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build.gradle\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"EndOfYearProject\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"EndOfYearProject\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"EndOfYearProject\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"build\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"EndOfYearProject\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"build setup\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Pull.Settings\">\r\n    <option name=\"OPTIONS\">\r\n      <set>\r\n        <option value=\"REBASE\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2LNeL3gECF6biZw1EVjLeNNxvAM\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"EndOfYearProject.main\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"EndOfYearProject [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"build\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"EndOfYearProject [init]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"init\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Gradle.EndOfYearProject [build]\" />\r\n        <item itemvalue=\"Gradle.EndOfYearProject [init]\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2b67e046-1b03-4c70-8784-dde86489cd87\" name=\"Changes\" comment=\"\" />\r\n      <created>1675715910976</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1675715910976</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision aa1513cd0d71d442084d8c44615fbc5fc019ee37)
++++ b/.idea/workspace.xml	(date 1676580380312)
+@@ -4,11 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/DisplayManager.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
++    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="start">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/DisplayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/DisplayManager.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -152,6 +150,14 @@
+       <option name="presentableId" value="Default" />
+       <updated>1675715910976</updated>
+     </task>
++    <task id="LOCAL-00001" summary="start">
++      <created>1675889025183</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1675889025183</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -165,4 +171,8 @@
+       </map>
+     </option>
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="start" />
++    <option name="LAST_COMMIT_MESSAGE" value="start" />
++  </component>
+ </project>
+\ No newline at end of file

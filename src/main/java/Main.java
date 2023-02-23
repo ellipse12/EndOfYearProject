@@ -18,6 +18,7 @@ public class Main {
             while(!glfwWindowShouldClose(window)){
                 TestLoop.loop(window);
             }
+            TestLoop.cleanUp();
 
         }
         public  void init(){
