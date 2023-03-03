@@ -2,7 +2,6 @@ import Engine.DisplayManager;
 import Engine.TestLoop;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -21,7 +20,10 @@ public class Main {
             TestLoop.cleanUp();
 
         }
-        public  void init(){
+
+
+
+    public  void init(){
             GLFWErrorCallback.createPrint(System.err).set();
             if ( !glfwInit() ) {
                 throw new IllegalStateException("Unable to initialize GLFW");

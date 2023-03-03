@@ -7,11 +7,14 @@ import org.joml.Vector4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+import org.lwjgl.system.MemoryStack;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.FloatBuffer;
+
+import static org.lwjgl.opengl.GL20.glUniformMatrix4fv;
 
 public abstract class ShaderProgram {
 
@@ -87,9 +90,11 @@ public abstract class ShaderProgram {
         GL20.glUniform1f(location, toLoad);
     }
     protected void loadMatrix(int location, Matrix4f matrix){
-        matrix.set(matrix);
-        matrixBuffer.flip();
-        GL20.glUniformMatrix4fv(location, false, matrixBuffer);
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            FloatBuffer fb = stack.mallocFloat(16);
+            matrix.get(fb);
+            glUniformMatrix4fv(location, false, fb);
+        }
 
     }
     private static  int loadShader(String file, int type){

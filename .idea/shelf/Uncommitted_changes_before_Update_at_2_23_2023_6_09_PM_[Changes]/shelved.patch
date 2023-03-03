@@ -1,0 +1,16 @@
+Index: src/main/java/Engine/TestLoop.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Engine;\r\n\r\nimport static org.lwjgl.glfw.GLFW.glfwPollEvents;\r\nimport static org.lwjgl.glfw.GLFW.glfwSwapBuffers;\r\nimport static org.lwjgl.opengl.GL11.*;\r\n\r\npublic class TestLoop {\r\n    public static void loop(long window){\r\n        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);\r\n\r\n        glfwSwapBuffers(window);\r\n\r\n        glfwPollEvents();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Engine/TestLoop.java b/src/main/java/Engine/TestLoop.java
+--- a/src/main/java/Engine/TestLoop.java	(revision 39eca7dc23f8d142f0c99d80566adb9370bc8dc6)
++++ b/src/main/java/Engine/TestLoop.java	(date 1677200946862)
+@@ -1,4 +1,4 @@
+-package Engine;
++package engine;
+ 
+ import static org.lwjgl.glfw.GLFW.glfwPollEvents;
+ import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
