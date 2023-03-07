@@ -1,0 +1,53 @@
+Index: src/main/java/Main.java
+===================================================================
+diff --git a/src/main/java/Main.java b/src/main/java/Main.java
+--- a/src/main/java/Main.java	
++++ b/src/main/java/Main.java	
+@@ -3,6 +3,8 @@
+ import org.lwjgl.glfw.GLFWErrorCallback;
+ import org.lwjgl.opengl.GL;
+ 
++import java.util.ArrayList;
++
+ import static org.lwjgl.glfw.GLFW.*;
+ import static org.lwjgl.opengl.GL11.*;
+ 
+@@ -19,6 +21,7 @@
+             }
+             TestLoop.cleanUp();
+ 
++
+         }
+ 
+ 
+Index: src/main/java/Engine/DisplayManager.java
+===================================================================
+diff --git a/src/main/java/Engine/DisplayManager.java b/src/main/java/Engine/DisplayManager.java
+--- a/src/main/java/Engine/DisplayManager.java	
++++ b/src/main/java/Engine/DisplayManager.java	
+@@ -22,9 +22,15 @@
+                 glfwSetWindowShouldClose(window, true);
+             }
+         });
++
+         try ( MemoryStack stack = stackPush() ) {
+             IntBuffer pWidth = stack.mallocInt(1); // int*
+             IntBuffer pHeight = stack.mallocInt(1); // int*
++
++
++            FloatBuffer px = stack.mallocFloat(1);
++            FloatBuffer py = stack.mallocFloat(1);
++            glfwGetWindowContentScale(window, px, py);
+             glfwGetWindowSize(window, pWidth, pHeight);
+             GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+             glfwSetWindowPos(
+@@ -32,7 +38,9 @@
+                     (vidmode.width() - pWidth.get(0)) / 2,
+                     (vidmode.height() - pHeight.get(0)) / 2
+             );
++
+         }
++
+         glfwMakeContextCurrent(window);
+         glfwSwapInterval(1);
+         glfwShowWindow(window);

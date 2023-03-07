@@ -1,12 +1,13 @@
 package Engine.resourceLoading;
 
 import Engine.models.Model;
+import com.sun.prism.Texture;
+import de.matthiasmann.twl.utils.PNGDecoder;
 import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengl.*;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ import java.util.List;
 public class Loader {
     private List<Integer> vaos = new ArrayList<>();
     private List<Integer> vbos = new ArrayList<>();
+
+    private List<Integer> textures = new ArrayList<>();
+
 
 
     public Model loadToVAO(float[] positions){
@@ -30,6 +34,18 @@ public class Loader {
         storeDataInAttributeList(0,3, positions);
         GL30.glBindVertexArray(0);
         return new Model(vaoID, indices.length);
+
+    }
+
+    public int loadTexture(String filename){
+
+        try {
+            PNGDecoder decoder = new PNGDecoder(Texture.class.getResourceAsStream(filename));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
 
     }
     public void cleanUp() {

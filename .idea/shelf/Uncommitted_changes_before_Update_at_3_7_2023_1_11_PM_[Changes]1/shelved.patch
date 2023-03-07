@@ -1,0 +1,179 @@
+Index: src/main/java/Engine/TestLoop.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Engine/TestLoop.java b/src/main/java/Engine/TestLoop.java
+--- a/src/main/java/Engine/TestLoop.java	
++++ b/src/main/java/Engine/TestLoop.java	
+@@ -5,8 +5,8 @@
+ import Engine.rendering.Renderer;
+ import Engine.resourceLoading.Loader;
+ import Engine.shaders.StaticShader;
+-import org.joml.Vector2f;
+ import org.joml.Vector3f;
++import org.lwjgl.system.windows.DISPLAY_DEVICE;
+ 
+ import static org.lwjgl.glfw.GLFW.glfwPollEvents;
+ import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
+@@ -31,13 +31,16 @@
+     static WorldObject object = new WorldObject(model, new Vector3f(0,0,0), new Vector3f(0,0,0), new Vector3f(1,1, 1));
+     public static void loop(long window){
+         renderer.init();
++        object.setRotation(object.getRotation().add(new Vector3f(0,0,1)));
++        object.setScale(object.getScale().add(new Vector3f(.01f,.01f,.01f)));
+         renderer.render(object);
+ 
+-
+         glfwSwapBuffers(window);
+-
+         glfwPollEvents();
++
+     }
++
++
+ 
+     public static void cleanUp() {
+         loader.cleanUp();
+Index: src/main/java/Engine/util/Maths.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Engine/util/Maths.java b/src/main/java/Engine/util/Maths.java
+--- a/src/main/java/Engine/util/Maths.java	
++++ b/src/main/java/Engine/util/Maths.java	
+@@ -9,17 +9,17 @@
+ 
+     public static Matrix4f createTransformationMatrix(Vector3f translation, Vector3f scale) {
+         Matrix4f matrix = new Matrix4f();
+-        matrix.identity().translate(translation).scale(1);
++        matrix.identity().translate(translation).scale(scale);
+ 
+         return matrix;
+     }
+-    public static Matrix4f createTransformationMatrix(Vector3f translation, Vector3f rotation, Vector2f scale) {
++    public static Matrix4f createTransformationMatrix(Vector3f translation, Vector3f rotation, Vector3f scale) {
+         Matrix4f matrix = new Matrix4f();
+-        matrix.translate(translation);
+-        matrix.rotate((float) Math.toRadians(rotation.x), new Vector3f(1,0,0));
+-        matrix.rotate((float) Math.toRadians(rotation.y), new Vector3f(0,1,0));
+-        matrix.rotate((float) Math.toRadians(rotation.z), new Vector3f(0,0,1));
+-        matrix.scale(new Vector3f(scale.x, scale.y, 1f));
++        matrix.identity().translate(translation).
++        rotate((float) Math.toRadians(rotation.x), new Vector3f(1,0,0)).
++        rotate((float) Math.toRadians(rotation.y), new Vector3f(0,1,0)).
++        rotate((float) Math.toRadians(rotation.z), new Vector3f(0,0,1)).
++        scale(new Vector3f(scale.x, scale.y, 1f));
+         return matrix;
+     }
+ 
+Index: src/main/java/Engine/shaders/StaticShader.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Engine/shaders/StaticShader.java b/src/main/java/Engine/shaders/StaticShader.java
+--- a/src/main/java/Engine/shaders/StaticShader.java	
++++ b/src/main/java/Engine/shaders/StaticShader.java	
+@@ -1,30 +1,30 @@
+ package Engine.shaders;
+ 
+-
+ import org.joml.Matrix4f;
+ 
+-public class StaticShader extends ShaderProgram {
+-    private static final String vertexFile = "src/main/resources/shaders/defaultVertShader.vert";
+-    private static final String fragmentFile = "src/main/resources/shaders/defaultFragShader.frag";
++public class StaticShader extends ShaderProgram{
+ 
++    private static final String VERTEX_FILE = "src/main/resources/shaders/defaultVertShader.vert";
++    private static final String FRAGMENT_FILE = "src/main/resources/shaders/defaultFragShader.frag";
+ 
+-    private int loc_transformationMatrix;
++    private int location_transformationMatrix;
+ 
+-    public StaticShader() {
+-        super(vertexFile, fragmentFile);
+-    }
++    public StaticShader(){
+ 
++        super(VERTEX_FILE, FRAGMENT_FILE);
++    }
+     @Override
+     protected void getAllUniformLocations() {
+-        loc_transformationMatrix = super.getUniformLocation("transformationMatrix");
+-
++        location_transformationMatrix = super.getUniformLocation("transformationMatrix");
+     }
+ 
+     @Override
+     protected void bindAttributes() {
+         super.bindAttribute(0, "position");
+     }
+-    public void loadTransformationMatrix(Matrix4f matrix){
+-        super.loadMatrix(loc_transformationMatrix, matrix);
++
++
++    public  void loadTransformationMatrix(Matrix4f matrix){
++        super.loadMatrix(location_transformationMatrix, matrix);
+     }
+ }
+Index: src/main/java/Engine/rendering/Renderer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Engine/rendering/Renderer.java b/src/main/java/Engine/rendering/Renderer.java
+--- a/src/main/java/Engine/rendering/Renderer.java	
++++ b/src/main/java/Engine/rendering/Renderer.java	
+@@ -26,7 +26,7 @@
+         shader.start();
+         GL30.glBindVertexArray(object.getModel().getVaoID());
+         GL20.glEnableVertexAttribArray(0);
+-        Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getScale());
++        Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
+         shader.loadTransformationMatrix(transform);
+         GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, object.getModel().getVertexCount());
+         shader.stop();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,18 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="--">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_2023_1_46_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_16_2023_1_46_PM__Changes_.xml" afterDir="false" />
++    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="9">
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_23_2023_6_09_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_23_2023_6_09_PM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/DisplayManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/DisplayManager.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -100,7 +96,8 @@
+   &quot;keyToString&quot;: {
+     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+   }
+ }</component>
+   <component name="RunManager" selected="Application.Main">
