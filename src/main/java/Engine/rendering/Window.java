@@ -82,4 +82,12 @@ public class Window {
     public boolean isResized() {
         return resized;
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }

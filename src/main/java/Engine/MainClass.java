@@ -1,10 +1,12 @@
+package Engine;
+
 import Engine.rendering.Window;
-import Engine.TestLoop;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
-import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.glfw.GLFW.glfwInit;
+import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.opengl.GL11.glClearColor;
 
 public class MainClass {
         public static Window window = new Window(800, 400, "test");
