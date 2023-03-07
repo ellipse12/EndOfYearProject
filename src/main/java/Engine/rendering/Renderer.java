@@ -23,10 +23,11 @@ public class Renderer {
     }
 
     public void render(WorldObject object){
+
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
-        Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getScale());
+        Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
         shader.loadTransformationMatrix(transform);
         GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, object.getModel().getVertexCount());
         shader.stop();

@@ -3,9 +3,9 @@ package Engine;
 import Engine.models.Model;
 import Engine.models.WorldObject;
 import Engine.rendering.Renderer;
+import Engine.rendering.Window;
 import Engine.resourceLoading.Loader;
 import Engine.shaders.StaticShader;
-import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
@@ -29,14 +29,18 @@ public class TestLoop {
     };
     static Model model = loader.loadToVAO(vertices);
     static WorldObject object = new WorldObject(model, new Vector3f(0,0,0), new Vector3f(0,0,0), new Vector3f(1,1, 1));
-    public static void loop(long window){
+    public static void loop(Window window){
+
         renderer.init();
+        object.increaseRotation(new Vector3f(0,0,1));
+        object.increaseScale(.01f);
         renderer.render(object);
 
 
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(window.getHandle());
 
         glfwPollEvents();
+        window.update();
     }
 
     public static void cleanUp() {

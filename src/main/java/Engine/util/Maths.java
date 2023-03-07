@@ -13,13 +13,13 @@ public class Maths {
 
         return matrix;
     }
-    public static Matrix4f createTransformationMatrix(Vector3f translation, Vector3f rotation, Vector2f scale) {
+    public static Matrix4f createTransformationMatrix(Vector3f translation, Vector3f rotation, Vector3f scale) {
         Matrix4f matrix = new Matrix4f();
-        matrix.translate(translation);
-        matrix.rotate((float) Math.toRadians(rotation.x), new Vector3f(1,0,0));
-        matrix.rotate((float) Math.toRadians(rotation.y), new Vector3f(0,1,0));
-        matrix.rotate((float) Math.toRadians(rotation.z), new Vector3f(0,0,1));
-        matrix.scale(new Vector3f(scale.x, scale.y, 1f));
+        matrix.identity().translate(translation)
+        .rotate((float) Math.toRadians(rotation.x), new Vector3f(1,0,0))
+        .rotate((float) Math.toRadians(rotation.y), new Vector3f(0,1,0))
+        .rotate((float) Math.toRadians(rotation.z), new Vector3f(0,0,1))
+        .scale(new Vector3f(scale.x, scale.y, 1f));
         return matrix;
     }
 

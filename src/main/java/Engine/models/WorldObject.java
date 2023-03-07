@@ -51,4 +51,20 @@ public class WorldObject {
     public void setScale(Vector3f scale) {
         this.scale = scale;
     }
+
+    public void increasePosition(Vector3f position){
+        this.position.add(position);
+    }
+
+    public void increaseRotation(Vector3f rotation){
+        this.rotation.add(rotation);
+    }
+
+    public void increaseScale(Vector3f scale){
+        this.scale.add(scale);
+    }
+    public void increaseScale(float scale){
+        this.scale.add(new Vector3f(scale,scale,scale));
+    }
+
 }
