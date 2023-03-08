@@ -9,8 +9,7 @@ import Engine.resourceLoading.Texture;
 import Engine.shaders.StaticShader;
 import org.joml.Vector3f;
 
-import static org.lwjgl.glfw.GLFW.glfwPollEvents;
-import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
+import static org.lwjgl.glfw.GLFW.*;
 
 public class TestLoop {
 
@@ -100,6 +99,7 @@ public class TestLoop {
 
     static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(0,0,0), new Vector3f(1,1, 1));
     public static void loop(Window window){
+
 
         renderer.init();
         object.increaseRotation(new Vector3f(1,1,1));

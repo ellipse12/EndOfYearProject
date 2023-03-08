@@ -1,5 +1,6 @@
 package Engine.util;
 
+import Engine.rendering.Camera;
 import Engine.rendering.Window;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
@@ -34,6 +35,12 @@ public class Maths {
         Matrix4f projectionMatrix = new Matrix4f().identity().perspective(FOV, aspectRatio, Z_NEAR, Z_FAR);
         return projectionMatrix;
 
+    }
+
+    public static Matrix4f createViewMatrix(Camera camera){
+         Vector3f position = camera.getPosition();
+         Vector3f rotation = camera.getRotation();
+         return null;
     }
 
 
