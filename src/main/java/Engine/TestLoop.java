@@ -5,6 +5,7 @@ import Engine.models.WorldObject;
 import Engine.rendering.Renderer;
 import Engine.rendering.Window;
 import Engine.resourceLoading.Loader;
+import Engine.resourceLoading.Texture;
 import Engine.shaders.StaticShader;
 import org.joml.Vector3f;
 
@@ -65,12 +66,43 @@ public class TestLoop {
             23,21,22
 
     };
-    static Model model = loader.loadToVAO(vertices, indices);
+
+    static float[] textureCoords = {
+
+            0,0,
+            0,1,
+            1,1,
+            1,0,
+            0,0,
+            0,1,
+            1,1,
+            1,0,
+            0,0,
+            0,1,
+            1,1,
+            1,0,
+            0,0,
+            0,1,
+            1,1,
+            1,0,
+            0,0,
+            0,1,
+            1,1,
+            1,0,
+            0,0,
+            0,1,
+            1,1,
+            1,0
+
+
+    };
+    static Model model = loader.loadToVAO(vertices, indices, textureCoords,new Texture("test.png"));
+
     static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(0,0,0), new Vector3f(1,1, 1));
     public static void loop(Window window){
 
         renderer.init();
-        object.increaseRotation(new Vector3f(0,1,0));
+        object.increaseRotation(new Vector3f(1,1,1));
         //object.increaseScale(.01f);
         renderer.render(object);
 

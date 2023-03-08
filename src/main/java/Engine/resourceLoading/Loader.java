@@ -1,17 +1,18 @@
 package Engine.resourceLoading;
 
 import Engine.models.Model;
-import com.sun.prism.Texture;
 import de.matthiasmann.twl.utils.PNGDecoder;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
-
+import Engine.resourceLoading.Texture;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class Loader {
     private List<Integer> vaos = new ArrayList<>();
@@ -36,17 +37,28 @@ public class Loader {
         return new Model(vaoID, indices.length);
 
     }
+    public Model loadToVAO(float[] positions, int[] indices, float[] textureCoords, Texture texture){
+        int vaoID =createVAO();
+        bindIndicesBuffer(indices);
+        storeDataInAttributeList(0,3, positions);
+        storeDataInAttributeList(1,2, textureCoords);
+        GL30.glBindVertexArray(0);
+        loadTexture(texture);
+        return new Model(vaoID, indices.length, texture);
 
-    public int loadTexture(String filename){
+    }
 
-        try {
-            PNGDecoder decoder = new PNGDecoder(Texture.class.getResourceAsStream(filename));
+    public int loadTexture(Texture texture){
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return 0;
-
+        int textID = glGenTextures();
+        GL11.glBindTexture(GL_TEXTURE_2D, textID);
+        glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texture.getWidth(), texture.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, texture.getTextureData());
+        GL30.glGenerateMipmap(GL_TEXTURE_2D);
+        texture.setTextureID(textID);
+        textures.add(textID);
+        storeDataInAttributeList(1, 2, texture.getTextureData().asFloatBuffer());
+        return textID;
     }
     public void cleanUp() {
         for (int vao : vaos) {
@@ -71,6 +83,14 @@ public class Loader {
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vboID);
         FloatBuffer buffer = storeDataInFloatBuffer(data);
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
+        GL20.glVertexAttribPointer(attributeNumber,coordinateSize,GL11.GL_FLOAT,false,0,0);
+        GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
+    }
+    private void storeDataInAttributeList(int attributeNumber, int coordinateSize,FloatBuffer data){
+        int vboID = GL15.glGenBuffers();
+        vbos.add(vboID);
+        GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vboID);
+        GL15.glBufferData(GL15.GL_ARRAY_BUFFER, data, GL15.GL_STATIC_DRAW);
         GL20.glVertexAttribPointer(attributeNumber,coordinateSize,GL11.GL_FLOAT,false,0,0);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
     }
