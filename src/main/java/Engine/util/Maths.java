@@ -40,7 +40,15 @@ public class Maths {
     public static Matrix4f createViewMatrix(Camera camera){
          Vector3f position = camera.getPosition();
          Vector3f rotation = camera.getRotation();
-         return null;
+         Matrix4f viewMatrix = new Matrix4f();
+         viewMatrix.identity();
+
+         viewMatrix.rotate((float)Math.toRadians(rotation.x), new Vector3f(1,0,0))
+                 .rotate((float)Math.toRadians(rotation.y), new Vector3f(0,1,0))
+                 .rotate((float)Math.toRadians(rotation.z), new Vector3f(0,0,1));
+         viewMatrix.translate(position.negate());
+         return viewMatrix;
+
     }
 
 

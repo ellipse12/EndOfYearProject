@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="89">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2023_4_57_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2023_4_57_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="3/8">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678157602025</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="3/8">
+      <created>1678308911343</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678308911343</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +230,7 @@
     <MESSAGE value="moved loop to seperate class" />
     <MESSAGE value="transformation matrix" />
     <MESSAGE value="fixed: viewport not scaling with window resize" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed: viewport not scaling with window resize" />
+    <MESSAGE value="3/8" />
+    <option name="LAST_COMMIT_MESSAGE" value="3/8" />
   </component>
 </project>
