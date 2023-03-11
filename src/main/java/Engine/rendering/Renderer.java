@@ -29,12 +29,13 @@ public class Renderer {
         shader.stop();
     }
 
-    public void render(WorldObject object){
+    public void render(WorldObject object, Camera camera){
 
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
         GL20.glEnableVertexAttribArray(1);
+        shader.loadViewMatrix(camera);
         Texture texture = object.getModel().getTexture();
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());

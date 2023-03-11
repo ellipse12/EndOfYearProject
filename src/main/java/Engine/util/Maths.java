@@ -46,7 +46,7 @@ public class Maths {
          viewMatrix.rotate((float)Math.toRadians(rotation.x), new Vector3f(1,0,0))
                  .rotate((float)Math.toRadians(rotation.y), new Vector3f(0,1,0))
                  .rotate((float)Math.toRadians(rotation.z), new Vector3f(0,0,1));
-         viewMatrix.translate(position.negate());
+         viewMatrix.translate(-position.x, -position.y, -position.z);
          return viewMatrix;
 
     }

@@ -1,6 +1,8 @@
 package Engine.shaders;
 
 
+import Engine.rendering.Camera;
+import Engine.util.Maths;
 import org.joml.Matrix4f;
 
 public class StaticShader extends ShaderProgram {
@@ -37,7 +39,8 @@ public class StaticShader extends ShaderProgram {
         super.loadMatrix(loc_projectionMatrix, matrix);
     }
 
-    public void loadViewMatrix(Matrix4f matrix){
+    public void loadViewMatrix(Camera camera){
+        Matrix4f matrix = Maths.createViewMatrix(camera);
         super.loadMatrix(loc_viewMatrix, matrix);
     }
 }

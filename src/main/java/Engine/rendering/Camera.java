@@ -1,6 +1,9 @@
 package Engine.rendering;
 
+import Engine.MainClass;
 import org.joml.Vector3f;
+
+import static org.lwjgl.glfw.GLFW.*;
 
 public class Camera {
     private Vector3f position;
@@ -26,6 +29,33 @@ public class Camera {
             position.z += (float)Math.cos(Math.toRadians(rotation.y - 90)) * offX;
         }
         position.y += offY;
+    }
+
+    public void rotate(Vector3f rotation){
+        this.rotation.add(rotation);
+    }
+    private float speed= 0.1f;
+
+    public void update(){
+
+        if(isKeyDown(GLFW_KEY_W)){
+            move(0, 0, -speed);
+        }
+        if(isKeyDown(GLFW_KEY_S)){
+            move(0,0,speed);
+        }
+        if(isKeyDown(GLFW_KEY_A)){
+            move(-speed, 0, 0);
+        }
+        if(isKeyDown(GLFW_KEY_D)){
+            move(speed,0,0);
+        }
+
+
+    }
+
+    private boolean isKeyDown(int keyCode){
+        return glfwGetKey(MainClass.window.getHandle(), keyCode) == GLFW_PRESS;
     }
 
     public Vector3f getPosition() {

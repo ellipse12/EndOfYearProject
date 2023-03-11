@@ -39,6 +39,7 @@ public class Window {
             }
         });
 
+
         try ( MemoryStack stack = stackPush() ) {
             IntBuffer pWidth = stack.mallocInt(1); // int*
             IntBuffer pHeight = stack.mallocInt(1); // int*
@@ -51,6 +52,7 @@ public class Window {
                     (vidmode.height() - pHeight.get(0)) / 2
             );
         }
+
         glfwMakeContextCurrent(window);
 
         glfwSwapInterval(1);

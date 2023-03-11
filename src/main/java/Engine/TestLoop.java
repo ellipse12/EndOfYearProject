@@ -2,6 +2,7 @@ package Engine;
 
 import Engine.models.Model;
 import Engine.models.WorldObject;
+import Engine.rendering.Camera;
 import Engine.rendering.Renderer;
 import Engine.rendering.Window;
 import Engine.resourceLoading.Loader;
@@ -98,15 +99,14 @@ public class TestLoop {
     static Model model = loader.loadToVAO(vertices, indices, textureCoords,new Texture("test.png"));
 
     static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(0,0,0), new Vector3f(1,1, 1));
+
+    static Camera camera = new Camera();
     public static void loop(Window window){
 
 
         renderer.init();
-        object.increaseRotation(new Vector3f(1,1,1));
-        //object.increaseScale(.01f);
-        renderer.render(object);
-
-
+        camera.update();
+        renderer.render(object, camera);
         glfwSwapBuffers(window.getHandle());
 
         glfwPollEvents();
