@@ -1,11 +1,13 @@
 package Engine.rendering;
 
 import Engine.MainClass;
+import Engine.util.Mouse;
 import org.joml.Vector3f;
 
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Camera {
+    private static final float TURN_SPEED = 5;
     private Vector3f position;
     private Vector3f rotation;
 
@@ -52,7 +54,9 @@ public class Camera {
         }
 
 
+
     }
+
 
     private boolean isKeyDown(int keyCode){
         return glfwGetKey(MainClass.window.getHandle(), keyCode) == GLFW_PRESS;
