@@ -1,7 +1,6 @@
 package Engine.rendering;
 
 import Engine.MainClass;
-import Engine.util.Mouse;
 import org.joml.Vector3f;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -59,6 +58,7 @@ public class Camera {
 
 
     private boolean isKeyDown(int keyCode){
+
         return glfwGetKey(MainClass.window.getHandle(), keyCode) == GLFW_PRESS;
     }
 

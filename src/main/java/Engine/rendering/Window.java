@@ -1,5 +1,6 @@
 package Engine.rendering;
-import Engine.util.Mouse;
+import Engine.input.Keyboard;
+import Engine.input.Mouse;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.*;
@@ -74,6 +75,7 @@ public class Window {
             GLFW.glfwSetWindowSizeCallback(window, sizeCallback);
 
         Mouse.create(window);
+        Keyboard.create(window);
     }
 
     public long getHandle() {

@@ -1,5 +1,7 @@
 package Engine;
 
+import Engine.input.Keyboard;
+import Engine.input.Mouse;
 import Engine.models.Model;
 import Engine.models.WorldObject;
 import Engine.rendering.Camera;
@@ -107,6 +109,7 @@ public class TestLoop {
         renderer.init();
         camera.update();
         renderer.render(object, camera);
+        System.out.println(Keyboard.isKeyDown(GLFW_KEY_A));
         glfwSwapBuffers(window.getHandle());
 
         glfwPollEvents();

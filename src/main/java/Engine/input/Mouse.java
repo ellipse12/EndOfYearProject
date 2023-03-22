@@ -1,4 +1,5 @@
-package Engine.util;
+package Engine.input;
+
 
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWCursorEnterCallback;
@@ -8,7 +9,7 @@ import org.lwjgl.glfw.GLFWMouseButtonCallback;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Mouse {
+public final class Mouse {
     private static double x, y;
     private static double dx, dy;
 
@@ -33,7 +34,13 @@ public class Mouse {
         buttonCallback = new GLFWMouseButtonCallback() {
             @Override
             public void invoke(long window, int button, int action, int mods) {
-                keyMap.put(button, action);
+                if(action == 1) {
+                    keyMap.put(button, action);
+                }else{
+                    keyMap.put(button, 2);
+                }
+
+
 
             }
         };
@@ -42,6 +49,19 @@ public class Mouse {
         GLFW.glfwSetCursorPosCallback(window, posCallback);
     }
 
+
+    public static boolean isButtonDown(int button){
+        return keyMap.getOrDefault(button, 0) == 1;
+    }
+
+
+    public static boolean isButtonReleased(int button){
+        boolean released = keyMap.getOrDefault(button, 0) == 2;
+        if(released){
+            keyMap.put(button, 0);
+        }
+        return released;
+    }
 
 
     public static double getX() {

@@ -1,8 +1,6 @@
 package Engine.models;
 
-import org.joml.Vector2f;
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
 public class WorldObject {
     private Model model;
