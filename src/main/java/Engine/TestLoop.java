@@ -109,7 +109,7 @@ public class TestLoop {
         renderer.init();
         camera.update();
         renderer.render(object, camera);
-        System.out.println(Keyboard.isKeyDown(GLFW_KEY_A));
+
         glfwSwapBuffers(window.getHandle());
 
         glfwPollEvents();

@@ -35,11 +35,7 @@ public class Window {
         if(window == NULL){
             throw new RuntimeException("Unable to create window");
         }
-        glfwSetKeyCallback(window, (win, key, scancode, action, mods)->{
-            if(key==GLFW_KEY_ESCAPE&&action==GLFW_RELEASE){
-                glfwSetWindowShouldClose(window, true);
-            }
-        });
+
 
 
         try ( MemoryStack stack = stackPush() ) {
