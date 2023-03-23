@@ -1,4 +1,5 @@
 package Engine.rendering;
+import Engine.input.KeyListener;
 import Engine.input.Keyboard;
 import Engine.input.Mouse;
 import org.lwjgl.glfw.*;
@@ -56,6 +57,7 @@ public class Window {
         glfwSwapInterval(1);
         glfwShowWindow(window);
         this.window = window;
+        createCallbacks();
 
 
     }
@@ -72,6 +74,13 @@ public class Window {
 
         Mouse.create(window);
         Keyboard.create(window);
+
+        Keyboard.addKeyListener((key, action, mod) -> {
+            if(key == GLFW_KEY_ESCAPE && action == KeyListener.KEY_RELEASED){
+                glfwSetWindowShouldClose(window, true);
+            }
+        });
+
     }
 
     public long getHandle() {

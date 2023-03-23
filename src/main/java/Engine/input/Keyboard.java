@@ -13,24 +13,18 @@ public final class Keyboard {
 
     private static GLFWKeyCallback keyCallback;
 
-    public static final int KEY_RELEASED = -3;
+
 
     public static void create(long window){
         keyCallback = new GLFWKeyCallback() {
             @Override
             public void invoke(long window, int key, int scancode, int action, int mods) {
                 if((keyMap.getOrDefault(key, -1) == GLFW_PRESS || keyMap.getOrDefault(key,-1) == GLFW_REPEAT) && action == GLFW_RELEASE){
-
-                    keyMap.put(key, KEY_RELEASED);
-
+                    keyMap.put(key, KeyListener.KEY_RELEASED);
                 }else {
                     keyMap.put(key, action);
                 }
-                if(key == GLFW_KEY_ESCAPE){
-                    glfwSetWindowShouldClose(window, true);
-                }
-                listeners.forEach(listener -> listener.onKeyEvent(key, action, mods));
-
+                listeners.forEach(listener -> listener.onKeyEvent(key, keyMap.getOrDefault(key, 0), mods));
             }
         };
         glfwSetKeyCallback(window, keyCallback);
@@ -45,7 +39,7 @@ public final class Keyboard {
     }
 
     public static boolean isKeyReleased(int key){
-        boolean released = keyMap.getOrDefault(key, -1) == KEY_RELEASED;
+        boolean released = keyMap.getOrDefault(key, -1) == KeyListener.KEY_RELEASED;
         if(released){
             keyMap.put(key, 0);
         }

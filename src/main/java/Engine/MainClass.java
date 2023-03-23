@@ -16,7 +16,6 @@ public class MainClass {
             main.init();
             window.create();
             GL.createCapabilities();
-            window.createCallbacks();
             glClearColor(0.0f,0.0f,1.0f, 0.0f);
             while(!glfwWindowShouldClose(window.getHandle())){
                 TestLoop.loop(window);

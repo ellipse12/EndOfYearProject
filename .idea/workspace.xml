@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="added: mouse listener">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/input/KeyListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/KeyListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
