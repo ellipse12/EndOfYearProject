@@ -13,18 +13,22 @@ public final class Mouse {
     private static double x, y;
     private static double dx, dy;
 
+    private static boolean inWindow = false;
+
     private static Map<Integer, Integer> keyMap = new HashMap<>();
 
     private static GLFWCursorPosCallback posCallback;
     private static GLFWMouseButtonCallback buttonCallback;
+
+    private static GLFWCursorEnterCallback enterCallback;
 
 
     public static void create(long window) {
         posCallback = new GLFWCursorPosCallback() {
             @Override
             public void invoke(long window, double xpos, double ypos) {
-                dx = Math.abs(x-xpos);
-                dy = Math.abs(y - ypos);
+                dx = x-xpos;
+                dy = y - ypos;
                 x = xpos;
                 y = ypos;
 
@@ -45,8 +49,16 @@ public final class Mouse {
             }
         };
 
+        enterCallback = new GLFWCursorEnterCallback() {
+            @Override
+            public void invoke(long window, boolean entered) {
+                inWindow = entered;
+            }
+        };
+
         GLFW.glfwSetMouseButtonCallback(window, buttonCallback);
         GLFW.glfwSetCursorPosCallback(window, posCallback);
+        GLFW.glfwSetCursorEnterCallback(window, enterCallback);
     }
 
 
@@ -72,11 +84,11 @@ public final class Mouse {
         return y;
     }
 
-    public static double getDx() {
+    public static double getDX() {
         return dx;
     }
 
-    public static double getDy() {
+    public static double getDY() {
         return dy;
     }
 }

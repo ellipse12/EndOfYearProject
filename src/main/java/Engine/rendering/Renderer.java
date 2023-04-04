@@ -15,27 +15,33 @@ import org.lwjgl.opengl.GL30;
 
 public class Renderer {
     private StaticShader shader;
+
+    private Matrix4f viewMatrix;
     public Renderer(StaticShader shader) {
         this.shader = shader;
     }
 
-    public void init(){
+    public void init(Camera camera){
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
         GL11.glClearColor(1f, 0f, 0f, 1f);
         shader.start();
         Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
         shader.loadProjectionMatrix(projectionMatrix);
+        this.viewMatrix = Maths.createViewMatrix(camera);
+
         shader.stop();
+
     }
 
-    public void render(WorldObject object, Camera camera){
+    public void render(WorldObject object){
 
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
         GL20.glEnableVertexAttribArray(1);
-        shader.loadViewMatrix(camera);
+
+        shader.loadViewMatrix(object, viewMatrix);
         Texture texture = object.getModel().getTexture();
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());

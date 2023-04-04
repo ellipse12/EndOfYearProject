@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="added: mouse listener">
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="added: addKeyListener method to the Keyboard class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/KeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679341784365</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added: addKeyListener method to the Keyboard class">
+      <created>1679538357553</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679538357553</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,6 +255,7 @@
     <MESSAGE value="fixed: viewport not scaling with window resize" />
     <MESSAGE value="3/8" />
     <MESSAGE value="added: mouse listener" />
-    <option name="LAST_COMMIT_MESSAGE" value="added: mouse listener" />
+    <MESSAGE value="added: addKeyListener method to the Keyboard class" />
+    <option name="LAST_COMMIT_MESSAGE" value="added: addKeyListener method to the Keyboard class" />
   </component>
 </project>

@@ -1,5 +1,6 @@
 package Engine.util;
 
+import Engine.models.WorldObject;
 import Engine.rendering.Camera;
 import Engine.rendering.Window;
 import org.joml.Matrix4f;
@@ -21,7 +22,8 @@ public class Maths {
         .rotate((float) Math.toRadians(rotation.x), new Vector3f(1,0,0))
         .rotate((float) Math.toRadians(rotation.y), new Vector3f(0,1,0))
         .rotate((float) Math.toRadians(rotation.z), new Vector3f(0,0,1))
-        .scale(new Vector3f(scale.x, scale.y, 1f));
+
+        .scale(new Vector3f(scale.x, scale.y, scale.z));
         return matrix;
     }
     private static final float FOV = (float) Math.toRadians(60.0f);
@@ -44,11 +46,22 @@ public class Maths {
          viewMatrix.identity();
 
          viewMatrix.rotate((float)Math.toRadians(rotation.x), new Vector3f(1,0,0))
-                 .rotate((float)Math.toRadians(rotation.y), new Vector3f(0,1,0))
-                 .rotate((float)Math.toRadians(rotation.z), new Vector3f(0,0,1));
+                 .rotate((float)Math.toRadians(rotation.y), new Vector3f(0,1,0));
          viewMatrix.translate(-position.x, -position.y, -position.z);
          return viewMatrix;
 
+    }
+
+    public static Matrix4f getModelViewMatrix(WorldObject object, Matrix4f viewMatrix){
+        Vector3f rotation = object.getRotation();
+        Matrix4f modelMat = new Matrix4f();
+        modelMat.identity().translate(object.getPosition()).
+        rotateX((float)Math.toRadians(-rotation.x)).
+                rotateY((float)Math.toRadians(-rotation.y)).
+                rotateZ((float)Math.toRadians(-rotation.z)).
+                scale(object.getScale());
+        Matrix4f view = new Matrix4f(viewMatrix);
+        return view.mul(modelMat);
     }
 
 

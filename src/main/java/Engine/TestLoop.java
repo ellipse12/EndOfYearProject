@@ -10,6 +10,7 @@ import Engine.rendering.Window;
 import Engine.resourceLoading.Loader;
 import Engine.resourceLoading.Texture;
 import Engine.shaders.StaticShader;
+import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -100,15 +101,17 @@ public class TestLoop {
     };
     static Model model = loader.loadToVAO(vertices, indices, textureCoords,new Texture("test.png"));
 
-    static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(0,0,0), new Vector3f(1,1, 1));
+    static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(), new Vector3f(1,1, 1));
 
     static Camera camera = new Camera();
     public static void loop(Window window){
 
 
-        renderer.init();
+        renderer.init(camera);
+
         camera.update();
-        renderer.render(object, camera);
+        object.increaseRotation(new Vector3f(0,1,0));
+        renderer.render(object);
 
         glfwSwapBuffers(window.getHandle());
 

@@ -56,6 +56,9 @@ public class WorldObject {
 
     public void increaseRotation(Vector3f rotation){
         this.rotation.add(rotation);
+        if(this.rotation.x > 360 || this.rotation.y > 360 || this.rotation.z > 360){
+            this.rotation.set(0);
+        }
     }
 
     public void increaseScale(Vector3f scale){
