@@ -1,6 +1,8 @@
 package Engine.models;
 
+import Engine.resourceLoading.Loader;
 import Engine.resourceLoading.Texture;
+import Engine.resourceLoading.objectLoading.RawModelData;
 
 public class Model {
     private int vaoID;
@@ -8,15 +10,21 @@ public class Model {
 
     private Texture texture;
 
+
+
+
     public Model(int vaoID, int vertexCount) {
         this.vaoID = vaoID;
         this.vertexCount = vertexCount;
+        this.texture = null;
     }
     public Model(int vaoID, int vertexCount, Texture texture) {
         this.vaoID = vaoID;
         this.vertexCount = vertexCount;
         this.texture = texture;
     }
+
+
 
 
     public int getVaoID() {

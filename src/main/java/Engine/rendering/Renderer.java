@@ -28,24 +28,25 @@ public class Renderer {
         shader.start();
         Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
         shader.loadProjectionMatrix(projectionMatrix);
-        this.viewMatrix = Maths.createViewMatrix(camera);
+
 
         shader.stop();
 
     }
 
-    public void render(WorldObject object){
+    public void render(WorldObject object, Camera camera){
 
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
         GL20.glEnableVertexAttribArray(1);
 
-        shader.loadViewMatrix(object, viewMatrix);
+
         Texture texture = object.getModel().getTexture();
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
         shader.loadTransformationMatrix(transform);
+        shader.loadViewMatrix(object, camera);
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
         GL11.glDrawElements(GL11.GL_TRIANGLES, object.getModel().getVertexCount(), GL11.GL_UNSIGNED_INT, 0);

@@ -108,10 +108,11 @@ public class TestLoop {
 
 
         renderer.init(camera);
-
+        object.increaseRotation(new Vector3f(0,0,0));
+        camera.rotate(new Vector3f(0,1,0));
         camera.update();
-        object.increaseRotation(new Vector3f(0,1,0));
-        renderer.render(object);
+
+        renderer.render(object, camera);
 
         glfwSwapBuffers(window.getHandle());
 

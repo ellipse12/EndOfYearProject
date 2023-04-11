@@ -1,6 +1,8 @@
 package Engine.resourceLoading;
 
 import Engine.models.Model;
+import Engine.resourceLoading.objectLoading.OBJFileLoader;
+import Engine.resourceLoading.objectLoading.RawModelData;
 import de.matthiasmann.twl.utils.PNGDecoder;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
@@ -46,6 +48,15 @@ public class Loader {
         loadTexture(texture);
         return new Model(vaoID, indices.length, texture);
 
+    }
+
+    public Model getModelFromResource(String resource){
+        RawModelData data =  OBJFileLoader.loadOBJ(resource);
+        return loadToVAO(data.getVertices(), data.getIndices());
+    }
+    public Model getModelFromResource(String resource, Texture texture){
+        RawModelData data =  OBJFileLoader.loadOBJ(resource);
+        return loadToVAO(data.getVertices(), data.getIndices(),data.getTextureCoords(), texture);
     }
 
     public int loadTexture(Texture texture){
