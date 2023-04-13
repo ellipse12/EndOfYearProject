@@ -27,8 +27,8 @@ public final class Mouse {
         posCallback = new GLFWCursorPosCallback() {
             @Override
             public void invoke(long window, double xpos, double ypos) {
-                dx = x-xpos;
-                dy = y - ypos;
+                dx = Math.abs(x-xpos);
+                dy = Math.abs(y - ypos);
                 x = xpos;
                 y = ypos;
 
@@ -85,10 +85,10 @@ public final class Mouse {
     }
 
     public static double getDX() {
-        return dx;
+        return dx/10f;
     }
 
     public static double getDY() {
-        return dy;
+        return dy/10f;
     }
 }

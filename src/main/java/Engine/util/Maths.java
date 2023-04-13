@@ -19,9 +19,9 @@ public class Maths {
     public static Matrix4f createTransformationMatrix(Vector3f translation, Vector3f rotation, Vector3f scale) {
         Matrix4f matrix = new Matrix4f();
         matrix.identity().translate(translation)
-        .rotate((float) Math.toRadians(rotation.x), new Vector3f(1,0,0))
-        .rotate((float) Math.toRadians(rotation.y), new Vector3f(0,1,0))
-        .rotate((float) Math.toRadians(rotation.z), new Vector3f(0,0,1))
+        .rotateX((float) Math.toRadians(rotation.x))
+        .rotateY((float) Math.toRadians(rotation.y))
+        .rotateZ((float) Math.toRadians(rotation.z))
 
         .scale(new Vector3f(scale.x, scale.y, scale.z));
         return matrix;
@@ -34,7 +34,9 @@ public class Maths {
     public static Matrix4f createProjectionMatrix(Window window){
 
         float aspectRatio = (float) window.getWidth() / (float) window.getHeight();
-        Matrix4f projectionMatrix = new Matrix4f().identity().perspective(FOV, aspectRatio, Z_NEAR, Z_FAR);
+        Matrix4f projectionMatrix = new Matrix4f();
+        projectionMatrix.identity();
+        projectionMatrix.perspective(FOV, aspectRatio, Z_NEAR, Z_FAR);
         return projectionMatrix;
 
     }
@@ -46,7 +48,8 @@ public class Maths {
          viewMatrix.identity();
 
          viewMatrix.rotate((float)Math.toRadians(rotation.x), new Vector3f(1,0,0))
-                 .rotate((float)Math.toRadians(rotation.y), new Vector3f(0,1,0));
+                 .rotate((float)Math.toRadians(rotation.y), new Vector3f(0,1,0))
+                 .rotate((float)Math.toRadians(rotation.z), new Vector3f(0, 0, 1));
          viewMatrix.translate(-position.x, -position.y, -position.z);
          return viewMatrix;
 

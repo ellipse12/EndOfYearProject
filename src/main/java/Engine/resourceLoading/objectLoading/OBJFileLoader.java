@@ -1,7 +1,10 @@
 package Engine.resourceLoading.objectLoading;
+/*
+None of this code is mine and I claim no ownership. All rights go to @ThinMatrix on youtube,
+and this should be considered a helper class and not graded within the scope of the rest of the project
+ */
 
-import Engine.models.Model;
-import Engine.resourceLoading.Loader;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
@@ -11,9 +14,9 @@ import java.util.List;
 
 public class OBJFileLoader {
 
-    private static final String RES_LOC = "res/";
+    private static final String RES_LOC = "src/main/resources/models/";
 
-    public static RawModelData loadOBJ(String objFileName) {
+    public static @NotNull RawModelData loadOBJ(String objFileName) {
         FileReader isr = null;
         File objFile = new File(RES_LOC + objFileName + ".obj");
         try {

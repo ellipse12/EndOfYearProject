@@ -54,7 +54,7 @@ public class Camera {
             move(speed,0,0);
         }
 
-        //rotate(new Vector3f((float) (Mouse.getDy() * 0.1f), (float) (Mouse.getDX() * 0.1f), 0));
+        rotate(new Vector3f((float) (Mouse.getDY() * 0.1f), (float) (Mouse.getDX() * 0.1f), 0));
 
 
 

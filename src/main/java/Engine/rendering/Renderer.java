@@ -24,7 +24,7 @@ public class Renderer {
     public void init(Camera camera){
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
-        GL11.glClearColor(1f, 0f, 0f, 1f);
+        GL11.glClearColor(1f, 1f, 1f, 1f);
         shader.start();
         Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
         shader.loadProjectionMatrix(projectionMatrix);

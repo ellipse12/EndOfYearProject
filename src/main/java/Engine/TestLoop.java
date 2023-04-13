@@ -9,6 +9,7 @@ import Engine.rendering.Renderer;
 import Engine.rendering.Window;
 import Engine.resourceLoading.Loader;
 import Engine.resourceLoading.Texture;
+import Engine.resourceLoading.objectLoading.OBJFileLoader;
 import Engine.shaders.StaticShader;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
@@ -99,7 +100,7 @@ public class TestLoop {
 
 
     };
-    static Model model = loader.loadToVAO(vertices, indices, textureCoords,new Texture("test.png"));
+    static Model model = loader.getModelFromResource("playerObject", new Texture("test.png"));
 
     static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(), new Vector3f(1,1, 1));
 
@@ -108,8 +109,8 @@ public class TestLoop {
 
 
         renderer.init(camera);
-        object.increaseRotation(new Vector3f(0,0,0));
-        camera.rotate(new Vector3f(0,1,0));
+        //object.increaseRotation(new Vector3f(0,1,0));
+
         camera.update();
 
         renderer.render(object, camera);

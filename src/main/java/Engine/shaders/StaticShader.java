@@ -41,7 +41,7 @@ public class StaticShader extends ShaderProgram {
     }
 
     public void loadViewMatrix(WorldObject object, Camera camera){
-        Matrix4f matrix = Maths.createViewMatrix(camera);
+        Matrix4f matrix = Maths.getModelViewMatrix(object, Maths.createViewMatrix(camera));
 
         super.loadMatrix(loc_viewMatrix, matrix);
     }
