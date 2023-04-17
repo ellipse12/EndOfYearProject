@@ -1,6 +1,7 @@
 package Engine.input;
 
 
+import Engine.rendering.Window;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWCursorEnterCallback;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
@@ -27,8 +28,8 @@ public final class Mouse {
         posCallback = new GLFWCursorPosCallback() {
             @Override
             public void invoke(long window, double xpos, double ypos) {
-                dx = Math.abs(x-xpos);
-                dy = Math.abs(y - ypos);
+                dx = xpos-x;
+                dy = ypos-y;
                 x = xpos;
                 y = ypos;
 
@@ -85,10 +86,14 @@ public final class Mouse {
     }
 
     public static double getDX() {
-        return dx/10f;
+        return dx;
     }
 
     public static double getDY() {
-        return dy/10f;
+        return dy;
+    }
+
+    public static boolean isInWindow(Window window){
+        return x <= window.getWidth() && y <= window.getHeight();
     }
 }

@@ -39,7 +39,7 @@ public class Camera {
     }
     private float speed= 0.1f;
 
-    public void update(){
+    public void update(Window window){
 
         if(isKeyDown(GLFW_KEY_W)){
             move(0, 0, -speed);
@@ -53,8 +53,10 @@ public class Camera {
         if(isKeyDown(GLFW_KEY_D)){
             move(speed,0,0);
         }
+        if(Mouse.isInWindow(window)) {
+            rotate(new Vector3f((float) (Mouse.getDY() * 0.1f), (float) (Mouse.getDX() * 0.1f), 0));
+        }
 
-        rotate(new Vector3f((float) (Mouse.getDY() * 0.1f), (float) (Mouse.getDX() * 0.1f), 0));
 
 
 

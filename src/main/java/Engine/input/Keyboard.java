@@ -5,6 +5,9 @@ import org.lwjgl.glfw.GLFWKeyCallback;
 
 import java.util.*;
 
+/**
+ * Contains a map of the active keys, and provides a way to register key listeners.
+ */
 public final class Keyboard {
 
     private static Map<Integer, Integer> keyMap = new HashMap<>();
@@ -14,7 +17,10 @@ public final class Keyboard {
     private static GLFWKeyCallback keyCallback;
 
 
-
+    /**
+     * exposes this class as a GLFWKeyCallback for GLFW and adds the keys to the keymap, and updates the listeners.
+     * @param window the window handle for the current context
+     */
     public static void create(long window){
         keyCallback = new GLFWKeyCallback() {
             @Override
@@ -32,11 +38,18 @@ public final class Keyboard {
         glfwSetKeyCallback(window, keyCallback);
     }
 
+    /**
+     * @param key the integer representation of the keypress.
+     * @return
+     */
     public static boolean isKeyDown(int key){
         int result = keyMap.getOrDefault(key, -1);
         return result == GLFW_PRESS || result == GLFW_REPEAT;
     }
 
+    /**
+     * @param listener the listener to add.
+     */
     public static void addKeyListener(KeyListener listener){
         listeners.add(listener);
     }

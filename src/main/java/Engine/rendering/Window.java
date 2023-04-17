@@ -92,6 +92,7 @@ public class Window {
         }
     }
 
+
     public boolean isResized() {
         return resized;
     }

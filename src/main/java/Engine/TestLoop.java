@@ -111,7 +111,7 @@ public class TestLoop {
         renderer.init(camera);
         //object.increaseRotation(new Vector3f(0,1,0));
 
-        camera.update();
+        camera.update(window);
 
         renderer.render(object, camera);
 
