@@ -35,7 +35,10 @@ public class Camera {
     }
 
     public void rotate(Vector3f rotation){
-        this.rotation.add(rotation);
+        this.rotation.x = this.rotation.x + rotation.x;
+        this.rotation.y = this.rotation.y + rotation.y;
+        this.rotation.z = this.rotation.z + rotation.z;
+
     }
     private float speed= 0.1f;
 
@@ -54,7 +57,7 @@ public class Camera {
             move(speed,0,0);
         }
         if(Mouse.isInWindow(window)) {
-            rotate(new Vector3f((float) (Mouse.getDY() * 0.1f), (float) (Mouse.getDX() * 0.1f), 0));
+            rotate(new Vector3f((float) (Mouse.getDY() * -0.1f), (float) (Mouse.getDX() * -0.1f), 0));
         }
 
 

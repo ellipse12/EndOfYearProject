@@ -12,6 +12,8 @@ import java.util.Map;
 
 public final class Mouse {
     private static double x, y;
+
+    private static double lastX, lastY;
     private static double dx, dy;
 
     private static boolean inWindow = false;
@@ -23,13 +25,10 @@ public final class Mouse {
 
     private static GLFWCursorEnterCallback enterCallback;
 
-
     public static void create(long window) {
         posCallback = new GLFWCursorPosCallback() {
             @Override
             public void invoke(long window, double xpos, double ypos) {
-                dx = xpos-x;
-                dy = ypos-y;
                 x = xpos;
                 y = ypos;
 
@@ -60,6 +59,18 @@ public final class Mouse {
         GLFW.glfwSetMouseButtonCallback(window, buttonCallback);
         GLFW.glfwSetCursorPosCallback(window, posCallback);
         GLFW.glfwSetCursorEnterCallback(window, enterCallback);
+    }
+
+
+    public static void poll(){
+        dx = 0;
+        dy = 0;
+        if(lastX > 0 && lastY > 0){
+           dx = x-lastX;
+           dy = y-lastY;
+        }
+        lastX = x;
+        lastY= y;
     }
 
 
@@ -94,6 +105,6 @@ public final class Mouse {
     }
 
     public static boolean isInWindow(Window window){
-        return x <= window.getWidth() && y <= window.getHeight();
+        return inWindow;
     }
 }

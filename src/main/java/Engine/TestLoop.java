@@ -114,7 +114,7 @@ public class TestLoop {
         camera.update(window);
 
         renderer.render(object, camera);
-
+        Mouse.poll();
         glfwSwapBuffers(window.getHandle());
 
         glfwPollEvents();
