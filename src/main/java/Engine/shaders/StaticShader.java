@@ -6,6 +6,9 @@ import Engine.rendering.Camera;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class StaticShader extends ShaderProgram {
     private static final String vertexFile = "src/main/resources/shaders/defaultVertShader.vert";
     private static final String fragmentFile = "src/main/resources/shaders/defaultFragShader.frag";
@@ -15,6 +18,8 @@ public class StaticShader extends ShaderProgram {
     private int loc_projectionMatrix;
 
     private int loc_viewMatrix;
+
+    private Map<String, Integer> uniforms = new HashMap<>();
 
     /**
      * A generic shader that is used for rendering
@@ -31,6 +36,17 @@ public class StaticShader extends ShaderProgram {
         loc_transformationMatrix = super.getUniformLocation("transformationMatrix");
         loc_projectionMatrix = super.getUniformLocation("projectionMatrix");
         loc_viewMatrix = super.getUniformLocation("viewMatrix");
+    }
+
+    @Override
+    public void createUniform(String name) {
+        int location = super.getUniformLocation(name);
+        uniforms.put(name, location);
+    }
+
+    @Override
+    public <T> void setUniform(String name, T value) {
+
     }
 
     /**

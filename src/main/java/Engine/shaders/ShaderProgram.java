@@ -46,6 +46,10 @@ public abstract class ShaderProgram {
      */
     protected abstract void getAllUniformLocations();
 
+    public abstract void createUniform(String name);
+
+    public abstract <T> void setUniform(String name, T value);
+
     /**
      * should be used in getAllUniformLocations()
      * @param uniformName the name of the uniform variable
