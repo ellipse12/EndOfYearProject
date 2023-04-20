@@ -39,7 +39,7 @@ public final class Keyboard {
     }
 
     /**
-     * @param key the integer representation of the keypress.
+     * @param key the integer representation of the key press.
      * @return
      */
     public static boolean isKeyDown(int key){
@@ -48,6 +48,7 @@ public final class Keyboard {
     }
 
     /**
+     * adds a key listener instance that is called every key event
      * @param listener the listener to add.
      */
     public static void addKeyListener(KeyListener listener){

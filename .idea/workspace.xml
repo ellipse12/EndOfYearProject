@@ -4,12 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="changed: misc">
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="various refactoring">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/ModelDataNM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/NormalMappedObjLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/VertexNM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/KeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Texture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/OBJFileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/OBJFileLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/RawModelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/RawModelData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681414906834</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="various refactoring">
+      <created>1681862074011</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1681862074012</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,6 +292,7 @@
     <MESSAGE value="added: addKeyListener method to the Keyboard class" />
     <MESSAGE value="started: external model loading" />
     <MESSAGE value="started: camera rotation" />
-    <option name="LAST_COMMIT_MESSAGE" value="started: camera rotation" />
+    <MESSAGE value="various refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="various refactoring" />
   </component>
 </project>

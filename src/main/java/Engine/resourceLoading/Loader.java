@@ -23,7 +23,11 @@ public class Loader {
     private List<Integer> textures = new ArrayList<>();
 
 
-
+    /**
+     * loads the model data to the VAO to allow it to be rendered
+     * @param positions the vertex positions
+     * @return a Model representation of the data
+     */
     public Model loadToVAO(float[] positions){
         int vaoID =createVAO();
         storeDataInAttributeList(0, 3, positions);
@@ -31,6 +35,8 @@ public class Loader {
         return new Model(vaoID, positions.length/3);
 
     }
+
+
     public Model loadToVAO(float[] positions, int[] indices){
         int vaoID =createVAO();
         bindIndicesBuffer(indices);
@@ -49,16 +55,44 @@ public class Loader {
         return new Model(vaoID, indices.length, texture);
 
     }
+    public Model loadToVAO(float[] positions, float[] textureCoords,float[] normals, float[] tangents ,int[] indices, Texture texture){
+        int vaoID = createVAO();
+        bindIndicesBuffer(indices);
+        storeDataInAttributeList(0,3, positions);
+        storeDataInAttributeList(1,2, textureCoords);
+        storeDataInAttributeList(2,3, normals);
+        storeDataInAttributeList(3,3, tangents);
+        GL30.glBindVertexArray(0);
+        loadTexture(texture);
+        return new Model((vaoID), indices.length, texture);
 
+    }
+
+    /**
+     * used to load a model without a texture
+     * @param resource the location of the resource (usually an .obj file)
+     * @return the Model representation of the data
+     */
     public Model getModelFromResource(String resource){
         RawModelData data =  OBJFileLoader.loadOBJ(resource);
         return loadToVAO(data.getVertices(), data.getIndices());
     }
+
+    /**
+     * @param resource the location of the resource (usually an .obj file)
+     * @param texture the texture to be associated with the object
+     * @return the Model representation of the data
+     */
     public Model getModelFromResource(String resource, Texture texture){
         RawModelData data =  OBJFileLoader.loadOBJ(resource);
         return loadToVAO(data.getVertices(), data.getIndices(),data.getTextureCoords(), texture);
     }
 
+    /**
+     * loads a texture to be used
+     * @param texture the texture to load
+     * @return the texture location
+     */
     public int loadTexture(Texture texture){
 
         int textID = glGenTextures();
@@ -71,6 +105,10 @@ public class Loader {
         storeDataInAttributeList(1, 2, texture.getTextureData().asFloatBuffer());
         return textID;
     }
+
+    /**
+     * called after termination
+     */
     public void cleanUp() {
         for (int vao : vaos) {
             GL30.glDeleteVertexArrays(vao);
@@ -81,13 +119,23 @@ public class Loader {
     }
 
 
-
+    /**
+     * creates a VAO
+     * @return the VAO ID
+     */
     private int createVAO(){
         int vaoID = GL30.glGenVertexArrays();
         vaos.add(vaoID);
         GL30.glBindVertexArray(vaoID);
         return vaoID;
     }
+
+    /**
+     * creates a VBO with the provided data
+     * @param attributeNumber the ID of the attribute
+     * @param coordinateSize the size of each unit of data (vertices would be 3 because they have 3 coordinates)
+     * @param data the data to store
+     */
     private void storeDataInAttributeList(int attributeNumber, int coordinateSize,float[] data){
         int vboID = GL15.glGenBuffers();
         vbos.add(vboID);
@@ -106,6 +154,10 @@ public class Loader {
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
     }
 
+    /**
+     * creates a VBO for specifically indices data
+     * @param indices the indices data
+     */
     private void bindIndicesBuffer(int[] indices){
         int vboID = GL15.glGenBuffers();
         vbos.add(vboID);
@@ -114,6 +166,10 @@ public class Loader {
         GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
     }
 
+    /**
+     * @param data the data to store
+     * @return the data in an IntBuffer form
+     */
     private IntBuffer storeDataInIntBuffer(int[] data){
         IntBuffer buffer = BufferUtils.createIntBuffer(data.length);
         buffer.put(data);
@@ -121,6 +177,10 @@ public class Loader {
         return buffer;
     }
 
+    /**
+     * @param data the data to store
+     * @return the data in a FloatBuffer form
+     */
     private FloatBuffer storeDataInFloatBuffer(float[] data) {
         FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);
         buffer.put(data);

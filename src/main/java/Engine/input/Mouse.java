@@ -25,6 +25,10 @@ public final class Mouse {
 
     private static GLFWCursorEnterCallback enterCallback;
 
+    /**
+     * sets the mouse to the current context and sets some callbacks to get things like position, what button is down, etc.
+     * @param window the current window instance
+     */
     public static void create(long window) {
         posCallback = new GLFWCursorPosCallback() {
             @Override
@@ -62,6 +66,9 @@ public final class Mouse {
     }
 
 
+    /**
+     * called every frame to allow for storing the change of the position of the mouse
+     */
     public static void poll(){
         dx = 0;
         dy = 0;
@@ -74,11 +81,19 @@ public final class Mouse {
     }
 
 
+    /**
+     * @param button the button to check
+     * @return if the given button is pressed on the mouse
+     */
     public static boolean isButtonDown(int button){
         return keyMap.getOrDefault(button, 0) == 1;
     }
 
 
+    /**
+     * @param button the button to check
+     * @return if the given button is released on the mouse
+     */
     public static boolean isButtonReleased(int button){
         boolean released = keyMap.getOrDefault(button, 0) == 2;
         if(released){
@@ -104,7 +119,7 @@ public final class Mouse {
         return dy;
     }
 
-    public static boolean isInWindow(Window window){
+    public static boolean isInWindow(){
         return inWindow;
     }
 }

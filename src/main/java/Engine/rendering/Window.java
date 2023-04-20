@@ -20,12 +20,20 @@ public class Window {
 
     private GLFWWindowSizeCallback sizeCallback;
 
+    /**
+     * @param width the initial width of the window
+     * @param height the initial height of the window
+     * @param title the title of the window
+     */
     public Window(int width, int height, String title) {
             this.width = width;
             this.height = height;
             this.title = title;
     }
 
+    /**
+     * creates the window with some default settings
+     */
     public void create(){
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
@@ -61,6 +69,10 @@ public class Window {
 
 
     }
+
+    /**
+     * creates various callbacks that are called on different events
+     */
     public void createCallbacks(){
             sizeCallback = new GLFWWindowSizeCallback() {
                 @Override
@@ -86,6 +98,10 @@ public class Window {
     public long getHandle() {
         return window;
     }
+
+    /**
+     * updates the window if it was resized
+     */
     public void update(){
         if(resized){
             GL11.glViewport(0,0,width, height);

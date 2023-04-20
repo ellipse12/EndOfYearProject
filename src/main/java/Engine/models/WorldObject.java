@@ -11,6 +11,13 @@ public class WorldObject {
 
     private Vector3f scale;
 
+    /**
+     * a generic object class
+     * @param model the model of the object
+     * @param position the position of the object
+     * @param rotation the rotation of the object
+     * @param scale the scale of the object
+     */
     public WorldObject(Model model, Vector3f position, Vector3f rotation, Vector3f scale) {
         this.model = model;
         this.position = position;

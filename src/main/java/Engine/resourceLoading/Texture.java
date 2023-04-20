@@ -18,6 +18,10 @@ public class Texture {
 
     private PNGDecoder decoder;
 
+    /**
+     * used to represent a Texture instance
+     * @param filename the location of the texture
+     */
     public Texture(String filename){
         this.filename = filename;
         this.textureBuffer = decodeTexture(filename);
@@ -25,6 +29,11 @@ public class Texture {
     }
 
 
+    /**
+     * decodes the given texture
+     * @param filename the name/ location of the texture
+     * @return the decoded texture data (all of the pixels)
+     */
     private ByteBuffer decodeTexture(String filename){
 
         try{
@@ -62,6 +71,10 @@ public class Texture {
         return textureID;
     }
 
+    /**
+     * MUST be set to be used as an active texture
+     * @param textureID the ID of the texture in OpenGL's memory
+     */
     public void setTextureID(int textureID) {
         this.textureID = textureID;
     }

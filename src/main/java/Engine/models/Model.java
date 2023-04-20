@@ -11,8 +11,11 @@ public class Model {
     private Texture texture;
 
 
-
-
+    /**
+     * a generic model class with a texture
+     * @param vaoID the ID of the model data's VAO
+     * @param vertexCount the number of vertices in this model
+     */
     public Model(int vaoID, int vertexCount) {
         this.vaoID = vaoID;
         this.vertexCount = vertexCount;

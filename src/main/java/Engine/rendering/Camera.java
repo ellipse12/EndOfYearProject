@@ -22,6 +22,12 @@ public class Camera {
         this.rotation = rotation;
     }
 
+    /**
+     * moves the camera by a specified value
+     * @param offX the offset in the X direction
+     * @param offY the offset in the Y direction
+     * @param offZ the offset in the Z direction
+     */
     public void move(float offX, float offY, float offZ){
         if ( offZ != 0 ) {
             position.x += (float)Math.sin(Math.toRadians(rotation.y)) * -1.0f * offZ;
@@ -34,6 +40,10 @@ public class Camera {
         position.y += offY;
     }
 
+    /**
+     * rotates the camera by a specified amount
+     * @param rotation the rotation
+     */
     public void rotate(Vector3f rotation){
         this.rotation.x = this.rotation.x + rotation.x;
         this.rotation.y = this.rotation.y + rotation.y;
@@ -42,8 +52,11 @@ public class Camera {
     }
     private float speed= 0.1f;
 
-    public void update(Window window){
-
+    /**
+     * updates the camera every frame
+     */
+    public void update(){
+        //TODO move to separate player class
         if(isKeyDown(GLFW_KEY_W)){
             move(0, 0, -speed);
         }
@@ -56,8 +69,8 @@ public class Camera {
         if(isKeyDown(GLFW_KEY_D)){
             move(speed,0,0);
         }
-        if(Mouse.isInWindow(window)) {
-            rotate(new Vector3f((float) (Mouse.getDY() * -0.1f), (float) (Mouse.getDX() * -0.1f), 0));
+        if(Mouse.isInWindow()) {
+            rotate(new Vector3f((float) (Mouse.getDY() * -0.05f), (float) (Mouse.getDX() * -0.05f), 0));
         }
 
 

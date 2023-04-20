@@ -21,6 +21,9 @@ public class Renderer {
         this.shader = shader;
     }
 
+    /**
+     * @param camera called once every game cycle
+     */
     public void init(Camera camera){
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
@@ -34,6 +37,11 @@ public class Renderer {
 
     }
 
+    /**
+     * renders Individual objects to the screen
+     * @param object the object to render
+     * @param camera the camera to render from
+     */
     public void render(WorldObject object, Camera camera){
 
         shader.start();

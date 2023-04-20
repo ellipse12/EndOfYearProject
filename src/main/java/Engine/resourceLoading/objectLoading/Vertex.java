@@ -1,7 +1,10 @@
 package Engine.resourceLoading.objectLoading;
 
 import org.joml.Vector3f;
-
+/**
+ None of this code is mine, and I claim no ownership. All rights go to @author ThinMatrix on YouTube,
+ and this should be considered a helper class and not graded within the scope of the rest of the project
+ */
 public class Vertex {
 
     private static final int NO_INDEX = -1;
