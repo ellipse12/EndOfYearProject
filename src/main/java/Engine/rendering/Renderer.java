@@ -22,15 +22,15 @@ public class Renderer {
     }
 
     /**
-     * @param camera called once every game cycle
+     * called once every game cycle
      */
-    public void init(Camera camera){
+    public void init(){
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
         GL11.glClearColor(1f, 1f, 1f, 1f);
         shader.start();
         Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
-        shader.loadProjectionMatrix(projectionMatrix);
+        shader.setUniform("projectionMatrix", projectionMatrix);
 
 
         shader.stop();
@@ -53,8 +53,9 @@ public class Renderer {
         Texture texture = object.getModel().getTexture();
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
-        shader.loadTransformationMatrix(transform);
-        shader.loadViewMatrix(object, camera);
+        Matrix4f view = Maths.getModelViewMatrix(object, Maths.createViewMatrix(camera));
+        shader.setUniform("transformationMatrix", transform);
+        shader.setUniform("viewMatrix", view);
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
         GL11.glDrawElements(GL11.GL_TRIANGLES, object.getModel().getVertexCount(), GL11.GL_UNSIGNED_INT, 0);

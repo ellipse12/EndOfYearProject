@@ -33,7 +33,7 @@ public class TestLoop {
     public static void loop(Window window){
 
 
-        renderer.init(camera);
+        renderer.init();
         //object.increaseRotation(new Vector3f(0,1,0));
 
         camera.update();

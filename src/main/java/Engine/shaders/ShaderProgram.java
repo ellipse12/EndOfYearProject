@@ -37,16 +37,16 @@ public abstract class ShaderProgram {
         bindAttributes();
         GL20.glLinkProgram(programID);
         GL20.glValidateProgram(programID);
-        getAllUniformLocations();
+
 
     }
 
     /**
      * called to get all of the locations of the uniforms in the vertex shader
      */
-    protected abstract void getAllUniformLocations();
 
-    public abstract void createUniform(String name);
+
+    public abstract void addUniform(Uniform uniform);
 
     public abstract <T> void setUniform(String name, T value);
 
@@ -99,20 +99,8 @@ public abstract class ShaderProgram {
     }
 
 
-    /**
-     * used to load a generic matrix uniform
-     * @param location the location of the uniform
-     * @param matrix the matrix to load
-     */
-    protected void loadMatrix(int location, Matrix4f matrix){
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            FloatBuffer fb = stack.mallocFloat(16);
-            matrix.get(fb);
 
-            glUniformMatrix4fv(location, false, fb);
-        }
 
-    }
 
     /**
      * loads and compiles an external shader source
