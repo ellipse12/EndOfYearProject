@@ -1,8 +1,10 @@
 package Engine.shaders;
 
 
+import Engine.models.Material;
 import Engine.models.WorldObject;
 import Engine.rendering.Camera;
+import Engine.shaders.uniforms.MaterialU;
 import Engine.shaders.uniforms.Matrix4fU;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
@@ -46,6 +48,7 @@ public class StaticShader extends ShaderProgram {
             uniforms.add(uniform);
 
     }
+
 
     @Override
     public <T> void setUniform(String name, T value) {

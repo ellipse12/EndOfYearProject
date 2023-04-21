@@ -41,9 +41,7 @@ public abstract class ShaderProgram {
 
     }
 
-    /**
-     * called to get all of the locations of the uniforms in the vertex shader
-     */
+
 
 
     public abstract void addUniform(Uniform uniform);

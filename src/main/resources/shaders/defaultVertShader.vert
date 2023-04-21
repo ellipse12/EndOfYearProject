@@ -27,3 +27,22 @@ void main() {
     visibility = clamp(visibility, 0.0, 1.0);
 
 }
+struct Attenuation{
+    float constant;
+    float linear;
+    float exponent;
+};
+
+struct Light{
+    vec3 color;
+    vec3 position;
+    float intensity;
+    Attenuation att;
+};
+struct Material{
+    vec4 ambient;
+    vec4 diffuse;
+    vec4 specular;
+    int hasTexture;
+    float reflectance;
+};

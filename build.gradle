@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
 
 }
 
@@ -27,7 +28,10 @@ jar{
     from{
         configurations.runtimeClasspath.collect{it.isDirectory() ? it: zipTree(it)}
     }
-    sourceSets.main.resources {srcDir("src/main/resources")}
+    from layout.buildDirectory.dir('resources'), {
+
+        into layout.buildDirectory.dir('resources')
+    }
 
 }
 
