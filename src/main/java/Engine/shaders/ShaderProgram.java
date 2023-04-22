@@ -44,7 +44,7 @@ public abstract class ShaderProgram {
 
 
 
-    public abstract void addUniform(Uniform uniform);
+    public abstract void addUniform(Uniform uniform) throws Exception;
 
     public abstract <T> void setUniform(String name, T value);
 

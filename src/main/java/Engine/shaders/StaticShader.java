@@ -40,13 +40,12 @@ public class StaticShader extends ShaderProgram {
         addUniform(new Matrix4fU("transformationMatrix", this));
         addUniform(new Matrix4fU("projectionMatrix", this));
         addUniform(new Matrix4fU("viewMatrix", this));
+        addUniform(new MaterialU("material", this));
     }
 
     @Override
     public void addUniform(Uniform uniform) {
-
-            uniforms.add(uniform);
-
+        uniforms.add(uniform);
     }
 
 
