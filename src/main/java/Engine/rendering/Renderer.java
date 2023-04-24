@@ -60,7 +60,8 @@ public class Renderer {
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
         Matrix4f view = Maths.getModelViewMatrix(object, Maths.createViewMatrix(camera));
-        Vector3f lightPos = light.getPosition();
+        Light copy = new Light(light.getColor(), light.getPosition(), light.getIntensity(), light.getAttenuation());
+        Vector3f lightPos = copy.getPosition();
         Vector4f aux = new Vector4f(lightPos, 1);
         aux.mul(view);
         lightPos.x = aux.x;
@@ -71,7 +72,7 @@ public class Renderer {
         shader.setUniform("material", object.getModel().getMaterial());
 
         shader.setUniform("ambientLight", new Vector3f(1,1,1));
-        shader.setUniform("light", light);
+        shader.setUniform("light", copy);
         shader.setUniform("camera_position", camera.getPosition());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());

@@ -23,7 +23,7 @@ public class NormalMappedObjLoader {
         try {
             isr = new FileReader(objFile);
         } catch (FileNotFoundException e) {
-            System.err.println("File not found in res; don't use any exstention");
+            System.err.println("File not found; don't use any exstention");
         }
         BufferedReader reader = new BufferedReader(isr);
         String line;
@@ -49,9 +49,9 @@ public class NormalMappedObjLoader {
                     textures.add(texture);
                 } else if (line.startsWith("vn ")) {
                     String[] currentLine = line.split(" ");
-                    Vector3f normal = new Vector3f((float) Float.valueOf(currentLine[1]),
-                            (float) Float.valueOf(currentLine[2]),
-                            (float) Float.valueOf(currentLine[3]));
+                    Vector3f normal = new Vector3f( Float.valueOf(currentLine[1]),
+                             Float.valueOf(currentLine[2]),
+                             Float.valueOf(currentLine[3]));
                     normals.add(normal);
                 } else if (line.startsWith("f ")) {
                     break;

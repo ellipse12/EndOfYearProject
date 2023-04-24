@@ -26,7 +26,7 @@ public class TestLoop {
 
     static StaticShader shader = new StaticShader();
     static Renderer renderer = new Renderer(shader);
-    static Model model = loader.getNormalModelFromResource("test", new Texture("test.png"));
+    static Model model = loader.getNormalModelFromResource("dragon", new Texture("test.png"));
 
 
 
