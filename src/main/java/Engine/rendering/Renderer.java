@@ -1,6 +1,8 @@
 package Engine.rendering;
 
 import Engine.MainClass;
+import Engine.models.Attenuation;
+import Engine.models.Light;
 import Engine.models.Model;
 import Engine.models.WorldObject;
 import Engine.resourceLoading.Texture;
@@ -8,6 +10,8 @@ import Engine.shaders.ShaderProgram;
 import Engine.shaders.StaticShader;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
@@ -17,6 +21,8 @@ public class Renderer {
     private StaticShader shader;
 
     private Matrix4f viewMatrix;
+    static Light light = new Light(new Vector3f(1,1,1), new Vector3f(), 1f, new Attenuation(0.9f,0.3f,0.1f));
+
     public Renderer(StaticShader shader) {
         this.shader = shader;
     }
@@ -54,8 +60,19 @@ public class Renderer {
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
         Matrix4f view = Maths.getModelViewMatrix(object, Maths.createViewMatrix(camera));
+        Vector3f lightPos = light.getPosition();
+        Vector4f aux = new Vector4f(lightPos, 1);
+        aux.mul(view);
+        lightPos.x = aux.x;
+        lightPos.y = aux.y;
+        lightPos.z = aux.z;
         shader.setUniform("transformationMatrix", transform);
         shader.setUniform("viewMatrix", view);
+        shader.setUniform("material", object.getModel().getMaterial());
+
+        shader.setUniform("ambientLight", new Vector3f(1,1,1));
+        shader.setUniform("light", light);
+        shader.setUniform("camera_position", camera.getPosition());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
         GL11.glDrawElements(GL11.GL_TRIANGLES, object.getModel().getVertexCount(), GL11.GL_UNSIGNED_INT, 0);

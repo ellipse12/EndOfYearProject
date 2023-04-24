@@ -6,6 +6,8 @@ in vec3 vertexNormal;
 
 out vec2 outTextureCoord;
 out float visibility;
+out vec3 mvVertexPos;
+out vec3 mvVertexNormal;
 
 uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
@@ -26,24 +28,7 @@ void main() {
     float distance = length(relPos.xyz);
     visibility = exp(-pow((distance*density), gradient));
     visibility = clamp(visibility, 0.0, 1.0);
-
+    mvVertexNormal = normalize(viewMatrix * vec4(vertexNormal, 0.0)).xyz;
+    mvVertexPos = worldPos.xyz;
 }
-struct Attenuation{
-    float constant;
-    float linear;
-    float exponent;
-};
 
-struct Light{
-    vec3 color;
-    vec3 position;
-    float intensity;
-    Attenuation att;
-};
-struct Material{
-    vec4 ambient;
-    vec4 diffuse;
-    vec4 specular;
-    int hasTexture;
-    float reflectance;
-};

@@ -9,14 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: lighting">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/BooleanU.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/FloatU.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/MultiUniform.java" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="refactored: ShaderProgram; added: Uniform and subsequent classes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/UniformI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/AttenuationU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/LightU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/models/test.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/NormalMappedObjLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/NormalMappedObjLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/MaterialU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/MaterialU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/IntegerU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/IntegerU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Vector2fU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Vector2fU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Vector3fU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Vector3fU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,8 +115,8 @@
       <list>
         <option value="vs-template" />
         <option value="fs-template" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

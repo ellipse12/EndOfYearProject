@@ -2,6 +2,8 @@ package Engine;
 
 import Engine.input.Keyboard;
 import Engine.input.Mouse;
+import Engine.models.Attenuation;
+import Engine.models.Light;
 import Engine.models.Model;
 import Engine.models.WorldObject;
 import Engine.rendering.Camera;
@@ -24,7 +26,9 @@ public class TestLoop {
 
     static StaticShader shader = new StaticShader();
     static Renderer renderer = new Renderer(shader);
-    static Model model = loader.getModelFromResource("playerObject", new Texture("test.png"));
+    static Model model = loader.getNormalModelFromResource("test", new Texture("test.png"));
+
+
 
     static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(), new Vector3f(1,1, 1));
     static WorldObject object1 = new WorldObject(model, new Vector3f(-9,1,-10), new Vector3f(), new Vector3f(1,1, 1));

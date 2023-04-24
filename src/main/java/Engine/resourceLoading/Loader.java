@@ -1,6 +1,8 @@
 package Engine.resourceLoading;
 
 import Engine.models.Model;
+import Engine.resourceLoading.objectLoading.ModelDataNM;
+import Engine.resourceLoading.objectLoading.NormalMappedObjLoader;
 import Engine.resourceLoading.objectLoading.OBJFileLoader;
 import Engine.resourceLoading.objectLoading.RawModelData;
 import de.matthiasmann.twl.utils.PNGDecoder;
@@ -76,6 +78,11 @@ public class Loader {
     public Model getModelFromResource(String resource){
         RawModelData data =  OBJFileLoader.loadOBJ(resource);
         return loadToVAO(data.getVertices(), data.getIndices());
+    }
+
+    public Model getNormalModelFromResource(String resource, Texture texture){
+        ModelDataNM data = NormalMappedObjLoader.loadOBJ(resource);
+        return loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getTangents(), data.getIndices(), texture);
     }
 
     /**

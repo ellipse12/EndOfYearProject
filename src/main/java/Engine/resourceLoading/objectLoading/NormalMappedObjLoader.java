@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class NormalMappedObjLoader {
 
-    private static final String RES_LOC = "res/";
+    private static final String RES_LOC = "src/main/resources/models/";
 
-    public static Model loadOBJ(String objFileName, String textureFile, Loader loader) {
+    public static ModelDataNM loadOBJ(String objFileName) {
         FileReader isr = null;
         File objFile = new File(RES_LOC + objFileName + ".obj");
         try {
@@ -81,7 +81,7 @@ public class NormalMappedObjLoader {
                 texturesArray, normalsArray, tangentsArray);
         int[] indicesArray = convertIndicesListToArray(indices);
 
-        return loader.loadToVAO(verticesArray, texturesArray, normalsArray, tangentsArray, indicesArray, new Texture(textureFile));
+        return new ModelDataNM(verticesArray, texturesArray, normalsArray, tangentsArray, indicesArray, furthest);
     }
 
     //NEW
