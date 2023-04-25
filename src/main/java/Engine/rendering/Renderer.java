@@ -21,7 +21,7 @@ public class Renderer {
     private StaticShader shader;
 
     private Matrix4f viewMatrix;
-    static Light light = new Light(new Vector3f(1,1,1), new Vector3f(), 1f, new Attenuation(0.9f,0.3f,0.1f));
+    static Light light = new Light(new Vector3f(1,1,1), new Vector3f(), 0.5f, new Attenuation(0.9f,0.3f,0.1f));
 
     public Renderer(StaticShader shader) {
         this.shader = shader;
@@ -53,7 +53,9 @@ public class Renderer {
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
+        GL20.glEnableVertexAttribArray(2);
         GL20.glEnableVertexAttribArray(1);
+
 
 
         Texture texture = object.getModel().getTexture();
@@ -71,7 +73,7 @@ public class Renderer {
         shader.setUniform("viewMatrix", view);
         shader.setUniform("material", object.getModel().getMaterial());
 
-        shader.setUniform("ambientLight", new Vector3f(1,1,1));
+        shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
         shader.setUniform("light", copy);
         shader.setUniform("camera_position", camera.getPosition());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
@@ -80,6 +82,7 @@ public class Renderer {
         shader.stop();
         GL20.glDisableVertexAttribArray(0);
         GL20.glDisableVertexAttribArray(1);
+        GL20.glDisableVertexAttribArray(2);
         GL30.glBindVertexArray(0);
 
     }

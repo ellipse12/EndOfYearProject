@@ -78,7 +78,7 @@ void main() {
 
 
 
-     color = texture(texture_sampler, outTextureCoord) + diffuseC;
+     color = texture(texture_sampler, outTextureCoord);
 
 
 }

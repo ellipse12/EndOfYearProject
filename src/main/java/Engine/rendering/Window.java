@@ -40,6 +40,7 @@ public class Window {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_TRUE);
 
+
         long window = glfwCreateWindow(width, height, title, NULL, NULL);
         if(window == NULL){
             throw new RuntimeException("Unable to create window");
@@ -65,6 +66,7 @@ public class Window {
         glfwSwapInterval(1);
         glfwShowWindow(window);
         this.window = window;
+
         createCallbacks();
 
 

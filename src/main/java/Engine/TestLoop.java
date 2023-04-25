@@ -26,11 +26,11 @@ public class TestLoop {
 
     static StaticShader shader = new StaticShader();
     static Renderer renderer = new Renderer(shader);
-    static Model model = loader.getNormalModelFromResource("dragon", new Texture("test.png"));
+    static Model model = loader.getModelFromResource("worldModel", new Texture("test.png"));
 
 
 
-    static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(), new Vector3f(1,1, 1));
+    static WorldObject object = new WorldObject(model, new Vector3f(0,-5,-5), new Vector3f(), new Vector3f(1,1, 1));
     static WorldObject object1 = new WorldObject(model, new Vector3f(-9,1,-10), new Vector3f(), new Vector3f(1,1, 1));
 
     static Camera camera = new Camera();
@@ -43,7 +43,7 @@ public class TestLoop {
         camera.update();
 
         renderer.render(object, camera);
-        renderer.render(object1, camera);
+
         Mouse.poll();
         glfwSwapBuffers(window.getHandle());
 

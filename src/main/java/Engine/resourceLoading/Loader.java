@@ -69,6 +69,20 @@ public class Loader {
         return new Model((vaoID), indices.length, texture);
 
     }
+    public Model loadToVAO(float[] positions, float[] textureCoords,float[] normals ,int[] indices, Texture texture){
+        int vaoID = createVAO();
+        bindIndicesBuffer(indices);
+        storeDataInAttributeList(0,3, positions);
+        storeDataInAttributeList(1,2, textureCoords);
+        storeDataInAttributeList(2,3, normals);
+
+        GL30.glBindVertexArray(0);
+        loadTexture(texture);
+        return new Model((vaoID), indices.length, texture);
+
+    }
+
+
 
     /**
      * used to load a model without a texture
@@ -81,8 +95,8 @@ public class Loader {
     }
 
     public Model getNormalModelFromResource(String resource, Texture texture){
-        ModelDataNM data = NormalMappedObjLoader.loadOBJ(resource);
-        return loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getTangents(), data.getIndices(), texture);
+        RawModelData data = OBJFileLoader.loadOBJ(resource);
+        return loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices(), texture);
     }
 
     /**
