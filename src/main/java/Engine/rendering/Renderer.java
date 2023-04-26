@@ -69,6 +69,7 @@ public class Renderer {
         lightPos.x = aux.x;
         lightPos.y = aux.y;
         lightPos.z = aux.z;
+        shader.setUniform("texture_sampler",0);
         shader.setUniform("transformationMatrix", transform);
         shader.setUniform("viewMatrix", view);
         shader.setUniform("material", object.getModel().getMaterial());
