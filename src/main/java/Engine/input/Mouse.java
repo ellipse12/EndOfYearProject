@@ -112,11 +112,15 @@ public final class Mouse {
     }
 
     public static double getDX() {
-        return dx;
+        int out = dx;
+        dx = 0;
+        return out;
     }
 
     public static double getDY() {
-        return dy;
+        int out = dy;
+        dy = 0;
+        return out;
     }
 
     public static boolean isInWindow(){
