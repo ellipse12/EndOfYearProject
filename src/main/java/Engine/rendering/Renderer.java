@@ -49,7 +49,7 @@ public class Renderer {
      * @param camera the camera to render from
      */
     public void render(WorldObject object, Camera camera){
-
+        //TODO: allow for multiple objects/ add Render interface.
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
