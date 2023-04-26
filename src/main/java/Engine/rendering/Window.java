@@ -85,15 +85,17 @@ public class Window {
                 }
             };
             GLFW.glfwSetWindowSizeCallback(window, sizeCallback);
-
-        Mouse.create(window);
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CENTER_CURSOR);
+        Mouse.create(this);
         Keyboard.create(window);
 
         Keyboard.addKeyListener((key, action, mod) -> {
-            if(key == GLFW_KEY_ESCAPE && action == KeyListener.KEY_RELEASED){
+            if(key == GLFW_KEY_E && action == KeyListener.KEY_RELEASED){
                 glfwSetWindowShouldClose(window, true);
             }
         });
+
 
     }
 

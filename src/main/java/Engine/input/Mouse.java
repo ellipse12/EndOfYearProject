@@ -10,6 +10,8 @@ import org.lwjgl.glfw.GLFWMouseButtonCallback;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.lwjgl.glfw.GLFW.*;
+
 public final class Mouse {
     private static double x, y;
 
@@ -18,18 +20,25 @@ public final class Mouse {
 
     private static boolean inWindow = false;
 
+    private static long window;
+
+    private static boolean isCaptured = false;
+
     private static Map<Integer, Integer> keyMap = new HashMap<>();
 
     private static GLFWCursorPosCallback posCallback;
     private static GLFWMouseButtonCallback buttonCallback;
 
     private static GLFWCursorEnterCallback enterCallback;
+    private static boolean shown = false;
 
     /**
      * sets the mouse to the current context and sets some callbacks to get things like position, what button is down, etc.
-     * @param window the current window instance
+     * @param windoww the current window instance
      */
-    public static void create(long window) {
+    public static void create(Window windoww) {
+
+        long window = windoww.getHandle();
         posCallback = new GLFWCursorPosCallback() {
             @Override
             public void invoke(long window, double xpos, double ypos) {
@@ -60,9 +69,12 @@ public final class Mouse {
             }
         };
 
+
+
         GLFW.glfwSetMouseButtonCallback(window, buttonCallback);
         GLFW.glfwSetCursorPosCallback(window, posCallback);
         GLFW.glfwSetCursorEnterCallback(window, enterCallback);
+        Mouse.window = window;
     }
 
 
@@ -78,6 +90,12 @@ public final class Mouse {
         }
         lastX = x;
         lastY= y;
+        if(shown){
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }else{
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+        }
     }
 
 
@@ -112,18 +130,26 @@ public final class Mouse {
     }
 
     public static double getDX() {
-        int out = dx;
+        double out = dx;
         dx = 0;
         return out;
     }
 
     public static double getDY() {
-        int out = dy;
+        double out = dy;
         dy = 0;
         return out;
     }
 
     public static boolean isInWindow(){
         return inWindow;
+    }
+
+    public static void setShown(boolean shown){
+        Mouse.shown = shown;
+    }
+
+    public static boolean isShown(){
+        return shown;
     }
 }

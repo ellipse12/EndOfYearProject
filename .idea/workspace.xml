@@ -9,12 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="continued: lighting">
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="fixing: player controller">
+      <change afterPath="$PROJECT_DIR$/hs_err_pid16396.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/models/worldModel.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -374,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682366185958</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fixing: player controller">
+      <created>1682452544131</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682452544131</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -401,6 +411,7 @@
     <MESSAGE value="various refactoring" />
     <MESSAGE value="started: lighting" />
     <MESSAGE value="continued: lighting" />
-    <option name="LAST_COMMIT_MESSAGE" value="continued: lighting" />
+    <MESSAGE value="fixing: player controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing: player controller" />
   </component>
 </project>

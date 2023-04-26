@@ -78,7 +78,7 @@ void main() {
 
 
 
-     color = texture(texture_sampler, outTextureCoord);
+    color = ambientC * vec4(ambientLight, 1) +iut;
 
 
 }

@@ -69,8 +69,12 @@ public class Camera {
         if(isKeyDown(GLFW_KEY_D)){
             move(speed,0,0);
         }
-        if(Mouse.isInWindow()) {
-            rotate(new Vector3f((float) (Mouse.getDY() * -0.05f), (float) (Mouse.getDX() * -0.05f), 0));
+        if(true) {
+            double max = 100f;
+
+            Vector3f po = new Vector3f((float) (Mouse.getDY() * 0.08f), (float) (Mouse.getDX() * 0.08f), 0);
+
+            rotate(po);
         }
 
 
