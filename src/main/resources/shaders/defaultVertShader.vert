@@ -25,10 +25,8 @@ void main() {
     gl_Position = projectionMatrix * relPos;
     outTextureCoord = textureCoord;
 
-    float distance = length(relPos.xyz);
-    visibility = exp(-pow((distance*density), gradient));
-    visibility = clamp(visibility, 0.0, 1.0);
-    mvVertexNormal = normalize(viewMatrix * vec4(vertexNormal, 0.0)).xyz;
+
+    mvVertexNormal = normalize(vec4(vertexNormal, 0.0)).xyz;
     mvVertexPos = worldPos.xyz;
 }
 

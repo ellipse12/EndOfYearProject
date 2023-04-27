@@ -34,9 +34,9 @@ uniform Material material;
 uniform Light light;
 uniform vec3 camera_position;
 uniform vec3 ambientLight;
+uniform float specularPower;
 
 
-const vec3 skyColor = vec3(1.0, 1.0, 1.0);
 
 vec4 ambientC;
 vec4 diffuseC;
@@ -53,29 +53,38 @@ void setupColors(Material material, vec2 textCoord){
           specularC = material.specular;
      }
 }
+vec4 calcPointLight(Light light, vec3 position, vec3 normal)
+{
+     vec4 diffuseColour = vec4(0, 0, 0, 0);
+     vec4 specColour = vec4(0, 0, 0, 0);
+
+     // Diffuse Light
+     vec3 light_direction = light.position - position;
+     vec3 to_light_source  = normalize(light_direction);
+     float diffuseFactor = max(dot(normal, to_light_source ), 0.0);
+     diffuseColour = diffuseC * vec4(light.color, 1.0) * light.intensity * diffuseFactor;
+
+     // Specular Light
+     vec3 camera_direction = normalize(-position);
+     vec3 from_light_source = -to_light_source;
+     vec3 reflected_light = normalize(reflect(from_light_source, normal));
+     float specularFactor = max( dot(camera_direction, reflected_light), 0.0);
+     specularFactor = pow(specularFactor, specularPower);
+     specColour = specularC * specularFactor * material.reflectance * vec4(light.color, 1.0);
+
+     // Attenuation
+     float distance = length(light_direction);
+     float attenuationInv = light.att.constant + light.att.linear * distance +
+     light.att.exponent * distance * distance;
+     return (diffuseColour + specColour) / attenuationInv;
+}
 
 
 void main() {
 
      setupColors(material, outTextureCoord);
-     vec3 light_direction = light.position - mvVertexPos;
-     vec3 to_light_source  = normalize(light_direction);
-     float diffuseFactor = max(dot(mvVertexNormal, to_light_source ), 0.0);
-     vec4 diffuseColour = diffuseC * vec4(light.color, 1.0) * light.intensity * diffuseFactor;
 
-     vec3 camera_direction = normalize(-camera_position);
-     vec3 fromLight = -to_light_source;
-     vec3 reflected = normalize(reflect(fromLight, mvVertexNormal));
-     float specular_factor = max(dot(camera_direction, reflected), 0.0);
-     specular_factor = pow(specular_factor, 0.5f);
-
-     vec4 spec_color = specularC * specular_factor * material.reflectance * vec4(light.color, 1.0);
-
-
-     float dist = length(light_direction);
-     float attenInv = light.att.constant + light.att.linear * dist + light.att.exponent * dist * dist;
-     vec4 iut = (diffuseColour + spec_color)/attenInv;
-
+     vec4 iut = calcPointLight(light, mvVertexPos, mvVertexNormal);
 
 
     color = ambientC * vec4(ambientLight, 1) +iut;

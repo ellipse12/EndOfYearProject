@@ -4,10 +4,7 @@ package Engine.shaders;
 import Engine.models.Material;
 import Engine.models.WorldObject;
 import Engine.rendering.Camera;
-import Engine.shaders.uniforms.LightU;
-import Engine.shaders.uniforms.MaterialU;
-import Engine.shaders.uniforms.Matrix4fU;
-import Engine.shaders.uniforms.Vector3fU;
+import Engine.shaders.uniforms.*;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
 
@@ -44,9 +41,11 @@ public class StaticShader extends ShaderProgram {
         addUniform(new Matrix4fU("projectionMatrix", this));
         addUniform(new Matrix4fU("viewMatrix", this));
         addUniform(new MaterialU("material", this));
+        addUniform(new IntegerU("texture_sampler", this));
         addUniform(new LightU("light", this));
         addUniform(new Vector3fU("camera_position", this));
         addUniform(new Vector3fU("ambientLight", this));
+        addUniform(new FloatU("specularPower", this));
     }
 
     @Override

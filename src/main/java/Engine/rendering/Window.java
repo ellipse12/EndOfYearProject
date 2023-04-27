@@ -39,7 +39,7 @@ public class Window {
         glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_TRUE);
-
+        glfwWindowHint(GLFW_SAMPLES, 16);
 
         long window = glfwCreateWindow(width, height, title, NULL, NULL);
         if(window == NULL){
@@ -86,7 +86,7 @@ public class Window {
             };
             GLFW.glfwSetWindowSizeCallback(window, sizeCallback);
         glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CENTER_CURSOR);
+
         Mouse.create(this);
         Keyboard.create(window);
 

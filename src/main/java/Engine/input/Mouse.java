@@ -30,7 +30,7 @@ public final class Mouse {
     private static GLFWMouseButtonCallback buttonCallback;
 
     private static GLFWCursorEnterCallback enterCallback;
-    private static boolean shown = false;
+
 
     /**
      * sets the mouse to the current context and sets some callbacks to get things like position, what button is down, etc.
@@ -42,6 +42,8 @@ public final class Mouse {
         posCallback = new GLFWCursorPosCallback() {
             @Override
             public void invoke(long window, double xpos, double ypos) {
+                dx += xpos- x;
+                dy += ypos - y;
                 x = xpos;
                 y = ypos;
 
@@ -78,25 +80,7 @@ public final class Mouse {
     }
 
 
-    /**
-     * called every frame to allow for storing the change of the position of the mouse
-     */
-    public static void poll(){
-        dx = 0;
-        dy = 0;
-        if(lastX > 0 && lastY > 0){
-           dx = x-lastX;
-           dy = y-lastY;
-        }
-        lastX = x;
-        lastY= y;
-        if(shown){
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        }else{
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-        }
-    }
 
 
     /**
@@ -145,11 +129,5 @@ public final class Mouse {
         return inWindow;
     }
 
-    public static void setShown(boolean shown){
-        Mouse.shown = shown;
-    }
 
-    public static boolean isShown(){
-        return shown;
-    }
 }

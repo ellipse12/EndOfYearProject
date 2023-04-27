@@ -20,8 +20,8 @@ import org.lwjgl.opengl.GL30;
 public class Renderer {
     private StaticShader shader;
 
-    private Matrix4f viewMatrix;
-    static Light light = new Light(new Vector3f(1,1,1), new Vector3f(), 0.5f, new Attenuation(0.9f,0.3f,0.1f));
+
+    static Light light = new Light(new Vector3f(1,0.1f,0.4f), new Vector3f(), 10f, new Attenuation(0.05f,0.05f,0.05f));
 
     public Renderer(StaticShader shader) {
         this.shader = shader;
@@ -62,20 +62,14 @@ public class Renderer {
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
         Matrix4f view = Maths.getModelViewMatrix(object, Maths.createViewMatrix(camera));
-        Light copy = new Light(light.getColor(), light.getPosition(), light.getIntensity(), light.getAttenuation());
-        Vector3f lightPos = copy.getPosition();
-        Vector4f aux = new Vector4f(lightPos, 1);
-        aux.mul(view);
-        lightPos.x = aux.x;
-        lightPos.y = aux.y;
-        lightPos.z = aux.z;
-        shader.setUniform("texture_sampler",0);
+
+
         shader.setUniform("transformationMatrix", transform);
         shader.setUniform("viewMatrix", view);
         shader.setUniform("material", object.getModel().getMaterial());
-
+        shader.setUniform("specularPower", 0.1f);
         shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
-        shader.setUniform("light", copy);
+        shader.setUniform("light", light);
         shader.setUniform("camera_position", camera.getPosition());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
