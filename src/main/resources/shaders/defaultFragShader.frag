@@ -76,7 +76,7 @@ vec4 calcPointLight(Light light, vec3 position, vec3 normal)
      float distance = length(light_direction);
      float attenuationInv = light.att.constant + light.att.linear * distance +
      light.att.exponent * distance * distance;
-     return (diffuseColour + specColour) / attenuationInv;
+     return (diffuseColour + specColour);
 }
 
 

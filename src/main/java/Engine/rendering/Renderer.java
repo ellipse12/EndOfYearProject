@@ -21,7 +21,7 @@ public class Renderer {
     private StaticShader shader;
 
 
-    static Light light = new Light(new Vector3f(1,0.1f,0.4f), new Vector3f(), 10f, new Attenuation(0.05f,0.05f,0.05f));
+
 
     public Renderer(StaticShader shader) {
         this.shader = shader;
@@ -69,7 +69,7 @@ public class Renderer {
         shader.setUniform("material", object.getModel().getMaterial());
         shader.setUniform("specularPower", 0.1f);
         shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
-        shader.setUniform("light", light);
+        shader.setUniform("light", new Light(new Vector3f(0,0,1), new Vector3f(-500f, 1000f, 0), 1f, new Attenuation(0.05f, 0.05f, 0.005f)));
         shader.setUniform("camera_position", camera.getPosition());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());

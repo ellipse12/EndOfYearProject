@@ -1,13 +1,22 @@
 package Engine.models;
 
+import Engine.MainClass;
+import Engine.rendering.Camera;
+import Engine.rendering.Renderable;
+import Engine.shaders.StaticShader;
+import Engine.util.Maths;
+import org.joml.Matrix4f;
 import org.joml.Vector3f;
+import org.lwjgl.opengl.GL11;
 
-public class Light {
+public class Light implements Renderable {
 
     private Vector3f color;
     private Vector3f position;
     private float intensity;
     private Attenuation attenuation;
+
+    private final StaticShader shader = new StaticShader();
 
     public Light(Vector3f color, Vector3f position, float intensity, Attenuation attenuation) {
         this.color = color;
@@ -46,5 +55,33 @@ public class Light {
 
     public void setAttenuation(Attenuation attenuation) {
         this.attenuation = attenuation;
+    }
+
+    @Override
+    public void render(Camera camera) {
+
+        shader.setUniform("specularPower", 0.1f);
+        shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
+        shader.setUniform("light", this);
+        shader.setUniform("camera_position", camera.getPosition());
+
+    }
+
+    @Override
+    public void update(Camera camera) {
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
+        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
+        GL11.glClearColor(1f, 1f, 1f, 1f);
+        shader.start();
+        Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
+        shader.setUniform("projectionMatrix", projectionMatrix);
+
+
+        shader.stop();
+    }
+
+    @Override
+    public void cleanUp() {
+        shader.cleanUp();
     }
 }

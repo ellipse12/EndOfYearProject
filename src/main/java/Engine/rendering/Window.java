@@ -39,7 +39,7 @@ public class Window {
         glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_TRUE);
-        glfwWindowHint(GLFW_SAMPLES, 16);
+        //glfwWindowHint(GLFW_SAMPLES, 8);
 
         long window = glfwCreateWindow(width, height, title, NULL, NULL);
         if(window == NULL){

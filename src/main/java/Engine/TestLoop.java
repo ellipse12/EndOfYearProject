@@ -13,6 +13,8 @@ import Engine.resourceLoading.Loader;
 import Engine.resourceLoading.Texture;
 import Engine.resourceLoading.objectLoading.OBJFileLoader;
 import Engine.shaders.StaticShader;
+import GameTest.worldObjects.TestObject;
+import GameTest.worldObjects.TestObject2;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -22,40 +24,24 @@ This is a testing class.
  */
 public class TestLoop {
 
-    static Loader loader = new Loader();
-
-    static StaticShader shader = new StaticShader();
-    static Renderer renderer = new Renderer(shader);
-    static Model model = loader.getNormalModelFromResource("test", new Texture("test.png"));
-    static Model model1 = loader.getNormalModelFromResource("worldModel", new Texture("test.png"));
-
-
-
-    static WorldObject object = new WorldObject(model, new Vector3f(0,0,-5), new Vector3f(), new Vector3f(1,1, 1));
-    static WorldObject object1 = new WorldObject(model1, new Vector3f(0,-5,0), new Vector3f(), new Vector3f(1,1, 1));
-
+    public static Scene scene = new Scene();
     static Camera camera = new Camera();
+    public static void init(){
+        scene.addObject(new TestObject(new Vector3f(0, 0, -5), new Vector3f(), new Vector3f(1,1,1)));
+        scene.addObject(new TestObject2(new Vector3f(0, -5, 0), new Vector3f(), new Vector3f(1,1,1)));
+        scene.addLight(new Light(new Vector3f(1,1,1), new Vector3f(-500f, 1000f, 0), 1f, new Attenuation(0.05f, 0.05f, 0.005f)));
+    }
     public static void loop(Window window){
-
-
-        renderer.init();
-        //object.increaseRotation(new Vector3f(0,1,0));
-
         camera.update();
-
-        renderer.render(object, camera);
-        renderer.render(object1, camera);
-
-
-
+        scene.updateAll(camera);
+        scene.renderAll(camera);
         glfwSwapBuffers(window.getHandle());
-
         glfwPollEvents();
         window.update();
     }
 
     public static void cleanUp() {
-        loader.cleanUp();
-        shader.cleanUp();
+        MainClass.loader.cleanUp();
+        scene.cleanAll();
     }
 }

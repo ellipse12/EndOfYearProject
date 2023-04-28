@@ -1,8 +1,10 @@
 package Engine.models;
 
+import Engine.rendering.Camera;
+import Engine.rendering.Renderable;
 import org.joml.Vector3f;
 
-public class WorldObject {
+public abstract class WorldObject implements Renderable {
     private Model model;
 
     private Vector3f position;
@@ -74,5 +76,8 @@ public class WorldObject {
     public void increaseScale(float scale){
         this.scale.add(new Vector3f(scale,scale,scale));
     }
+
+
+
 
 }
