@@ -9,23 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="finished: lighting">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/registration/ElementExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/registration/Registry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/registration/RegistryObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameTest/M.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="fixing: player controller">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiFragmentShader.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiVertexShader.vert" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,12 +96,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="shadow" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
@@ -112,10 +108,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="vs-template" />
-        <option value="fs-template" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="vs-template" />
+        <option value="fs-template" />
       </list>
     </option>
   </component>
@@ -168,6 +164,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EndOfYearProject [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="EndOfYearProject [buildEnvironment]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildEnvironment" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="EndOfYearProject [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -210,7 +248,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="EndOfYearProject [runShadow]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="EndOfYearProject [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -221,49 +259,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="runShadow" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="EndOfYearProject [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="EndOfYearProject [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="shadowJar" />
+            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -275,17 +271,17 @@
     </configuration>
     <list>
       <item itemvalue="Application.Engine.MainClass" />
-      <item itemvalue="Gradle.EndOfYearProject [runShadow]" />
-      <item itemvalue="Gradle.EndOfYearProject [shadowJar]" />
+      <item itemvalue="Gradle.EndOfYearProject [buildDependents]" />
+      <item itemvalue="Gradle.EndOfYearProject [buildEnvironment]" />
+      <item itemvalue="Gradle.EndOfYearProject [jar]" />
       <item itemvalue="Gradle.EndOfYearProject [clean]" />
-      <item itemvalue="Gradle.EndOfYearProject [run]" />
       <item itemvalue="Gradle.EndOfYearProject [build]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.EndOfYearProject [shadowJar]" />
-        <item itemvalue="Gradle.EndOfYearProject [runShadow]" />
-        <item itemvalue="Gradle.EndOfYearProject [run]" />
+        <item itemvalue="Gradle.EndOfYearProject [jar]" />
+        <item itemvalue="Gradle.EndOfYearProject [buildEnvironment]" />
+        <item itemvalue="Gradle.EndOfYearProject [buildDependents]" />
         <item itemvalue="Gradle.EndOfYearProject [build]" />
         <item itemvalue="Gradle.EndOfYearProject [clean]" />
       </list>

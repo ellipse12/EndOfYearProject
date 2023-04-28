@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.0.0'
+
 
 }
 
@@ -19,21 +19,7 @@ application{
     mainClassName = 'Engine.MainClass'
 }
 
-jar{
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    manifest {
-        attributes("Main-Class":mainClassName)
-    }
 
-    from{
-        configurations.runtimeClasspath.collect{it.isDirectory() ? it: zipTree(it)}
-    }
-    from layout.buildDirectory.dir('resources'), {
-
-        into layout.buildDirectory.dir('resources')
-    }
-
-}
 
 
 dependencies {

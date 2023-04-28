@@ -25,7 +25,7 @@ public class TestObject extends WorldObject {
         super(MainClass.loader.getNormalModelFromResource("test", new Texture("test.png")), position, rotation, scale);
     }
 
-    @Override
+
     public void render(Camera camera) {
         shader.start();
         GL30.glBindVertexArray(this.getModel().getVaoID());
@@ -55,7 +55,7 @@ public class TestObject extends WorldObject {
         GL30.glBindVertexArray(0);
     }
 
-    @Override
+
     public void update(Camera camera) {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
@@ -68,7 +68,7 @@ public class TestObject extends WorldObject {
         shader.stop();
     }
 
-    @Override
+
     public void cleanUp() {
         shader.cleanUp();
     }

@@ -1,10 +1,10 @@
 package Engine.models;
 
 import Engine.rendering.Camera;
-import Engine.rendering.Renderable;
+
 import org.joml.Vector3f;
 
-public abstract class WorldObject implements Renderable {
+public abstract class WorldObject {
     private Model model;
 
     private Vector3f position;

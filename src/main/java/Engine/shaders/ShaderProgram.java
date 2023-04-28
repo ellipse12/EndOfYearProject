@@ -13,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.FloatBuffer;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.lwjgl.opengl.GL20.glUniformMatrix4fv;
 
@@ -21,6 +23,8 @@ public abstract class ShaderProgram {
     private int programID;
     private int vertexShaderID;
     private int fragmentShaderID;
+
+    private Set<Uniform> uniforms;
 
 
     /**
@@ -37,16 +41,27 @@ public abstract class ShaderProgram {
         bindAttributes();
         GL20.glLinkProgram(programID);
         GL20.glValidateProgram(programID);
-
+        uniforms = new HashSet<>();
 
     }
 
 
 
 
-    public abstract void addUniform(Uniform uniform) throws Exception;
 
-    public abstract <T> void setUniform(String name, T value);
+    public void addUniform(Uniform uniform) {
+        uniforms.add(uniform);
+    }
+
+
+
+    public <T> void setUniform(String name, T value) {
+        for(Uniform uniform:uniforms){
+            if(uniform.getName().equals(name)){
+                uniform.load(value);
+            }
+        }
+    }
 
     /**
      * should be used in getAllUniformLocations()

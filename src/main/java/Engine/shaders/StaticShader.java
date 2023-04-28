@@ -48,20 +48,7 @@ public class StaticShader extends ShaderProgram {
         addUniform(new FloatU("specularPower", this));
     }
 
-    @Override
-    public void addUniform(Uniform uniform) {
-        uniforms.add(uniform);
-    }
 
-
-    @Override
-    public <T> void setUniform(String name, T value) {
-        for(Uniform uniform:uniforms){
-            if(uniform.getName().equals(name)){
-                uniform.load(value);
-            }
-        }
-    }
 
     /**
      * a method to bind all of the "in" variables in the vertex shader, defines the data that represents each vertex in a model

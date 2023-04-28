@@ -2,14 +2,13 @@ package Engine.models;
 
 import Engine.MainClass;
 import Engine.rendering.Camera;
-import Engine.rendering.Renderable;
 import Engine.shaders.StaticShader;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.opengl.GL11;
 
-public class Light implements Renderable {
+public class Light {
 
     private Vector3f color;
     private Vector3f position;
@@ -57,7 +56,7 @@ public class Light implements Renderable {
         this.attenuation = attenuation;
     }
 
-    @Override
+
     public void render(Camera camera) {
 
         shader.setUniform("specularPower", 0.1f);
@@ -66,8 +65,9 @@ public class Light implements Renderable {
         shader.setUniform("camera_position", camera.getPosition());
 
     }
+    int add = 1;
 
-    @Override
+
     public void update(Camera camera) {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
@@ -78,9 +78,11 @@ public class Light implements Renderable {
 
 
         shader.stop();
+
+
     }
 
-    @Override
+
     public void cleanUp() {
         shader.cleanUp();
     }
