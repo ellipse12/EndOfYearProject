@@ -21,6 +21,10 @@ public class Scene {
         lights.add(light);
     }
 
+    public void addRenderer(Renderer renderer){
+        renderers.add(renderer);
+    }
+
     public void removeObject(WorldObject object){
         objects.remove(object);
     }

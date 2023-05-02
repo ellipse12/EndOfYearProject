@@ -28,7 +28,7 @@ public class MainClass {
             main.init();
             window.create();
             GL.createCapabilities();
-            glClearColor(0.0f,0.0f,1.0f, 0.0f);
+
             Keyboard.addKeyListener((key, action, mod) -> {
                 if(key == GLFW_KEY_ESCAPE && action == KeyListener.KEY_RELEASED){
                     paused = !paused;

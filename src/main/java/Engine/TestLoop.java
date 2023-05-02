@@ -1,5 +1,6 @@
 package Engine;
 
+import Engine.guiRendering.GUIRenderer;
 import Engine.input.Keyboard;
 import Engine.input.Mouse;
 import Engine.models.Attenuation;
@@ -7,6 +8,7 @@ import Engine.models.Light;
 import Engine.models.Model;
 import Engine.models.WorldObject;
 import Engine.rendering.Camera;
+import Engine.rendering.DefaultRenderer;
 import Engine.rendering.Renderer;
 import Engine.rendering.Window;
 import Engine.resourceLoading.Loader;
@@ -26,17 +28,23 @@ public class TestLoop {
 
     public static Scene scene = new Scene();
     static Camera camera = new Camera();
+
+    static DefaultRenderer renderer = new DefaultRenderer(new StaticShader());
+
+    static GUIRenderer guiRenderer = new GUIRenderer();
     public static void init(){
         scene.addObject(new TestObject(new Vector3f(0, 0, -5), new Vector3f(), new Vector3f(1,1,1)));
         scene.addObject(new TestObject2(new Vector3f(0, -5, 0), new Vector3f(), new Vector3f(1,1,1)));
         scene.addLight(new Light(new Vector3f(52/255f,33/255f,255/255f), new Vector3f(-500f, 100f, 0), 3f, new Attenuation(0.05f, 0.05f, 0.005f)));
+
     }
     public static void loop(Window window){
 
         camera.update();
 
-        scene.updateAll(camera);
-        scene.renderAll(camera);
+        renderer.update(camera);
+        renderer.render(camera);
+        guiRenderer.render(camera);
         glfwSwapBuffers(window.getHandle());
         glfwPollEvents();
         window.update();

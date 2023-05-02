@@ -27,6 +27,14 @@ public class Maths {
         .scale(new Vector3f(scale.x, scale.y, scale.z));
         return matrix;
     }
+
+
+    public static Matrix4f createTransformationMatrix(Vector2f translation, Vector2f scale){
+        Matrix4f out = new Matrix4f();
+        out.identity().translate(translation.x, translation.y, 1f).scale(scale.x, scale.y, 1f);
+        return out;
+    }
+
     private static final float FOV = (float) Math.toRadians(60.0f);
 
     private static final float Z_NEAR = 0.01f;

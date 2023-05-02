@@ -9,6 +9,7 @@ import Engine.resourceLoading.Texture;
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.StaticShader;
 import Engine.util.Maths;
+import GameTest.worldObjects.TestObject;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -84,12 +85,12 @@ public class DefaultRenderer implements Renderer{
 
     @Override
     public void render(Camera camera) {
-
+        this.render(new TestObject(new Vector3f(-1, 0, 1), new Vector3f(), new Vector3f(1)), camera);
     }
 
     @Override
     public void update(Camera camera) {
-
+        init();
     }
 
     @Override

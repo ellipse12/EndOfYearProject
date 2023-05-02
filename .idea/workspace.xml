@@ -9,25 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="fixing: player controller">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiFragmentShader.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiVertexShader.vert" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: gui rendering">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/guiFragmentShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiFragmentShader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/guiVertexShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiVertexShader.vert" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -394,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682564478191</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="started: gui rendering">
+      <created>1682711733767</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682711733767</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -423,6 +424,7 @@
     <MESSAGE value="continued: lighting" />
     <MESSAGE value="fixing: player controller" />
     <MESSAGE value="finished: lighting" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished: lighting" />
+    <MESSAGE value="started: gui rendering" />
+    <option name="LAST_COMMIT_MESSAGE" value="started: gui rendering" />
   </component>
 </project>

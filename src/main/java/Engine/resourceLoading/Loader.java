@@ -37,6 +37,14 @@ public class Loader {
         return new Model(vaoID, positions.length/3);
 
     }
+    public Model loadToVAO(float[] positions, Texture texture){
+        int vaoID =createVAO();
+        storeDataInAttributeList(0, 2, positions);
+        GL30.glBindVertexArray(0);
+        loadTexture(texture);
+        return new Model(vaoID, positions.length/2);
+
+    }
 
 
     public Model loadToVAO(float[] positions, int[] indices){
