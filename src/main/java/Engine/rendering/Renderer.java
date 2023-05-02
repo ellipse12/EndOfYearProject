@@ -1,9 +1,11 @@
 package Engine.rendering;
 
-public interface Renderer {
-    void render(Camera camera);
+import Engine.Scene;
 
-    void update(Camera camera);
+public interface Renderer {
+    void render(Scene scene);
+
+    void update(Scene scene);
 
     void cleanUp();
 }

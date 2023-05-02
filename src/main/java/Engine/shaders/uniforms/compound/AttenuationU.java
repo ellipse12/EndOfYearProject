@@ -1,8 +1,9 @@
-package Engine.shaders.uniforms;
+package Engine.shaders.uniforms.compound;
 
 import Engine.models.Attenuation;
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.Uniform;
+import Engine.shaders.uniforms.primitives.FloatU;
 
 public class AttenuationU extends Uniform<Attenuation> {
     private MultiUniform uniforms;

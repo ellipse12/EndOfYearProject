@@ -1,6 +1,7 @@
 package Engine.rendering;
 
 import Engine.MainClass;
+import Engine.Scene;
 import Engine.models.Attenuation;
 import Engine.models.Light;
 import Engine.models.Model;
@@ -9,7 +10,6 @@ import Engine.resourceLoading.Texture;
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.StaticShader;
 import Engine.util.Maths;
-import GameTest.worldObjects.TestObject;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -17,6 +17,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
+
+import java.util.ArrayList;
 
 public class DefaultRenderer implements Renderer{
     private StaticShader shader;
@@ -49,7 +51,7 @@ public class DefaultRenderer implements Renderer{
      * @param object the object to render
      * @param camera the camera to render from
      */
-    public void render(WorldObject object, Camera camera){
+    public void render(WorldObject object, Camera camera, ArrayList<Light> lights){
         //TODO: allow for multiple objects/ add Render interface.
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
@@ -70,7 +72,7 @@ public class DefaultRenderer implements Renderer{
         shader.setUniform("material", object.getModel().getMaterial());
         shader.setUniform("specularPower", 0.1f);
         shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
-        shader.setUniform("light", new Light(new Vector3f(0,0,1), new Vector3f(-500f, 1000f, 0), 1f, new Attenuation(0.05f, 0.05f, 0.005f)));
+        shader.setUniform("light", new Light(new Vector3f(1,1,1), new Vector3f(-500f, 1000f, 0), 1f, new Attenuation(0.05f, 0.05f, 0.005f)));
         shader.setUniform("camera_position", camera.getPosition());
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
@@ -84,12 +86,15 @@ public class DefaultRenderer implements Renderer{
     }
 
     @Override
-    public void render(Camera camera) {
-        this.render(new TestObject(new Vector3f(-1, 0, 1), new Vector3f(), new Vector3f(1)), camera);
+    public void render(Scene scene) {
+        for(WorldObject object: scene.getObjects()){
+            render(object, scene.getCamera(), scene.getLights());
+        }
     }
 
     @Override
-    public void update(Camera camera) {
+    public void update(Scene scene) {
+        scene.getCamera().update();
         init();
     }
 

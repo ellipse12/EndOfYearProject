@@ -2,8 +2,9 @@ package Engine.guiRendering;
 
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.Uniform;
-import Engine.shaders.uniforms.IntegerU;
-import Engine.shaders.uniforms.Matrix4fU;
+import Engine.shaders.uniforms.primitives.IntegerU;
+import Engine.shaders.uniforms.primitives.Matrix4fU;
+
 
 import java.util.Set;
 

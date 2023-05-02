@@ -1,6 +1,7 @@
 package Engine.guiRendering;
 
 import Engine.MainClass;
+import Engine.Scene;
 import Engine.rendering.Camera;
 import Engine.rendering.Renderer;
 import Engine.resourceLoading.Texture;
@@ -16,10 +17,13 @@ public class GUIRenderer implements Renderer {
 
 
     private GUIShader shader = new GUIShader();
-    private static final GUI gui = new GUI(new Vector2f(), new Vector2f(10f), new Texture("test.png"));
+
+    private static final GUI gui = new GUI(new Vector2f(), new Vector2f(1f), new Texture("test.png"));
 
     @Override
-    public void render(Camera camera) {
+    public void render(Scene scene) {
+
+
         shader.start();
         GL30.glBindVertexArray(gui.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
@@ -46,7 +50,7 @@ public class GUIRenderer implements Renderer {
     }
 
     @Override
-    public void update(Camera camera) {
+    public void update(Scene scene) {
 
     }
 

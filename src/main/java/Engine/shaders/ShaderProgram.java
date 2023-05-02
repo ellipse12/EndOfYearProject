@@ -68,7 +68,7 @@ public abstract class ShaderProgram {
      * @param uniformName the name of the uniform variable
      * @return the integer representation of the location of the uniform given
      */
-    protected int getUniformLocation(String uniformName){
+    public int getUniformLocation(String uniformName){
         return GL20.glGetUniformLocation(programID, uniformName);
     }
 

@@ -1,4 +1,4 @@
-package Engine.shaders.uniforms;
+package Engine.shaders.uniforms.primitives;
 
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.Uniform;

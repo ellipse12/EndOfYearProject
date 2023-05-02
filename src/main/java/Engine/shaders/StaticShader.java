@@ -1,16 +1,16 @@
 package Engine.shaders;
 
 
-import Engine.models.Material;
-import Engine.models.WorldObject;
-import Engine.rendering.Camera;
-import Engine.shaders.uniforms.*;
-import Engine.util.Maths;
-import org.joml.Matrix4f;
+import Engine.shaders.uniforms.collections.ArrayUniform;
+import Engine.shaders.uniforms.collections.FloatArrayU;
+import Engine.shaders.uniforms.compound.LightU;
+import Engine.shaders.uniforms.compound.MaterialU;
+import Engine.shaders.uniforms.primitives.FloatU;
+import Engine.shaders.uniforms.primitives.IntegerU;
+import Engine.shaders.uniforms.primitives.Matrix4fU;
+import Engine.shaders.uniforms.primitives.Vector3fU;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class StaticShader extends ShaderProgram {
@@ -46,6 +46,7 @@ public class StaticShader extends ShaderProgram {
         addUniform(new Vector3fU("camera_position", this));
         addUniform(new Vector3fU("ambientLight", this));
         addUniform(new FloatU("specularPower", this));
+        //addUniform(new FloatArrayU("test", 3, this));
     }
 
 

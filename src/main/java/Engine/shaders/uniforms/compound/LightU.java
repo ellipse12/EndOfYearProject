@@ -1,8 +1,10 @@
-package Engine.shaders.uniforms;
+package Engine.shaders.uniforms.compound;
 
 import Engine.models.Light;
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.Uniform;
+import Engine.shaders.uniforms.primitives.FloatU;
+import Engine.shaders.uniforms.primitives.Vector3fU;
 
 public class LightU extends Uniform<Light> {
     private MultiUniform uniforms;

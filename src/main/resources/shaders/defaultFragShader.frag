@@ -35,7 +35,7 @@ uniform Light light;
 uniform vec3 camera_position;
 uniform vec3 ambientLight;
 uniform float specularPower;
-
+uniform float test[3];
 
 
 vec4 ambientC;

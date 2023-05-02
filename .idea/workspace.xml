@@ -10,18 +10,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: gui rendering">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/ArrayUniform.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/FloatArrayU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/guiFragmentShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiFragmentShader.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/guiVertexShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/guiVertexShader.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/UniformI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/AttenuationU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/AttenuationU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/BooleanU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/BooleanU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/FloatU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/FloatU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/IntegerU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/IntegerU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/LightU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/LightU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/MaterialU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MaterialU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Matrix4fU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/Matrix4fU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/MultiUniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MultiUniform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Vector2fU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/Vector2fU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Vector3fU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/Vector3fU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/Vector4fU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/Vector4fU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/test.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textures/test.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +131,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

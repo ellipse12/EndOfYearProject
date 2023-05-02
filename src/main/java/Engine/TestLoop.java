@@ -20,6 +20,8 @@ import GameTest.worldObjects.TestObject2;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
+import java.util.ArrayList;
+
 import static org.lwjgl.glfw.GLFW.*;
 /*
 This is a testing class.
@@ -36,15 +38,14 @@ public class TestLoop {
         scene.addObject(new TestObject(new Vector3f(0, 0, -5), new Vector3f(), new Vector3f(1,1,1)));
         scene.addObject(new TestObject2(new Vector3f(0, -5, 0), new Vector3f(), new Vector3f(1,1,1)));
         scene.addLight(new Light(new Vector3f(52/255f,33/255f,255/255f), new Vector3f(-500f, 100f, 0), 3f, new Attenuation(0.05f, 0.05f, 0.005f)));
-
     }
     public static void loop(Window window){
 
-        camera.update();
 
-        renderer.update(camera);
-        renderer.render(camera);
-        guiRenderer.render(camera);
+        renderer.update(scene);
+
+        renderer.render(scene);
+        guiRenderer.render(scene);
         glfwSwapBuffers(window.getHandle());
         glfwPollEvents();
         window.update();
@@ -52,6 +53,6 @@ public class TestLoop {
 
     public static void cleanUp() {
         MainClass.loader.cleanUp();
-        scene.cleanAll();
+
     }
 }

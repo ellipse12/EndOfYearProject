@@ -13,6 +13,16 @@ public class Scene {
 
     private ArrayList<Renderer> renderers = new ArrayList<Renderer>();
 
+    private Camera camera;
+
+    public Scene(Camera camera){
+        this.camera = camera;
+    }
+
+    public Scene(){
+        this.camera = new Camera();
+    }
+
     public void addObject(WorldObject object){
         objects.add(object);
     }
@@ -41,25 +51,11 @@ public class Scene {
         return lights;
     }
 
-    public void renderAll(Camera camera){
-        renderWorldObjects(camera);
-        renderLights(camera);
-
-    }
-    public void updateAll(Camera camera){
-        lights.forEach(l->l.update(camera));
-
+    public Camera getCamera() {
+        return camera;
     }
 
-    public void renderWorldObjects(Camera camera){
-       renderers.get(0).render(camera);
-    }
-
-    public void renderLights(Camera camera){
-        lights.forEach(l->l.render(camera));
-    }
-
-    public void cleanAll(){
-
+    public void setCamera(Camera camera) {
+        this.camera = camera;
     }
 }

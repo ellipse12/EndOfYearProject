@@ -1,9 +1,11 @@
-package Engine.shaders.uniforms;
+package Engine.shaders.uniforms.compound;
 
 import Engine.models.Material;
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.Uniform;
-import org.lwjgl.opengl.GL20;
+import Engine.shaders.uniforms.primitives.BooleanU;
+import Engine.shaders.uniforms.primitives.FloatU;
+import Engine.shaders.uniforms.primitives.Vector4fU;
 
 public class MaterialU extends Uniform<Material> {
 
