@@ -1,48 +1,48 @@
 package Engine.shaders.uniforms.collections;
 
 import Engine.shaders.ShaderProgram;
-import Engine.shaders.Uniform;
+import Engine.shaders.UniformI;
 
-public abstract class ArrayUniform<T extends Uniform<V>, V> extends Uniform<V[]> {
+import java.util.ArrayList;
+import java.util.List;
 
-    private T uniform;
-
-    private int[] locations;
-
-    private int length;
+public abstract class ArrayUniform<T extends UniformI<V>, V> implements UniformI<V[]> {
     private String name;
+    private int length;
+    private int location;
 
-    public ArrayUniform(String name, int length, ShaderProgram program) {
-        super(name, program);
-        locations = new int[length];
+    private List<T> uniforms;
+    public ArrayUniform(String name, int length, ShaderProgram program){
+        this.name = name;
+        this.length = length;
+        this.location = program.getUniformLocation(name);
+        this.uniforms = new ArrayList<>();
         for(int i =0; i < length; i++){
-            locations[i] = program.getUniformLocation(name + "[" + i + "]");
+            uniforms.add(create(this.getName() + "[" +i +"]", program));
         }
     }
-
-
-
-    public T getUniform() {
-        return uniform;
+    @Override
+    public String getName() {
+        return name;
     }
 
+    @Override
+    public int getLocation() {
+        return location;
+    }
 
+    @Override
     public void load(V[] value) {
-        load(locations, value);
-    }
-
-    public abstract void load(int[] locations, V[] values);
-
-    public int[] getLocations() {
-        return locations;
+        if(value.length >= 1) {
+            for (int i = 0; i < this.getLength(); i++) {
+                uniforms.get(i).load(value[i]);
+            }
+        }
     }
 
     public int getLength() {
         return length;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
+    public abstract T create(String name, ShaderProgram program);
 }

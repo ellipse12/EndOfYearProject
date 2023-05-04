@@ -1,6 +1,6 @@
 package Engine.shaders;
 
-public abstract class Uniform<T>{
+public abstract class Uniform<T> implements UniformI<T>{
 
     private int location;
     private String name;
@@ -21,11 +21,13 @@ public abstract class Uniform<T>{
 
 
 
+    @Override
     public int getLocation() {
         return location;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }

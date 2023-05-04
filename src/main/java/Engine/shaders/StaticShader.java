@@ -1,17 +1,13 @@
 package Engine.shaders;
 
 
-import Engine.shaders.uniforms.collections.ArrayUniform;
-import Engine.shaders.uniforms.collections.FloatArrayU;
+import Engine.shaders.uniforms.collections.LightArrayU;
 import Engine.shaders.uniforms.compound.LightU;
 import Engine.shaders.uniforms.compound.MaterialU;
 import Engine.shaders.uniforms.primitives.FloatU;
 import Engine.shaders.uniforms.primitives.IntegerU;
 import Engine.shaders.uniforms.primitives.Matrix4fU;
 import Engine.shaders.uniforms.primitives.Vector3fU;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class StaticShader extends ShaderProgram {
     private static final String vertexFile = "src/main/resources/shaders/defaultVertShader.vert";
@@ -20,7 +16,7 @@ public class StaticShader extends ShaderProgram {
 
 
 
-    private Set<Uniform> uniforms;
+
 
     /**
      * A generic shader that is used for rendering
@@ -28,7 +24,7 @@ public class StaticShader extends ShaderProgram {
     //TODO finish lighting
     public StaticShader() {
         super(vertexFile, fragmentFile);
-        uniforms = new HashSet<>();
+
         setupUniforms();
     }
 
@@ -42,11 +38,12 @@ public class StaticShader extends ShaderProgram {
         addUniform(new Matrix4fU("viewMatrix", this));
         addUniform(new MaterialU("material", this));
         addUniform(new IntegerU("texture_sampler", this));
-        addUniform(new LightU("light", this));
+        addUniform(new LightArrayU("lights", 3, this));
         addUniform(new Vector3fU("camera_position", this));
         addUniform(new Vector3fU("ambientLight", this));
         addUniform(new FloatU("specularPower", this));
-        //addUniform(new FloatArrayU("test", 3, this));
+        addUniform(new IntegerU("numLights", this));
+
     }
 
 

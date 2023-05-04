@@ -24,7 +24,7 @@ public abstract class ShaderProgram {
     private int vertexShaderID;
     private int fragmentShaderID;
 
-    private Set<Uniform> uniforms;
+    private Set<UniformI> uniforms;
 
 
     /**
@@ -49,14 +49,14 @@ public abstract class ShaderProgram {
 
 
 
-    public void addUniform(Uniform uniform) {
+    public <T> void addUniform(UniformI<T> uniform) {
         uniforms.add(uniform);
     }
 
 
 
     public <T> void setUniform(String name, T value) {
-        for(Uniform uniform:uniforms){
+        for(UniformI uniform:uniforms){
             if(uniform.getName().equals(name)){
                 uniform.load(value);
             }

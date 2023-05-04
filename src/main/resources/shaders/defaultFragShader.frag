@@ -31,11 +31,12 @@ struct Light{
 
 
 uniform Material material;
-uniform Light light;
+uniform int numLights;
+uniform Light lights[3];
 uniform vec3 camera_position;
 uniform vec3 ambientLight;
 uniform float specularPower;
-uniform float test[3];
+
 
 
 vec4 ambientC;
@@ -84,7 +85,10 @@ void main() {
 
      setupColors(material, outTextureCoord);
 
-     vec4 iut = calcPointLight(light, mvVertexPos, mvVertexNormal);
+     vec4 iut = vec4(0,0,0,0);
+     for(int i =0; i < numLights; i++){
+          iut += calcPointLight(lights[i], mvVertexPos, mvVertexNormal);
+     }
 
 
     color = ambientC * vec4(ambientLight, 1) +iut;
