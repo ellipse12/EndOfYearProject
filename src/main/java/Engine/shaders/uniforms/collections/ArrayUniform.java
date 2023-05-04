@@ -34,7 +34,7 @@ public abstract class ArrayUniform<T extends UniformI<V>, V> implements UniformI
     @Override
     public void load(V[] value) {
         if(value.length >= 1) {
-            for (int i = 0; i < this.getLength(); i++) {
+            for (int i = 0; i < this.getLength() && i < value.length; i++) {
                 uniforms.get(i).load(value[i]);
             }
         }
