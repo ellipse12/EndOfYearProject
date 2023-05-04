@@ -19,9 +19,24 @@ application{
     mainClassName = 'Engine.MainClass'
 }
 
+jar{
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 
+    manifest{
+        attributes 'Main-Class' : 'Engine.MainClass'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 
-
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources"]
+        }
+    }
+}
 dependencies {
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
 

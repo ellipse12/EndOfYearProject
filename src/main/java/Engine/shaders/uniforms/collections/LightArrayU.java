@@ -17,11 +17,5 @@ public class LightArrayU extends ArrayUniform<LightU, Light>{
         return new LightU(name, program);
     }
 
-    public void load(List<Light> lights){
-        Light[] vals = new Light[lights.size()];
-        for(int i =0; i < lights.size(); i++){
-            vals[i] = lights.get(i);
-        }
-        super.load(vals);
-    }
+
 }

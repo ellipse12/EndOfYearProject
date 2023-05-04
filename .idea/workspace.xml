@@ -9,17 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: allowing for multiple lights">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/UniformI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/LightArrayU.java" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="added: gui rendering">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/out.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/ArrayUniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/ArrayUniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/FloatArrayU.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/LightArrayU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/LightArrayU.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,20 +124,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ellip/Documents/Java/EndOfYearProject/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Goad.Samuel24/IdeaProjects/EndOfYearProject/src/main/resources",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
-  <component name="RunManager" selected="Application.Engine.MainClass">
+}]]></component>
+  <component name="RunManager" selected="Gradle.EndOfYearProject [build]">
     <configuration name="Engine.MainClass" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Engine.MainClass" />
       <module name="EndOfYearProject.main" />
@@ -270,10 +266,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.EndOfYearProject [build]" />
         <item itemvalue="Gradle.EndOfYearProject [jar]" />
         <item itemvalue="Gradle.EndOfYearProject [buildEnvironment]" />
         <item itemvalue="Gradle.EndOfYearProject [buildDependents]" />
-        <item itemvalue="Gradle.EndOfYearProject [build]" />
         <item itemvalue="Gradle.EndOfYearProject [clean]" />
       </list>
     </recent_temporary>

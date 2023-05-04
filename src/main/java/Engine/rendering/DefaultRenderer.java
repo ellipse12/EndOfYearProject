@@ -75,7 +75,7 @@ public class DefaultRenderer implements Renderer{
         //shader.setUniform("light", new Light(new Vector3f(1,1,1), new Vector3f(-500f, 1000f, 0), 1f, new Attenuation(0.05f, 0.05f, 0.005f)));
         shader.setUniform("camera_position", camera.getPosition());
         shader.setUniform("numLights", 3);
-        shader.setUniform("lights", lights);
+        shader.setUniform("lights", lights.toArray(new Light[0]));
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
         GL11.glDrawElements(GL11.GL_TRIANGLES, object.getModel().getVertexCount(), GL11.GL_UNSIGNED_INT, 0);
