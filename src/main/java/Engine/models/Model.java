@@ -1,13 +1,11 @@
 package Engine.models;
 
-import Engine.resourceLoading.Loader;
 import Engine.resourceLoading.Texture;
-import Engine.resourceLoading.objectLoading.RawModelData;
 import org.joml.Vector4f;
 
 public class Model {
-    private int vaoID;
-    private int vertexCount;
+    private final int vaoID;
+    private final int vertexCount;
 
     private Texture texture;
 
@@ -20,10 +18,10 @@ public class Model {
      * @param vertexCount the number of vertices in this model
      */
     public Model(int vaoID, int vertexCount) {
-        this(vaoID, vertexCount, null, new Material(new Vector4f(), new Vector4f(), new Vector4f(), false, 0f));
+        this(vaoID, vertexCount, null, new Material(new Vector4f(), new Vector4f(), new Vector4f(), false, 1f));
     }
     public Model(int vaoID, int vertexCount, Texture texture) {
-        this(vaoID, vertexCount, texture, new Material(new Vector4f(), new Vector4f(), new Vector4f(), true, 0f));
+        this(vaoID, vertexCount, texture, new Material(new Vector4f(), new Vector4f(), new Vector4f(), true, 0.7f));
 
     }
     public Model(int vaoID, int vertexCount, Material material){

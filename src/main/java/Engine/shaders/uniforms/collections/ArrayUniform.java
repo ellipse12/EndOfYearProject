@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ArrayUniform<T extends UniformI<V>, V> implements UniformI<V[]> {
-    private String name;
-    private int length;
-    private int location;
+    private final String name;
+    private final int length;
+    private final int location;
 
-    private List<T> uniforms;
+    private final List<T> uniforms;
     public ArrayUniform(String name, int length, ShaderProgram program){
         this.name = name;
         this.length = length;

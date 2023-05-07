@@ -10,8 +10,6 @@ import org.lwjgl.glfw.GLFWMouseButtonCallback;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.lwjgl.glfw.GLFW.*;
-
 public final class Mouse {
     private static double x, y;
 
@@ -22,9 +20,9 @@ public final class Mouse {
 
     private static long window;
 
-    private static boolean isCaptured = false;
+    private static final boolean isCaptured = false;
 
-    private static Map<Integer, Integer> keyMap = new HashMap<>();
+    private static final Map<Integer, Integer> keyMap = new HashMap<>();
 
     private static GLFWCursorPosCallback posCallback;
     private static GLFWMouseButtonCallback buttonCallback;

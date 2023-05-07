@@ -1,21 +1,24 @@
 package Engine.rendering;
+
 import Engine.input.KeyListener;
 import Engine.input.Keyboard;
 import Engine.input.Mouse;
-import org.lwjgl.glfw.*;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWWindowSizeCallback;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.system.*;
+import org.lwjgl.system.MemoryStack;
 
-import java.nio.*;
+import java.nio.IntBuffer;
 
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.system.MemoryStack.*;
-import static org.lwjgl.system.MemoryUtil.*;
+import static org.lwjgl.system.MemoryStack.stackPush;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
     private int width, height;
     private long window;
-    private String title;
+    private final String title;
     private boolean resized;
 
     private GLFWWindowSizeCallback sizeCallback;

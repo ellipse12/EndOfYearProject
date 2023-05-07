@@ -1,18 +1,22 @@
 package Engine.input;
 
-import static org.lwjgl.glfw.GLFW.*;
 import org.lwjgl.glfw.GLFWKeyCallback;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import static org.lwjgl.glfw.GLFW.*;
 
 /**
  * Contains a map of the active keys, and provides a way to register key listeners.
  */
 public final class Keyboard {
 
-    private static Map<Integer, Integer> keyMap = new HashMap<>();
+    private static final Map<Integer, Integer> keyMap = new HashMap<>();
 
-    private static Set<KeyListener> listeners = new HashSet<>();
+    private static final Set<KeyListener> listeners = new HashSet<>();
 
     private static GLFWKeyCallback keyCallback;
 

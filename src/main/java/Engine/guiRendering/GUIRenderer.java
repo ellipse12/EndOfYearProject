@@ -2,9 +2,7 @@ package Engine.guiRendering;
 
 import Engine.MainClass;
 import Engine.Scene;
-import Engine.rendering.Camera;
 import Engine.rendering.Renderer;
-import Engine.resourceLoading.Texture;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
@@ -16,14 +14,25 @@ import org.lwjgl.opengl.GL30;
 public class GUIRenderer implements Renderer {
 
 
-    private GUIShader shader = new GUIShader();
+    private final GUIShader shader = new GUIShader();
 
-    private static final GUI gui = new GUI(new Vector2f(), new Vector2f(1f), new Texture("test.png"));
 
+    /**
+     * renders all of the guis in the scene
+     * @param scene the scene
+     */
     @Override
     public void render(Scene scene) {
+        for(GUI gui: scene.getGuis()){
+            renderSingle(gui);
+        }
+    }
 
-
+    /**
+     * renders a single gui to the screen
+     * @param gui the gui to render
+     */
+    private void renderSingle(GUI gui){
         shader.start();
         GL30.glBindVertexArray(gui.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
@@ -46,7 +55,6 @@ public class GUIRenderer implements Renderer {
         GL20.glDisableVertexAttribArray(1);
         GL30.glBindVertexArray(0);
         shader.stop();
-
     }
 
     @Override
@@ -56,6 +64,6 @@ public class GUIRenderer implements Renderer {
 
     @Override
     public void cleanUp() {
-
+        shader.cleanUp();
     }
 }

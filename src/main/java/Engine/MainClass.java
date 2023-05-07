@@ -2,17 +2,12 @@ package Engine;
 
 import Engine.input.KeyListener;
 import Engine.input.Keyboard;
-import Engine.input.Mouse;
-import Engine.models.WorldObject;
 import Engine.rendering.Window;
-import Engine.rendering.registration.Registry;
-import Engine.rendering.registration.RegistryObject;
 import Engine.resourceLoading.Loader;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.glClearColor;
 
 public class MainClass {
         public static Window window = new Window(800, 400, "test");
@@ -21,12 +16,13 @@ public class MainClass {
 
         public static boolean paused = false;
 
-        public static Registry<WorldObject> objectRegistry = new Registry<>();
+
 
         public static void main(String[] args){
             MainClass main = new MainClass();
             main.init();
             window.create();
+
             GL.createCapabilities();
 
             Keyboard.addKeyListener((key, action, mod) -> {
@@ -44,6 +40,7 @@ public class MainClass {
                     TestLoop.loop(window);
 
             }
+
             TestLoop.cleanUp();
 
 
@@ -56,6 +53,7 @@ public class MainClass {
             if ( !glfwInit() ) {
                 throw new IllegalStateException("Unable to initialize GLFW");
             }
+
 
         }
 

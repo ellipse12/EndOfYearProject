@@ -1,13 +1,12 @@
 package Engine.shaders.uniforms.compound;
 
-import Engine.shaders.ShaderProgram;
 import Engine.shaders.Uniform;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class MultiUniform  {
-    private Set<Uniform> uniforms;
+    private final Set<Uniform> uniforms;
     public MultiUniform() {
 
         this.uniforms = new HashSet<>();

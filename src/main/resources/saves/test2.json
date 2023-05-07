@@ -1,0 +1,5 @@
+{ "model":{"modelFile":"test","texture":"test.png"},
+  "position":[0,0,-10],
+  "rotation":[0,0,0],
+  "scale": [2.0, 1.0, 1.0]
+}

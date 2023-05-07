@@ -2,8 +2,8 @@ package Engine.shaders;
 
 public abstract class Uniform<T> implements UniformI<T>{
 
-    private int location;
-    private String name;
+    private final int location;
+    private final String name;
 
 
 

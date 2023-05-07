@@ -1,11 +1,15 @@
 package Engine.resourceLoading.objectLoading;
 
 
+import Engine.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -14,17 +18,11 @@ import java.util.List;
  */
 public class OBJFileLoader {
 
-    private static final String RES_LOC = "src/main/resources/models/";
+    private static final String RES_LOC = "models/";
 
     public static @NotNull RawModelData loadOBJ(String objFileName) {
-        FileReader isr = null;
-        File objFile = new File(RES_LOC + objFileName + ".obj");
-        try {
-            isr = new FileReader(objFile);
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found in res; don't use any extension");
-        }
-        BufferedReader reader = new BufferedReader(isr);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader( ResourceLocation.getFileStream(RES_LOC + objFileName + ".obj")));
         String line;
         List<Vertex> vertices = new ArrayList<Vertex>();
         List<Vector2f> textures = new ArrayList<Vector2f>();
@@ -35,22 +33,22 @@ public class OBJFileLoader {
                 line = reader.readLine();
                 if (line.startsWith("v ")) {
                     String[] currentLine = line.split(" ");
-                    Vector3f vertex = new Vector3f((float) Float.valueOf(currentLine[1]),
-                            (float) Float.valueOf(currentLine[2]),
-                            (float) Float.valueOf(currentLine[3]));
+                    Vector3f vertex = new Vector3f( Float.parseFloat(currentLine[1]),
+                             Float.parseFloat(currentLine[2]),
+                             Float.parseFloat(currentLine[3]));
                     Vertex newVertex = new Vertex(vertices.size(), vertex);
                     vertices.add(newVertex);
 
                 } else if (line.startsWith("vt ")) {
                     String[] currentLine = line.split(" ");
-                    Vector2f texture = new Vector2f((float) Float.valueOf(currentLine[1]),
-                            (float) Float.valueOf(currentLine[2]));
+                    Vector2f texture = new Vector2f(Float.parseFloat(currentLine[1]),
+                            Float.parseFloat(currentLine[2]));
                     textures.add(texture);
                 } else if (line.startsWith("vn ")) {
                     String[] currentLine = line.split(" ");
-                    Vector3f normal = new Vector3f((float) Float.valueOf(currentLine[1]),
-                            (float) Float.valueOf(currentLine[2]),
-                            (float) Float.valueOf(currentLine[3]));
+                    Vector3f normal = new Vector3f(Float.parseFloat(currentLine[1]),
+                             Float.parseFloat(currentLine[2]),
+                            Float.parseFloat(currentLine[3]));
                     normals.add(normal);
                 } else if (line.startsWith("f ")) {
                     break;

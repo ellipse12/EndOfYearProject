@@ -3,7 +3,6 @@ package Engine.shaders.uniforms.primitives;
 import Engine.shaders.ShaderProgram;
 import Engine.shaders.Uniform;
 import org.joml.Matrix4f;
-import org.lwjgl.opengl.GL20;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.FloatBuffer;

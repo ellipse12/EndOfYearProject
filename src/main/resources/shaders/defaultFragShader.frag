@@ -15,17 +15,11 @@ struct Material{
      int hasTexture;
      float reflectance;
 };
-struct Attenuation{
-     float constant;
-     float linear;
-     float exponent;
-};
 
 struct Light{
      vec3 color;
      vec3 position;
      float intensity;
-     Attenuation att;
 };
 
 
@@ -73,10 +67,6 @@ vec4 calcPointLight(Light light, vec3 position, vec3 normal)
      specularFactor = pow(specularFactor, specularPower);
      specColour = specularC * specularFactor * material.reflectance * vec4(light.color, 1.0);
 
-     // Attenuation
-     float distance = length(light_direction);
-     float attenuationInv = light.att.constant + light.att.linear * distance +
-     light.att.exponent * distance * distance;
      return (diffuseColour + specColour);
 }
 

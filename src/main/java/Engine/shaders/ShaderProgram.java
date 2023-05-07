@@ -1,30 +1,22 @@
 package Engine.shaders;
 
-import org.joml.Matrix4f;
-import org.joml.Vector2f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.BufferUtils;
+import Engine.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import org.lwjgl.system.MemoryStack;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.FloatBuffer;
+import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.lwjgl.opengl.GL20.glUniformMatrix4fv;
-
 public abstract class ShaderProgram {
 
-    private int programID;
-    private int vertexShaderID;
-    private int fragmentShaderID;
+    private final int programID;
+    private final int vertexShaderID;
+    private final int fragmentShaderID;
 
-    private Set<UniformI> uniforms;
+    private final Set<UniformI> uniforms;
 
 
     /**
@@ -124,7 +116,7 @@ public abstract class ShaderProgram {
     private static  int loadShader(String file, int type){
         StringBuilder shaderSource = new StringBuilder();
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceLocation.getFileStream(file)));
             String line;
             while((line = reader.readLine())!=null){
                 shaderSource.append(line).append("\n");

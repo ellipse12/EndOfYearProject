@@ -2,7 +2,6 @@ package Engine.shaders;
 
 
 import Engine.shaders.uniforms.collections.LightArrayU;
-import Engine.shaders.uniforms.compound.LightU;
 import Engine.shaders.uniforms.compound.MaterialU;
 import Engine.shaders.uniforms.primitives.FloatU;
 import Engine.shaders.uniforms.primitives.IntegerU;
@@ -10,9 +9,8 @@ import Engine.shaders.uniforms.primitives.Matrix4fU;
 import Engine.shaders.uniforms.primitives.Vector3fU;
 
 public class StaticShader extends ShaderProgram {
-    private static final String vertexFile = "src/main/resources/shaders/defaultVertShader.vert";
-    private static final String fragmentFile = "src/main/resources/shaders/defaultFragShader.frag";
-
+   private static final String vertexFile ="shaders/defaultVertShader.vert";
+    private static final String fragmentFile = "shaders/defaultFragShader.frag";
 
 
 
@@ -43,7 +41,7 @@ public class StaticShader extends ShaderProgram {
         addUniform(new Vector3fU("ambientLight", this));
         addUniform(new FloatU("specularPower", this));
         addUniform(new IntegerU("numLights", this));
-
+        addUniform(new Matrix4fU("modelViewMatrix", this));
     }
 
 

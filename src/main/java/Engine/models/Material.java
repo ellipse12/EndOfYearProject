@@ -9,6 +9,14 @@ public class Material {
     private boolean hasTexture;
     private float reflectance;
 
+    /**
+     * represents a material in relation to a model
+     * @param ambient the ambient light for this model
+     * @param diffuse the diffuse amount for this model
+     * @param specular the specular highlighting amount
+     * @param hasTexture if the model has a texture or not
+     * @param reflectance how reflectent is the model
+     */
     public Material(Vector4f ambient, Vector4f diffuse, Vector4f specular, boolean hasTexture, float reflectance) {
         this.ambient = ambient;
         this.diffuse = diffuse;

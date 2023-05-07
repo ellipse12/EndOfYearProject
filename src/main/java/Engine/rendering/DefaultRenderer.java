@@ -2,12 +2,9 @@ package Engine.rendering;
 
 import Engine.MainClass;
 import Engine.Scene;
-import Engine.models.Attenuation;
 import Engine.models.Light;
-import Engine.models.Model;
 import Engine.models.WorldObject;
 import Engine.resourceLoading.Texture;
-import Engine.shaders.ShaderProgram;
 import Engine.shaders.StaticShader;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
@@ -21,7 +18,7 @@ import org.lwjgl.opengl.GL30;
 import java.util.ArrayList;
 
 public class DefaultRenderer implements Renderer{
-    private StaticShader shader;
+    private final StaticShader shader;
 
 
 
@@ -64,15 +61,14 @@ public class DefaultRenderer implements Renderer{
         Texture texture = object.getModel().getTexture();
 
         Matrix4f transform = Maths.createTransformationMatrix(object.getPosition(), object.getRotation(), object.getScale());
-        Matrix4f view = Maths.getModelViewMatrix(object, Maths.createViewMatrix(camera));
 
 
         shader.setUniform("transformationMatrix", transform);
-        shader.setUniform("viewMatrix", view);
+
         shader.setUniform("material", object.getModel().getMaterial());
-        shader.setUniform("specularPower", 0.1f);
+        shader.setUniform("specularPower", 1f);
         shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
-        //shader.setUniform("light", new Light(new Vector3f(1,1,1), new Vector3f(-500f, 1000f, 0), 1f, new Attenuation(0.05f, 0.05f, 0.005f)));
+
         shader.setUniform("camera_position", camera.getPosition());
         shader.setUniform("numLights", 3);
         shader.setUniform("lights", lights.toArray(new Light[0]));
@@ -87,8 +83,29 @@ public class DefaultRenderer implements Renderer{
 
     }
 
+    private ArrayList<Light> transformLights(ArrayList<Light> lights, Matrix4f viewMatrix){
+        ArrayList<Light> out = new ArrayList<>();
+        for(Light lightt : lights){
+            out.add(new Light(lightt.getColor(), lightt.getPosition(), lightt.getIntensity()));
+        }
+        for(Light light : out){
+            Vector3f position = light.getPosition();
+            Vector4f uax = new Vector4f(light.getPosition(), 1);
+            uax.mul(viewMatrix);
+            position.x = uax.x;
+            position.y = uax.y;
+            position.z = uax.z;
+        }
+        return out;
+    }
+
     @Override
     public void render(Scene scene) {
+        shader.start();
+        Matrix4f view = Maths.createViewMatrix(scene.getCamera());
+        shader.setUniform("viewMatrix", view);
+        shader.stop();
+
         for(WorldObject object: scene.getObjects()){
             render(object, scene.getCamera(), scene.getLights());
         }
@@ -96,7 +113,7 @@ public class DefaultRenderer implements Renderer{
 
     @Override
     public void update(Scene scene) {
-        scene.getCamera().update();
+        scene.getPlayer().update();
         init();
     }
 

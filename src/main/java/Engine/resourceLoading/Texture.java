@@ -1,18 +1,15 @@
 package Engine.resourceLoading;
 
+import Engine.util.ResourceLocation;
 import de.matthiasmann.twl.utils.PNGDecoder;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Texture {
-    private String filename;
-    private ByteBuffer textureBuffer;
+    private final String filename;
+    private final ByteBuffer textureBuffer;
 
     private int textureID;
 
@@ -37,7 +34,7 @@ public class Texture {
     private ByteBuffer decodeTexture(String filename){
 
         try{
-            InputStream stream = Files.newInputStream(Paths.get("src/main/resources/textures/" + filename));
+            InputStream stream = ResourceLocation.getFileStream("textures/" + filename);
             decoder = new PNGDecoder(stream);
             ByteBuffer buf = ByteBuffer.allocateDirect(
                     4 * decoder.getWidth() * decoder.getHeight());

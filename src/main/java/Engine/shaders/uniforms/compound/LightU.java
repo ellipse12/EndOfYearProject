@@ -7,14 +7,14 @@ import Engine.shaders.uniforms.primitives.FloatU;
 import Engine.shaders.uniforms.primitives.Vector3fU;
 
 public class LightU extends Uniform<Light> {
-    private MultiUniform uniforms;
+    private final MultiUniform uniforms;
     public LightU(String name, ShaderProgram program) {
         super(name, program);
         uniforms = new MultiUniform();
         uniforms.addUniform(new Vector3fU(this.getName()+".color", program));
         uniforms.addUniform(new Vector3fU(this.getName()+".position", program));
         uniforms.addUniform(new FloatU(this.getName()+".intensity", program));
-        uniforms.addUniform(new AttenuationU(this.getName()+".att", program));
+
 
     }
 
@@ -23,6 +23,6 @@ public class LightU extends Uniform<Light> {
         uniforms.load(this.getName() + ".color", value.getColor());
         uniforms.load(this.getName() + ".position", value.getPosition());
         uniforms.load(this.getName() + ".intensity", value.getIntensity());
-        uniforms.load(this.getName() + ".att", value.getAttenuation());
+
     }
 }

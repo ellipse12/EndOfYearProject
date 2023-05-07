@@ -1,7 +1,6 @@
 package Engine.guiRendering;
 
 import Engine.MainClass;
-import Engine.TestLoop;
 import Engine.models.Model;
 import Engine.resourceLoading.Texture;
 import org.joml.Vector2f;
@@ -13,12 +12,18 @@ public class GUI {
 
     private Vector2f scale;
 
-    private Texture texture;
+    private final Texture texture;
 
-    private Model model;
+    private final Model model;
 
     private final float[] positions = {-1, 1, -1, -1,1, 1, 1, -1};
 
+    /**
+     * represents a 2D GUI object
+     * @param position the position of the GUI on the screen
+     * @param scale the scale of the GUI
+     * @param texture the texture of the GUI
+     */
     public GUI(Vector2f position, Vector2f scale, Texture texture) {
         this.position = position;
         this.scale = scale;

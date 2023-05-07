@@ -1,11 +1,6 @@
 package Engine.rendering;
 
-import Engine.MainClass;
-import Engine.input.Mouse;
 import org.joml.Vector3f;
-
-import static Engine.input.Keyboard.isKeyDown;
-import static org.lwjgl.glfw.GLFW.*;
 
 public class Camera {
     private static final float TURN_SPEED = 5;
@@ -50,37 +45,9 @@ public class Camera {
         this.rotation.z = this.rotation.z + rotation.z;
 
     }
-    private float speed= 0.1f;
-
-    /**
-     * updates the camera every frame
-     */
-    public void update(){
-        //TODO move to separate player class
-        if(isKeyDown(GLFW_KEY_W)){
-            move(0, 0, -speed);
-        }
-        if(isKeyDown(GLFW_KEY_S)){
-            move(0,0,speed);
-        }
-        if(isKeyDown(GLFW_KEY_A)){
-            move(-speed, 0, 0);
-        }
-        if(isKeyDown(GLFW_KEY_D)){
-            move(speed,0,0);
-        }
-        if(true) {
-            double max = 100f;
-
-            Vector3f po = new Vector3f((float) (Mouse.getDY() * 0.08f), (float) (Mouse.getDX() * 0.08f), 0);
-
-            rotate(po);
-        }
 
 
 
-
-    }
 
 
 

@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'application'
+    //id 'application'
 
 
 }
@@ -15,9 +15,9 @@ repositories {
     mavenCentral()
 }
 
-application{
-    mainClassName = 'Engine.MainClass'
-}
+//application{
+//    mainClassName = 'Engine.MainClass'
+//}
 
 jar{
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
@@ -25,21 +25,23 @@ jar{
     manifest{
         attributes 'Main-Class' : 'Engine.MainClass'
     }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    from{
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it)}
     }
 
+
+
 }
-sourceSets {
-    main {
-        resources {
-            srcDirs = ["src/main/resources"]
-        }
-    }
-}
+
+
+
+
+
+
+
 dependencies {
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
-
+    implementation 'org.json:json:20090211'
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-assimp"
     implementation "org.lwjgl:lwjgl-glfw"
@@ -57,6 +59,8 @@ dependencies {
     implementation group: 'org.l33tlabs.twl', name: 'pngdecoder', version: '1.0'
 
 }
+
+
 
 test {
 

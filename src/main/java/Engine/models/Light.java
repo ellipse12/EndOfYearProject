@@ -13,15 +13,21 @@ public class Light {
     private Vector3f color;
     private Vector3f position;
     private float intensity;
-    private Attenuation attenuation;
+
 
     private final StaticShader shader = new StaticShader();
 
-    public Light(Vector3f color, Vector3f position, float intensity, Attenuation attenuation) {
+    /**
+     * represents a light object
+     * @param color the color of the light
+     * @param position the position of the light
+     * @param intensity the intensity of the light
+     */
+    public Light(Vector3f color, Vector3f position, float intensity) {
         this.color = color;
         this.position = position;
         this.intensity = intensity;
-        this.attenuation = attenuation;
+
     }
 
     public Vector3f getColor() {
@@ -48,15 +54,11 @@ public class Light {
         this.intensity = intensity;
     }
 
-    public Attenuation getAttenuation() {
-        return attenuation;
-    }
 
-    public void setAttenuation(Attenuation attenuation) {
-        this.attenuation = attenuation;
-    }
-
-
+    /**
+     * renders this light
+     * @param camera the camera to render from
+     */
     public void render(Camera camera) {
 
         shader.setUniform("specularPower", 0.1f);
@@ -65,13 +67,14 @@ public class Light {
         shader.setUniform("camera_position", camera.getPosition());
 
     }
-    int add = 1;
 
 
+    /**
+     * updates this light
+     * @param camera the camera to render from
+     */
     public void update(Camera camera) {
         GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
-        GL11.glClearColor(1f, 1f, 1f, 1f);
         shader.start();
         Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
         shader.setUniform("projectionMatrix", projectionMatrix);
@@ -82,7 +85,9 @@ public class Light {
 
     }
 
-
+    /**
+     * cleans the shader
+     */
     public void cleanUp() {
         shader.cleanUp();
     }

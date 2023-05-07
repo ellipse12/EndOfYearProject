@@ -9,7 +9,7 @@ import Engine.shaders.uniforms.primitives.Vector4fU;
 
 public class MaterialU extends Uniform<Material> {
 
-   private MultiUniform uniforms;
+   private final MultiUniform uniforms;
 
     public MaterialU(String name, ShaderProgram program) {
         super(name, program);

@@ -5,12 +5,12 @@ and this should be considered a helper class and not graded within the scope of 
  */
 public class ModelDataNM {
 
-    private float[] vertices;
-    private float[] textureCoords;
-    private float[] normals;
-    private float[] tangents;
-    private int[] indices;
-    private float furthestPoint;
+    private final float[] vertices;
+    private final float[] textureCoords;
+    private final float[] normals;
+    private final float[] tangents;
+    private final int[] indices;
+    private final float furthestPoint;
 
     public ModelDataNM(float[] vertices, float[] textureCoords, float[] normals, float[] tangents, int[] indices,
                        float furthestPoint) {

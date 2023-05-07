@@ -19,10 +19,10 @@ import java.util.List;
 import static org.lwjgl.opengl.GL11.*;
 
 public class Loader {
-    private List<Integer> vaos = new ArrayList<>();
-    private List<Integer> vbos = new ArrayList<>();
+    private final List<Integer> vaos = new ArrayList<>();
+    private final List<Integer> vbos = new ArrayList<>();
 
-    private List<Integer> textures = new ArrayList<>();
+    private final List<Integer> textures = new ArrayList<>();
 
 
     /**

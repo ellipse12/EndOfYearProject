@@ -4,11 +4,11 @@ package Engine.resourceLoading.objectLoading;
  and this should be considered a helper class and not graded within the scope of the rest of the project
  */
 public class RawModelData {
-    private float[] vertices;
-    private float[] textureCoords;
-    private float[] normals;
-    private int[] indices;
-    private float furthestPoint;
+    private final float[] vertices;
+    private final float[] textureCoords;
+    private final float[] normals;
+    private final int[] indices;
+    private final float furthestPoint;
 
     public RawModelData(float[] vertices, float[] textureCoords, float[] normals, int[] indices,
                      float furthestPoint) {

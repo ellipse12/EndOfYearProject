@@ -1,10 +1,8 @@
 package Engine.models;
 
-import Engine.rendering.Camera;
-
 import org.joml.Vector3f;
 
-public abstract class WorldObject {
+public class WorldObject {
     private Model model;
 
     private Vector3f position;
@@ -59,10 +57,18 @@ public abstract class WorldObject {
         this.scale = scale;
     }
 
-    public void increasePosition(Vector3f position){
-        this.position.add(position);
+    /**
+     * increases the position
+     * @param offset the offset to increase the position by
+     */
+    public void increasePosition(Vector3f offset){
+        this.position.add(offset);
     }
 
+    /**
+     * increases the rotation and clamps it between 0 and 360 degrees
+     * @param rotation how much to increase the rotation by
+     */
     public void increaseRotation(Vector3f rotation){
         this.rotation.add(rotation);
         if(this.rotation.x > 360 || this.rotation.y > 360 || this.rotation.z > 360){
@@ -70,6 +76,10 @@ public abstract class WorldObject {
         }
     }
 
+    /**
+     * scales the object up
+     * @param scale the amount to scale it by
+     */
     public void increaseScale(Vector3f scale){
         this.scale.add(scale);
     }
