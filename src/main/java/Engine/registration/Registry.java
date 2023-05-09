@@ -13,10 +13,26 @@ public class Registry {
     private static Map<String, Supplier<Light>> lightRegistry = new HashMap<>();
     private static Map<String, Supplier<GUI>> guiRegistry = new HashMap<>();
 
-    public void registerObject(String id, Supplier<WorldObject> object){
+    public static void registerObject(String id, Supplier<WorldObject> object){
         objectRegistry.put(id,object);
     }
-    public void registerGUI(String id, Supplier<GUI> object){
+    public static void registerGUI(String id, Supplier<GUI> object){
         guiRegistry.put(id,object);
+    }
+
+    public static Map<String, Supplier<WorldObject>> getObjectRegistry(){
+        return objectRegistry;
+    }
+
+    public static Map<String, Supplier<Light>> getLightRegistry() {
+        return lightRegistry;
+    }
+
+    public static Supplier<WorldObject> getObject(String id){
+        return objectRegistry.get(id);
+    }
+
+    public static Supplier<Light> getLight(String id){
+        return lightRegistry.get(id);
     }
 }

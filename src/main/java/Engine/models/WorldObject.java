@@ -2,6 +2,8 @@ package Engine.models;
 
 import Engine.saving.JsonSerializable;
 import org.joml.Vector3f;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public abstract class WorldObject implements JsonSerializable<WorldObject> {
     private Model model;
@@ -12,6 +14,8 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
 
     private Vector3f scale;
 
+    private final String id;
+
     /**
      * a generic object class
      * @param model the model of the object
@@ -19,11 +23,12 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
      * @param rotation the rotation of the object
      * @param scale the scale of the object
      */
-    public WorldObject(Model model, Vector3f position, Vector3f rotation, Vector3f scale) {
+    public WorldObject(Model model, Vector3f position, Vector3f rotation, Vector3f scale, String id) {
         this.model = model;
         this.position = position;
         this.rotation = rotation;
         this.scale = scale;
+        this.id = id;
     }
 
     public Model getModel() {
@@ -89,6 +94,27 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
     }
 
 
+    public String getId() {
+        return id;
+    }
 
+    @Override
+    public JSONObject serialize() {
+        JSONObject out = new JSONObject();
+        try {
+            out.put("position", createVector3fEntry(this.getPosition()));
 
+        out.put("rotation", createVector3fEntry(this.getRotation()));
+        out.put("scale", createVector3fEntry(this.getScale()));
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        return out;
+    }
+
+    @Override
+    public WorldObject deserialize(JSONObject object) {
+        String id = object.getString("id");
+
+    }
 }

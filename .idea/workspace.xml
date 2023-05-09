@@ -9,14 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: executable">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: save system">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" afterDir="false" />
     </list>
@@ -408,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683424149318</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="started: save system">
+      <created>1683662036268</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683662036268</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -440,6 +445,7 @@
     <MESSAGE value="started: gui rendering" />
     <MESSAGE value="started: allowing for multiple lights" />
     <MESSAGE value="started: dynamic object adding through &quot;save&quot; files" />
-    <option name="LAST_COMMIT_MESSAGE" value="started: dynamic object adding through &quot;save&quot; files" />
+    <MESSAGE value="started: save system" />
+    <option name="LAST_COMMIT_MESSAGE" value="started: save system" />
   </component>
 </project>

@@ -11,7 +11,7 @@ public class TestObject extends WorldObject {
 
 
     public TestObject(Vector3f position, Vector3f rotation, Vector3f scale) {
-        super(MainClass.loader.getNormalModelFromResource("test", new Texture("test.png")), position, rotation, scale);
+        super(MainClass.loader.getNormalModelFromResource("test", new Texture("test.png")), position, rotation, scale, "test1");
     }
 
 

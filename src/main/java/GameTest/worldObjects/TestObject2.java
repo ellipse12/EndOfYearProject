@@ -11,13 +11,13 @@ public class TestObject2 extends WorldObject {
 
 
     public TestObject2(Vector3f position, Vector3f rotation, Vector3f scale) {
-        super(MainClass.loader.getNormalModelFromResource("worldModel", new Texture("test.png")),position, rotation, scale);
+        super(MainClass.loader.getNormalModelFromResource("worldModel", new Texture("test.png")),position, rotation, scale, "test2");
     }
 
 
     @Override
     public JSONObject serialize() {
-        return null;
+
     }
 
     @Override

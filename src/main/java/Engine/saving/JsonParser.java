@@ -26,41 +26,11 @@ import java.util.Objects;
 
 public class JsonParser {
 
-    public static Scene parseFile(String file, Loader loader) throws IOException, JSONException {
-
-            JSONObject object;
-        String contents = null;
-
-            contents = readFile(file);
+//    public static Scene parseFile(String file, Loader loader) throws IOException, JSONException {
+//
+//    }
 
 
-           object = new JSONObject(contents);
-           Player player = parsePlayerEntry(object.getJSONObject("player"));
-           Scene scene = new Scene(player);
-           JSONArray lights = object.getJSONArray("lights");
-           JSONArray objects = object.getJSONArray("objects");
-           for(int i = 0; i < lights.length(); i++){
-               scene.addLight(parseLightEntry(lights.getJSONObject(i)));
-
-           }
-           for(int k = 0; k < objects.length(); k++){
-               scene.addObject(parseWorldObjectEntry(objects.getJSONObject(k), loader));
-           }
-           return scene;
-
-
-
-    }
-
-    private static Player parsePlayerEntry(JSONObject player){
-        try {
-            Vector3f position = parseVector3f(player.getJSONArray("position"));
-            Vector3f rotation = parseVector3f(player.getJSONArray("rotation"));
-            return new Player(new Camera(position, rotation));
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
 
@@ -84,9 +54,14 @@ public class JsonParser {
     }
 
     public static void save(Scene scene, String name){
+        JSONObject out = new JSONObject();
         for(WorldObject object : scene.getObjects()){
-           object.serialize();
-       }
+            try {
+                out.put(object.getId(), object.serialize());
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 
     }
