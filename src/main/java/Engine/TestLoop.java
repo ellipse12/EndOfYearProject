@@ -2,28 +2,19 @@ package Engine;
 
 import Engine.guiRendering.GUI;
 import Engine.guiRendering.GUIRenderer;
-import Engine.models.Light;
-import Engine.models.WorldObject;
 import Engine.rendering.Camera;
 import Engine.rendering.DefaultRenderer;
 import Engine.rendering.Renderer;
 import Engine.rendering.Window;
-import Engine.resourceLoading.JsonParser;
+import Engine.saving.JsonParser;
 import Engine.resourceLoading.Texture;
 import Engine.shaders.StaticShader;
 import GameTest.Player;
-import GameTest.worldObjects.TestObject;
-import GameTest.worldObjects.TestObject2;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Random;
 
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;

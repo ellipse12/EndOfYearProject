@@ -1,8 +1,9 @@
 package Engine.models;
 
+import Engine.saving.JsonSerializable;
 import org.joml.Vector3f;
 
-public class WorldObject {
+public abstract class WorldObject implements JsonSerializable<WorldObject> {
     private Model model;
 
     private Vector3f position;

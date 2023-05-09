@@ -9,30 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: dynamic object adding through &quot;save&quot; files">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/models/compSci.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/models/plane.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/saves/save.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/cube.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/cursor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/plane.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/sphere.png" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: executable">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/saves/test.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/saves/test2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/saves/worldModel.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +57,24 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
@@ -85,8 +89,8 @@
       <list>
         <option value="vs-template" />
         <option value="fs-template" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>

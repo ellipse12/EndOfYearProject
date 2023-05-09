@@ -1,27 +1,16 @@
 package Engine.util;
 
-import java.io.File;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class ResourceLocation {
 
-
-    public static InputStream getFileStream(final String file){
-        InputStream io = ResourceLocation.class.getClassLoader().getResourceAsStream(file);
-        if(io == null){
-            throw new IllegalStateException(file + " is not found");
-        }
-        return io;
+    @Nullable
+    public static InputStream getFileStream(String name){
+        InputStream stream = ResourceLocation.class.getClassLoader().getResourceAsStream(name);
+        return stream;
     }
-
-    public static URL getURL(final String file) throws URISyntaxException {
-        return ResourceLocation.class.getClassLoader().getResource(file);
-    }
-
 
 }
