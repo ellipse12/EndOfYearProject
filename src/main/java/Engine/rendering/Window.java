@@ -94,7 +94,7 @@ public class Window {
         Keyboard.create(window);
 
         Keyboard.addKeyListener((key, action, mod) -> {
-            if(key == GLFW_KEY_E && action == KeyListener.KEY_RELEASED){
+            if(key == GLFW_KEY_ESCAPE && action == KeyListener.KEY_RELEASED){
                 glfwSetWindowShouldClose(window, true);
             }
         });

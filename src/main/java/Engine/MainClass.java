@@ -26,7 +26,7 @@ public class MainClass {
             GL.createCapabilities();
 
             Keyboard.addKeyListener((key, action, mod) -> {
-                if(key == GLFW_KEY_ESCAPE && action == KeyListener.KEY_RELEASED){
+                if(key == GLFW_KEY_E && action == KeyListener.KEY_RELEASED){
                     paused = !paused;
                 }
             });

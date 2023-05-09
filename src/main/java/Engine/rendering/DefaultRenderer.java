@@ -33,7 +33,7 @@ public class DefaultRenderer implements Renderer{
     public void init(){
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
-        GL11.glClearColor(1f, 1f, 1f, 1f);
+        GL11.glClearColor(0.8f, 0.8f, 0.8f, 1f);
         shader.start();
         Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
         shader.setUniform("projectionMatrix", projectionMatrix);
@@ -67,7 +67,7 @@ public class DefaultRenderer implements Renderer{
 
         shader.setUniform("material", object.getModel().getMaterial());
         shader.setUniform("specularPower", 1f);
-        shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
+        shader.setUniform("ambientLight", new Vector3f(.7f,.7f,.7f));
 
         shader.setUniform("camera_position", camera.getPosition());
         shader.setUniform("numLights", 3);
@@ -113,7 +113,10 @@ public class DefaultRenderer implements Renderer{
 
     @Override
     public void update(Scene scene) {
-        scene.getPlayer().update();
+        if(!MainClass.paused) {
+            scene.getPlayer().update();
+        }
+
         init();
     }
 

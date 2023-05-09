@@ -18,10 +18,10 @@ public class Model {
      * @param vertexCount the number of vertices in this model
      */
     public Model(int vaoID, int vertexCount) {
-        this(vaoID, vertexCount, null, new Material(new Vector4f(), new Vector4f(), new Vector4f(), false, 1f));
+        this(vaoID, vertexCount, null, new Material(new Vector4f(), new Vector4f(), new Vector4f(), false, 0f));
     }
     public Model(int vaoID, int vertexCount, Texture texture) {
-        this(vaoID, vertexCount, texture, new Material(new Vector4f(), new Vector4f(), new Vector4f(), true, 0.7f));
+        this(vaoID, vertexCount, texture, new Material(new Vector4f(), new Vector4f(), new Vector4f(), true, 0f));
 
     }
     public Model(int vaoID, int vertexCount, Material material){

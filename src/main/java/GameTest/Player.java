@@ -11,11 +11,11 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class Player{
 
-    private float speed = 0.1f;
+    private float speed = 0.4f;
 
     private static final float GRAVITY = -0.005f;
 
-    private static final float JUMP_POWER = 0.14f;
+    private static final float JUMP_POWER = 0.2f;
 
     private Camera camera;
 
@@ -28,7 +28,7 @@ public class Player{
     private boolean isInAir = false;
 
     public void update(){
-        //TODO move to separate player class
+
 
 
         if(isKeyDown(GLFW_KEY_W)){
@@ -56,10 +56,10 @@ public class Player{
 
         upwardsSpeed += GRAVITY;
         camera.move(0, upwardsSpeed, 0);
-        if(camera.getPosition().y < -3){
+        if(camera.getPosition().y < 0){
             upwardsSpeed = 0;
             isInAir = false;
-            camera.getPosition().y = -3;
+            camera.getPosition().y = 0;
         }
 
 

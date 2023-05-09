@@ -9,59 +9,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: allowing for multiple lights2">
-      <change afterPath="$PROJECT_DIR$/hs_err_pid13808.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hs_err_pid4524.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/JsonParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/saves/test.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/saves/test2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: dynamic object adding through &quot;save&quot; files">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/models/compSci.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/models/plane.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/saves/save.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/cube.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/cursor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/plane.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/sphere.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid16396.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Attenuation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Material.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/registration/ElementExistsException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/registration/Registry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/registration/RegistryObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/JsonParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Texture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/ModelDataNM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/ModelDataNM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/NormalMappedObjLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/NormalMappedObjLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/OBJFileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/OBJFileLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/RawModelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/RawModelData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/VertexNM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/objectLoading/VertexNM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/ArrayUniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/ArrayUniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/LightArrayU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/LightArrayU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/AttenuationU.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/LightU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/LightU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MaterialU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MaterialU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MultiUniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MultiUniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/Matrix4fU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/primitives/Matrix4fU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/M.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/saves/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/saves/test2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/saves/worldModel.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/test.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,8 +85,8 @@
       <list>
         <option value="vs-template" />
         <option value="fs-template" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -141,21 +112,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Goad.Samuel24/IdeaProjects/EndOfYearProject/src/main/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ellip/Documents/Java/EndOfYearProject/src/main/resources/textures&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ellip\Documents\Java\EndOfYearProject\src\main\resources\textures" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ellip\Documents\Java\EndOfYearProject\src\main\resources\saves" />
       <recent name="C:\Users\ellip\Documents\Java\EndOfYearProject\src\main\resources" />
@@ -423,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683067176105</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="started: dynamic object adding through &quot;save&quot; files">
+      <created>1683424149318</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683424149318</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -454,6 +435,7 @@
     <MESSAGE value="finished: lighting" />
     <MESSAGE value="started: gui rendering" />
     <MESSAGE value="started: allowing for multiple lights" />
-    <option name="LAST_COMMIT_MESSAGE" value="started: allowing for multiple lights" />
+    <MESSAGE value="started: dynamic object adding through &quot;save&quot; files" />
+    <option name="LAST_COMMIT_MESSAGE" value="started: dynamic object adding through &quot;save&quot; files" />
   </component>
 </project>

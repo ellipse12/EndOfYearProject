@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -18,8 +19,8 @@ public class ResourceLocation {
         return io;
     }
 
-    public static URI getURI(final String file) throws URISyntaxException {
-        return ResourceLocation.class.getClassLoader().getResource(file).toURI();
+    public static URL getURL(final String file) throws URISyntaxException {
+        return ResourceLocation.class.getClassLoader().getResource(file);
     }
 
 

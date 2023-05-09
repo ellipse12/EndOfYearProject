@@ -13,8 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -23,6 +22,8 @@ public class Loader {
     private final List<Integer> vbos = new ArrayList<>();
 
     private final List<Integer> textures = new ArrayList<>();
+
+    private Map<Integer, String> resources = new HashMap<>();
 
 
     /**
@@ -46,6 +47,12 @@ public class Loader {
 
     }
 
+    public Map<Integer, String> getResources(){
+        return resources;
+    }
+    public String getResourceFromID(int vaoID){
+        return resources.get(vaoID);
+    }
 
     public Model loadToVAO(float[] positions, int[] indices){
         int vaoID =createVAO();
@@ -99,12 +106,16 @@ public class Loader {
      */
     public Model getModelFromResource(String resource){
         RawModelData data =  OBJFileLoader.loadOBJ(resource);
-        return loadToVAO(data.getVertices(), data.getIndices());
+        Model model = loadToVAO(data.getVertices(), data.getIndices());
+        resources.put(model.getVaoID(), resource);
+        return model;
     }
 
     public Model getNormalModelFromResource(String resource, Texture texture){
         RawModelData data = OBJFileLoader.loadOBJ(resource);
-        return loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices(), texture);
+        Model model = loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices(), texture);
+        resources.put(model.getVaoID(), resource);
+        return model;
     }
 
     /**
@@ -114,7 +125,9 @@ public class Loader {
      */
     public Model getModelFromResource(String resource, Texture texture){
         RawModelData data =  OBJFileLoader.loadOBJ(resource);
-        return loadToVAO(data.getVertices(), data.getIndices(),data.getTextureCoords(), texture);
+        Model model = loadToVAO(data.getVertices(), data.getIndices(),data.getTextureCoords(), texture);
+        resources.put(model.getVaoID(), resource);
+        return model;
     }
 
     /**

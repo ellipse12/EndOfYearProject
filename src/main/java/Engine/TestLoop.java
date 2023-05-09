@@ -14,13 +14,16 @@ import Engine.shaders.StaticShader;
 import GameTest.Player;
 import GameTest.worldObjects.TestObject;
 import GameTest.worldObjects.TestObject2;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
+import java.util.Random;
 
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
@@ -38,25 +41,19 @@ public class TestLoop {
 
 
     public static void init(){
+        addObjects();
         scene.addRenderer(new DefaultRenderer(new StaticShader()));
         scene.addRenderer(new GUIRenderer());
-        scene.addLight(new Light(new Vector3f(1f,0f,1f), new Vector3f(-5f, 10f, 0), 3f));
-        scene.addLight(new Light(new Vector3f(1,1,1), new Vector3f(500, 100, 0), 1f));
-        scene.addGUI(new GUI(new Vector2f(), new Vector2f(1), new Texture("test.png")));
-        JsonParser.createSaveFile(new WorldObject(MainClass.loader.getNormalModelFromResource("worldModel", new Texture("test.png")), new Vector3f(-6, -5, -1), new Vector3f(), new Vector3f(1)), "worldModel", "worldModel");
-        addObjects();
+        scene.addGUI(new GUI(new Vector2f(), new Vector2f(1), new Texture("cursor.png")));
+
     }
 
     private static void addObjects(){
-
-
-        for(String string: JsonParser.getFilesInDirectory("saves")){
             try {
-                scene.addObject(JsonParser.parseFile(string, MainClass.loader));
-            }catch (JSONException | IOException e) {
+                scene = JsonParser.parseFile("save.json", MainClass.loader);
+            } catch (IOException | JSONException e) {
                 throw new RuntimeException(e);
             }
-        }
     }
     public static void loop(Window window){
         for(Renderer renderer : scene.getRenderers()){
@@ -71,5 +68,6 @@ public class TestLoop {
 
     public static void cleanUp() {
         MainClass.loader.cleanUp();
+        JsonParser.createSaveFile(scene, "save");
     }
 }
