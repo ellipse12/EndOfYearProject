@@ -117,15 +117,13 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
     @Override
     public WorldObject deserialize(JSONObject object) {
         try {
-            String id = object.getString("id");
             Vector3f position = parseVector3fEntry(object.getJSONArray("position"));
             Vector3f rotation = parseVector3fEntry(object.getJSONArray("rotation"));
             Vector3f scale = parseVector3fEntry(object.getJSONArray("scale"));
-            WorldObject obj = Registry.getObject(id).get();
-            obj.setRotation(rotation);
-            obj.setPosition(position);
-            obj.setScale(scale);
-            return obj;
+            this.setRotation(rotation);
+            this.setPosition(position);
+            this.setScale(scale);
+            return this;
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
