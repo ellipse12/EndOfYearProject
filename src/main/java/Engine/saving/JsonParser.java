@@ -5,6 +5,7 @@ import Engine.Scene;
 import Engine.models.Light;
 import Engine.models.Model;
 import Engine.models.WorldObject;
+import Engine.registration.Registry;
 import Engine.rendering.Camera;
 import Engine.resourceLoading.Loader;
 import Engine.resourceLoading.Texture;
@@ -19,10 +20,8 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.Supplier;
 
 public class JsonParser {
 
@@ -31,7 +30,9 @@ public class JsonParser {
 //    }
 
 
+    public static void loadSave(Scene scene, String fileName){
 
+    }
 
 
 
@@ -53,17 +54,22 @@ public class JsonParser {
         return content;
     }
 
-    public static void save(Scene scene, String name){
-        JSONObject out = new JSONObject();
+    public static void save(Scene scene, String name) throws IOException {
+        JSONArray out = new JSONArray();
         for(WorldObject object : scene.getObjects()){
-            try {
-                out.put(object.getId(), object.serialize());
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
+                out.put(object.serialize());
         }
 
-
+        File file = null;
+        try {
+            file = new File(JsonParser.class.getClassLoader().getResource("saves/" + name + ".json").toURI());
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        file.createNewFile();
+        FileWriter writer = new FileWriter(file);
+        writer.write(out.toString());
+        writer.close();
     }
 
 

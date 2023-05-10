@@ -19,4 +19,13 @@ public interface JsonSerializable<T> {
         }
         return out;
     }
+
+    default Vector3f parseVector3fEntry(JSONArray array){
+        try{
+            Vector3f out = new Vector3f((float) array.getDouble(0), (float) array.getDouble(1), (float) array.getDouble(2));
+            return out;
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

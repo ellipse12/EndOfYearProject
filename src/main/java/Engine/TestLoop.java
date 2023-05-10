@@ -32,20 +32,13 @@ public class TestLoop {
 
 
     public static void init(){
-        addObjects();
         scene.addRenderer(new DefaultRenderer(new StaticShader()));
         scene.addRenderer(new GUIRenderer());
         scene.addGUI(new GUI(new Vector2f(), new Vector2f(1), new Texture("cursor.png")));
 
     }
 
-    private static void addObjects(){
-            try {
-                scene = JsonParser.parseFile("save.json", MainClass.loader);
-            } catch (IOException | JSONException e) {
-                throw new RuntimeException(e);
-            }
-    }
+
     public static void loop(Window window){
         for(Renderer renderer : scene.getRenderers()){
             renderer.update(scene);
@@ -59,6 +52,10 @@ public class TestLoop {
 
     public static void cleanUp() {
         MainClass.loader.cleanUp();
-        JsonParser.createSaveFile(scene, "save");
+        try {
+            JsonParser.save(scene, "save");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

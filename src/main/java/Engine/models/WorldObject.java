@@ -1,7 +1,9 @@
 package Engine.models;
 
+import Engine.registration.Registry;
 import Engine.saving.JsonSerializable;
 import org.joml.Vector3f;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -102,10 +104,10 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
     public JSONObject serialize() {
         JSONObject out = new JSONObject();
         try {
+            out.put("id", this.getId());
             out.put("position", createVector3fEntry(this.getPosition()));
-
-        out.put("rotation", createVector3fEntry(this.getRotation()));
-        out.put("scale", createVector3fEntry(this.getScale()));
+            out.put("rotation", createVector3fEntry(this.getRotation()));
+            out.put("scale", createVector3fEntry(this.getScale()));
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -114,7 +116,19 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
 
     @Override
     public WorldObject deserialize(JSONObject object) {
-        String id = object.getString("id");
+        try {
+            String id = object.getString("id");
+            Vector3f position = parseVector3fEntry(object.getJSONArray("position"));
+            Vector3f rotation = parseVector3fEntry(object.getJSONArray("rotation"));
+            Vector3f scale = parseVector3fEntry(object.getJSONArray("scale"));
+            WorldObject obj = Registry.getObject(id).get();
+            obj.setRotation(rotation);
+            obj.setPosition(position);
+            obj.setScale(scale);
+            return obj;
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

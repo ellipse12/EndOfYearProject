@@ -10,9 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: save system">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_2_2023_4_32_PM_[Changes]/test.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
@@ -51,24 +52,6 @@
                 <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="documentation" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="EndOfYearProject" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="help" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />

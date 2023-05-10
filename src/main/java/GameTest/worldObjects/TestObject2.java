@@ -15,13 +15,5 @@ public class TestObject2 extends WorldObject {
     }
 
 
-    @Override
-    public JSONObject serialize() {
 
-    }
-
-    @Override
-    public WorldObject deserialize(JSONObject object) {
-        return null;
-    }
 }
