@@ -33,7 +33,7 @@ public class DefaultRenderer implements Renderer{
     public void init(){
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
-        GL11.glClearColor(0.8f, 0.8f, 0.8f, 1f);
+        GL11.glClearColor(0.8f, 0.8f, 0.8f, 1f); //the background color
         shader.start();
         Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
         shader.setUniform("projectionMatrix", projectionMatrix);
@@ -49,7 +49,7 @@ public class DefaultRenderer implements Renderer{
      * @param camera the camera to render from
      */
     public void render(WorldObject object, Camera camera, ArrayList<Light> lights){
-        //TODO: allow for multiple objects/ add Render interface.
+        
         shader.start();
         GL30.glBindVertexArray(object.getModel().getVaoID());
         GL20.glEnableVertexAttribArray(0);
@@ -106,15 +106,15 @@ public class DefaultRenderer implements Renderer{
         shader.setUniform("viewMatrix", view);
         shader.stop();
 
-        for(WorldObject object: scene.getObjects()){
-            render(object, scene.getCamera(), scene.getLights());
+        for(WorldObject object: scene.getObjects()){ //iterate over all of the objects in the scene
+            render(object, scene.getCamera(), scene.getLights()); //render each individual object.
         }
     }
 
     @Override
     public void update(Scene scene) {
         if(!MainClass.paused) {
-            scene.getPlayer().update();
+            scene.getPlayer().update(); //updates the player, which checks inputs and moves around
         }
 
         init();
