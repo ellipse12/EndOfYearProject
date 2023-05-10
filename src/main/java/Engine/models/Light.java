@@ -99,7 +99,7 @@ public class Light implements JsonSerializable<Light>{
     
     @Override
     public Light deserialize(JSONObject object){
-        
+       
     }
     
     @Override
