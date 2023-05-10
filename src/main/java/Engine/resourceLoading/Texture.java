@@ -34,7 +34,7 @@ public class Texture {
     private ByteBuffer decodeTexture(String filename){
 
         try{
-            InputStream stream = ResourceLocation.getFileStream("textures/" + filename);
+            InputStream stream = ResourceLocation.getFileStream("textures/" + filename); //uses a file stream to allow for resources to be bundled in the jar file
             decoder = new PNGDecoder(stream);
             ByteBuffer buf = ByteBuffer.allocateDirect(
                     4 * decoder.getWidth() * decoder.getHeight());
