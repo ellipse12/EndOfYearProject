@@ -16,7 +16,7 @@ public class GUI {
 
     private final Model model;
 
-    private final float[] positions = {-1, 1, -1, -1,1, 1, 1, -1};
+    private final float[] positions = {-1, 1, -1, -1,1, 1, 1, -1}; //typical "quad" model
 
     /**
      * represents a 2D GUI object
