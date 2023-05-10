@@ -7,8 +7,9 @@ import Engine.util.Maths;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.opengl.GL11;
+import Engine.saving.JsonSerializable;
 
-public class Light {
+public class Light implements JsonSerializable<Light>{
 
     private Vector3f color;
     private Vector3f position;
@@ -90,5 +91,14 @@ public class Light {
      */
     public void cleanUp() {
         shader.cleanUp();
+    }
+    
+    @Override
+    public Light deserialize(JSONObject object){
+        
+    }
+    
+    @Override
+    public JSONObject serialize(Scene scene, String name){
     }
 }
