@@ -31,7 +31,20 @@ public class JsonParser {
 
 
     public static void loadSave(Scene scene, String fileName){
-
+           try{
+               String content = readFile(fileName);
+               JSONArray array = new JSONArray(content);
+               for(int i =0; i < array.length(); i++){
+                   JSONObject obj = array.getJSONObject(i);
+                   String id = obj.getString("id");
+                   if(Registry.getObjectRegistry().keySet().contains(id)){
+                       WorldObject object = Registry.getObject(id).get().deserialize(obj);
+                       scene.addObject(object);
+                   }
+               }
+           }catch(JSONException e){
+               e.printStacktrace();
+           }
     }
 
 
