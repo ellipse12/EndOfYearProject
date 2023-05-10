@@ -36,10 +36,17 @@ public class JsonParser {
                JSONArray array = new JSONArray(content);
                for(int i =0; i < array.length(); i++){
                    JSONObject obj = array.getJSONObject(i);
+                   String type = obj.getString("type");
                    String id = obj.getString("id");
-                   if(Registry.getObjectRegistry().keySet().contains(id)){
-                       WorldObject object = Registry.getObject(id).get().deserialize(obj);
-                       scene.addObject(object);
+                   if(type.equals("worldObject")){
+                    if(Registry.getObjectRegistry().keySet().contains(id)){
+                        WorldObject object = Registry.getObject(id).get().deserialize(obj);
+                        scene.addObject(object);
+                    }
+                   }else if(type.equals("light")){
+                       if(Registry.getLightRegistry().keySet().contains(id)){
+                           Light light = Registry.getLight(id).deserialize(obj);
+                       }
                    }
                }
            }catch(JSONException e){
