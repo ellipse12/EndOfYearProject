@@ -99,7 +99,17 @@ public class Light implements JsonSerializable<Light>{
     
     @Override
     public Light deserialize(JSONObject object){
-       
+       try {
+            Vector3f position = parseVector3fEntry(object.getJSONArray("position"));
+            Vector3f color = parseVector3fEntry(object.getJSONArray("color"));
+            float intensity = (float)object.getDouble("intensity");
+            this.setColor(color);
+            this.setPosition(position);
+            this.setIntensity(intensity);
+            return this;
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
     
     @Override
