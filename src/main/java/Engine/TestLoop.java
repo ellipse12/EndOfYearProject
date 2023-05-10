@@ -32,7 +32,7 @@ public class TestLoop {
 
 
     public static void init(){
-        scene.addRenderer(new DefaultRenderer(new StaticShader()));
+        scene.addRenderer(new DefaultRenderer(new StaticShader())); //has to be added otherwise nothing will render
         scene.addRenderer(new GUIRenderer());
         scene.addGUI(new GUI(new Vector2f(), new Vector2f(1), new Texture("cursor.png")));
 
@@ -40,20 +40,20 @@ public class TestLoop {
 
 
     public static void loop(Window window){
-        for(Renderer renderer : scene.getRenderers()){
+        for(Renderer renderer : scene.getRenderers()){//updates and renders everything
             renderer.update(scene);
             renderer.render(scene);
         }
 
         glfwSwapBuffers(window.getHandle());
-        glfwPollEvents();
+        glfwPollEvents(); //needed for keyboard events
         window.update();
     }
 
     public static void cleanUp() {
         MainClass.loader.cleanUp();
         try {
-            JsonParser.save(scene, "save");
+            JsonParser.save(scene, "save"); //saves the scene
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
