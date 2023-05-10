@@ -14,7 +14,7 @@ public class Light implements JsonSerializable<Light>{
     private Vector3f color;
     private Vector3f position;
     private float intensity;
-
+    private final String id;
 
     private final StaticShader shader = new StaticShader();
 
@@ -24,17 +24,21 @@ public class Light implements JsonSerializable<Light>{
      * @param position the position of the light
      * @param intensity the intensity of the light
      */
-    public Light(Vector3f color, Vector3f position, float intensity) {
+    public Light(Vector3f color, Vector3f position, float intensity, String id) {
         this.color = color;
         this.position = position;
         this.intensity = intensity;
+        this.id = id;
 
     }
 
     public Vector3f getColor() {
         return color;
     }
-
+    public String getID(){
+        return this.id;
+    }
+    
     public void setColor(Vector3f color) {
         this.color = color;
     }
@@ -99,6 +103,16 @@ public class Light implements JsonSerializable<Light>{
     }
     
     @Override
-    public JSONObject serialize(Scene scene, String name){
+    public JSONObject serialize(){
+        try{
+            JSONObject out = new JSONObject();
+            out.put("position",createVector3fEntry(this.position));
+            out.put("color", createVector3fEntry(this.color));
+            out.put("id", this.getID());
+            out.put("intensity", this.intensity);
+            return out;
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
     }
 }
