@@ -1,13 +1,14 @@
 package Engine.models;
 
 import Engine.registration.Registry;
+import Engine.rendering.Updateable;
 import Engine.saving.JsonSerializable;
 import org.joml.Vector3f;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class WorldObject implements JsonSerializable<WorldObject> {
+public abstract class WorldObject implements JsonSerializable<WorldObject>, Updateable {
     private Model model;
 
     private Vector3f position;
@@ -40,6 +41,7 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
     public void setModel(Model model) {
         this.model = model;
     }
+
 
     public Vector3f getPosition() {
         return position;
@@ -105,6 +107,7 @@ public abstract class WorldObject implements JsonSerializable<WorldObject> {
         JSONObject out = new JSONObject();
         try {
             out.put("id", this.getId());
+            out.put("type", "worldObject");
             out.put("position", createVector3fEntry(this.getPosition()));
             out.put("rotation", createVector3fEntry(this.getRotation()));
             out.put("scale", createVector3fEntry(this.getScale()));

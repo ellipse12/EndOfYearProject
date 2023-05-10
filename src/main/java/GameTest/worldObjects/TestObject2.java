@@ -1,6 +1,7 @@
 package GameTest.worldObjects;
 
 import Engine.MainClass;
+import Engine.Scene;
 import Engine.models.WorldObject;
 import Engine.resourceLoading.Texture;
 import org.joml.Vector3f;
@@ -15,5 +16,8 @@ public class TestObject2 extends WorldObject {
     }
 
 
+    @Override
+    public void update(Scene scene) {
 
+    }
 }

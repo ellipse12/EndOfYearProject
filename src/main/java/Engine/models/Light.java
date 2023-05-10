@@ -6,6 +6,8 @@ import Engine.shaders.StaticShader;
 import Engine.util.Maths;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.lwjgl.opengl.GL11;
 import Engine.saving.JsonSerializable;
 
@@ -122,7 +124,8 @@ public class Light implements JsonSerializable<Light>{
             out.put("intensity", this.intensity);
             return out;
         }catch(JSONException e){
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+
     }
 }

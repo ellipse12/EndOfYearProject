@@ -2,6 +2,7 @@ package Engine;
 
 import Engine.guiRendering.GUI;
 import Engine.guiRendering.GUIRenderer;
+import Engine.registration.Registry;
 import Engine.rendering.Camera;
 import Engine.rendering.DefaultRenderer;
 import Engine.rendering.Renderer;
@@ -10,6 +11,7 @@ import Engine.saving.JsonParser;
 import Engine.resourceLoading.Texture;
 import Engine.shaders.StaticShader;
 import GameTest.Player;
+import GameTest.worldObjects.TestObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.json.JSONException;
@@ -32,10 +34,15 @@ public class TestLoop {
 
 
     public static void init(){
+        registerObjects();
         scene.addRenderer(new DefaultRenderer(new StaticShader())); //has to be added otherwise nothing will render
         scene.addRenderer(new GUIRenderer());
         scene.addGUI(new GUI(new Vector2f(), new Vector2f(1), new Texture("cursor.png")));
+        JsonParser.loadSave(scene, "save.json");
 
+    }
+    private static void registerObjects(){
+        Registry.registerObject("test", ()->new TestObject(new Vector3f(), new Vector3f(), new Vector3f(1)));
     }
 
 

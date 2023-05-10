@@ -83,21 +83,7 @@ public class DefaultRenderer implements Renderer{
 
     }
 
-    private ArrayList<Light> transformLights(ArrayList<Light> lights, Matrix4f viewMatrix){
-        ArrayList<Light> out = new ArrayList<>();
-        for(Light lightt : lights){
-            out.add(new Light(lightt.getColor(), lightt.getPosition(), lightt.getIntensity()));
-        }
-        for(Light light : out){
-            Vector3f position = light.getPosition();
-            Vector4f uax = new Vector4f(light.getPosition(), 1);
-            uax.mul(viewMatrix);
-            position.x = uax.x;
-            position.y = uax.y;
-            position.z = uax.z;
-        }
-        return out;
-    }
+
 
     @Override
     public void render(Scene scene) {
@@ -116,7 +102,7 @@ public class DefaultRenderer implements Renderer{
         if(!MainClass.paused) {
             scene.getPlayer().update(); //updates the player, which checks inputs and moves around
         }
-
+        scene.getObjects().forEach(r->r.update(scene));
         init();
     }
 

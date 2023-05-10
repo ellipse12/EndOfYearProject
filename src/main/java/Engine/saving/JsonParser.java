@@ -25,10 +25,6 @@ import java.util.function.Supplier;
 
 public class JsonParser {
 
-//    public static Scene parseFile(String file, Loader loader) throws IOException, JSONException {
-//
-//    }
-
 
     public static void loadSave(Scene scene, String fileName){
            try{
@@ -45,12 +41,12 @@ public class JsonParser {
                     }
                    }else if(type.equals("light")){
                        if(Registry.getLightRegistry().keySet().contains(id)){
-                           Light light = Registry.getLight(id).deserialize(obj);
+                           Light light = Registry.getLight(id).get().deserialize(obj);
                        }
                    }
                }
-           }catch(JSONException e){
-               e.printStacktrace();
+           }catch(JSONException | IOException e){
+             throw new RuntimeException(e);
            }
     }
 
@@ -79,17 +75,17 @@ public class JsonParser {
         for(WorldObject object : scene.getObjects()){
                 out.put(object.serialize());
         }
-
         File file = null;
         try {
             file = new File(JsonParser.class.getClassLoader().getResource("saves/" + name + ".json").toURI());
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
-        file.createNewFile();
-        FileWriter writer = new FileWriter(file);
+        FileWriter writer = new FileWriter("src/main/resources/saves/" + name + ".json");
         writer.write(out.toString());
         writer.close();
+
+
     }
 
 
