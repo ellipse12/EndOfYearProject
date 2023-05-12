@@ -3,6 +3,7 @@ package Engine.registration;
 import Engine.guiRendering.GUI;
 import Engine.models.Light;
 import Engine.models.WorldObject;
+import org.joml.Vector3f;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +14,17 @@ public class Registry {
     private static Map<String, Supplier<Light>> lightRegistry = new HashMap<>();
     private static Map<String, Supplier<GUI>> guiRegistry = new HashMap<>();
 
+
+
     public static void registerObject(String id, Supplier<WorldObject> object){
         objectRegistry.put(id,object);
     }
     public static void registerGUI(String id, Supplier<GUI> object){
         guiRegistry.put(id,object);
+    }
+
+    public static Supplier<Light> getLight(){
+        return ()->new Light(new Vector3f(), new Vector3f(), 0f);
     }
 
     public static Map<String, Supplier<WorldObject>> getObjectRegistry(){

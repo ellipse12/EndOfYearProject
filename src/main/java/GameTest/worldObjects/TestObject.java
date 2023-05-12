@@ -16,17 +16,18 @@ public class TestObject extends WorldObject {
 
     }
 
-    private float in = 0.5f;
+    private float in = 0.05f;
     @Override
     public void update(Scene scene) {
 
         this.increasePosition(new Vector3f(0,in,0));
-        if(this.getPosition().y > 10){
+        if(this.getPosition().y > 3){
             in = -Math.abs(in);
 
-        }if(this.getPosition().y < -10){
+        }if(this.getPosition().y < -3){
             in = Math.abs(in);
         }
+        this.increaseRotation(new Vector3f(0,1,0));
 
     }
 }

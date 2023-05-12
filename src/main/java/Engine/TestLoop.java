@@ -2,6 +2,7 @@ package Engine;
 
 import Engine.guiRendering.GUI;
 import Engine.guiRendering.GUIRenderer;
+import Engine.models.Light;
 import Engine.registration.Registry;
 import Engine.rendering.Camera;
 import Engine.rendering.DefaultRenderer;
@@ -11,6 +12,7 @@ import Engine.saving.JsonParser;
 import Engine.resourceLoading.Texture;
 import Engine.shaders.StaticShader;
 import GameTest.Player;
+import GameTest.worldObjects.Plane;
 import GameTest.worldObjects.TestObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -38,11 +40,14 @@ public class TestLoop {
         scene.addRenderer(new DefaultRenderer(new StaticShader())); //has to be added otherwise nothing will render
         scene.addRenderer(new GUIRenderer());
         scene.addGUI(new GUI(new Vector2f(), new Vector2f(1), new Texture("cursor.png")));
+
         JsonParser.loadSave(scene, "save.json");
 
     }
     private static void registerObjects(){
         Registry.registerObject("test", ()->new TestObject(new Vector3f(), new Vector3f(), new Vector3f(1)));
+        Registry.registerObject("plane", ()->new Plane(new Vector3f(0,-3,0), new Vector3f(), new Vector3f(10)));
+
     }
 
 

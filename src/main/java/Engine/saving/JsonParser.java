@@ -33,16 +33,18 @@ public class JsonParser {
                for(int i =0; i < array.length(); i++){
                    JSONObject obj = array.getJSONObject(i);
                    String type = obj.getString("type");
-                   String id = obj.getString("id");
+
                    if(type.equals("worldObject")){
+                       String id = obj.getString("id");
                     if(Registry.getObjectRegistry().keySet().contains(id)){
                         WorldObject object = Registry.getObject(id).get().deserialize(obj);
                         scene.addObject(object);
                     }
                    }else if(type.equals("light")){
-                       if(Registry.getLightRegistry().keySet().contains(id)){
-                           Light light = Registry.getLight(id).get().deserialize(obj);
-                       }
+
+                       Light light = Registry.getLight().get().deserialize(obj);
+                       scene.addLight(light);
+
                    }
                }
            }catch(JSONException | IOException e){
@@ -74,6 +76,9 @@ public class JsonParser {
         JSONArray out = new JSONArray();
         for(WorldObject object : scene.getObjects()){
                 out.put(object.serialize());
+        }
+        for(Light light : scene.getLights()){
+            out.put(light.serialize());
         }
         File file = null;
         try {

@@ -16,6 +16,7 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class DefaultRenderer implements Renderer{
     private final StaticShader shader;
@@ -24,6 +25,12 @@ public class DefaultRenderer implements Renderer{
 
     public DefaultRenderer(StaticShader shader) {
         this.shader = shader;
+        this.shader.start();
+        Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
+        this.shader.setUniform("projectionMatrix", projectionMatrix);
+
+
+        this.shader.stop();
 
     }
 
@@ -34,12 +41,7 @@ public class DefaultRenderer implements Renderer{
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT|GL11.GL_DEPTH_BUFFER_BIT);
         GL11.glClearColor(0.8f, 0.8f, 0.8f, 1f); //the background color
-        shader.start();
-        Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
-        shader.setUniform("projectionMatrix", projectionMatrix);
 
-
-        shader.stop();
 
     }
 
@@ -80,6 +82,10 @@ public class DefaultRenderer implements Renderer{
         GL20.glDisableVertexAttribArray(1);
         GL20.glDisableVertexAttribArray(2);
         GL30.glBindVertexArray(0);
+
+    }
+
+    private ArrayList<Light> transformLights(ArrayList<Light> lights, Matrix4f viewMatrix){
 
     }
 

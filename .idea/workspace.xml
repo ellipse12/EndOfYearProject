@@ -9,16 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="started: save system">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Updateable.java" afterDir="false" />
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="continued: save system">
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/Plane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/saves/save.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/saves/save.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -416,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683662036268</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="continued: save system">
+      <created>1683749431433</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683749431433</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -449,6 +455,7 @@
     <MESSAGE value="started: allowing for multiple lights" />
     <MESSAGE value="started: dynamic object adding through &quot;save&quot; files" />
     <MESSAGE value="started: save system" />
-    <option name="LAST_COMMIT_MESSAGE" value="started: save system" />
+    <MESSAGE value="continued: save system" />
+    <option name="LAST_COMMIT_MESSAGE" value="continued: save system" />
   </component>
 </project>
