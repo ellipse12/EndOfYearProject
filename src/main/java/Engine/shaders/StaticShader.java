@@ -19,24 +19,21 @@ public class StaticShader extends ShaderProgram {
     /**
      * A generic shader that is used for rendering
      */
-    //TODO finish lighting
     public StaticShader() {
         super(vertexFile, fragmentFile);
-
         setupUniforms();
     }
 
     /**
      * a method to get the integer id's/ locations of all the uniforms in the vertex shader
      */
-
     protected void setupUniforms() {
         addUniform(new Matrix4fU("transformationMatrix", this));
         addUniform(new Matrix4fU("projectionMatrix", this));
         addUniform(new Matrix4fU("viewMatrix", this));
         addUniform(new MaterialU("material", this));
         addUniform(new IntegerU("texture_sampler", this));
-        addUniform(new LightArrayU("lights", 3, this));
+        addUniform(new LightArrayU("lights", 30, this));
         addUniform(new Vector3fU("camera_position", this));
         addUniform(new Vector3fU("ambientLight", this));
         addUniform(new FloatU("specularPower", this));

@@ -59,44 +59,6 @@ public class Light implements JsonSerializable<Light>{
         this.intensity = intensity;
     }
 
-
-    /**
-     * renders this light
-     * @param camera the camera to render from
-     */
-    public void render(Camera camera) {
-
-        shader.setUniform("specularPower", 0.1f);
-        shader.setUniform("ambientLight", new Vector3f(0.5f,0.5f,0.5f));
-        shader.setUniform("light", this);
-        shader.setUniform("camera_position", camera.getPosition());
-
-    }
-
-
-    /**
-     * updates this light
-     * @param camera the camera to render from
-     */
-    public void update(Camera camera) {
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        shader.start();
-        Matrix4f projectionMatrix = Maths.createProjectionMatrix(MainClass.window);
-        shader.setUniform("projectionMatrix", projectionMatrix);
-
-
-        shader.stop();
-
-
-    }
-
-    /**
-     * cleans the shader
-     */
-    public void cleanUp() {
-        shader.cleanUp();
-    }
-    
     @Override
     public Light deserialize(JSONObject object){
        try {

@@ -1,5 +1,6 @@
 package Engine.util;
 
+import Engine.models.Light;
 import Engine.models.WorldObject;
 import Engine.rendering.Camera;
 import Engine.rendering.Window;
@@ -79,14 +80,10 @@ public class Maths {
      * @param viewMatrix the matrix that is based off the camera, created by the method above
      * @return a model specific view matrix
      */
-    public static Matrix4f getModelViewMatrix(WorldObject object, Matrix4f viewMatrix){
-        Vector3f rotation = object.getRotation();
+    public static Matrix4f getModelViewMatrix(Light object, Matrix4f viewMatrix){
+        //Vector3f rotation = object.getRotation();
         Matrix4f modelMat = new Matrix4f();
-        modelMat.identity().translate(object.getPosition()).
-        rotateX((float)Math.toRadians(-rotation.x)).
-                rotateY((float)Math.toRadians(-rotation.y)).
-                rotateZ((float)Math.toRadians(-rotation.z)).
-                scale(object.getScale());
+        modelMat.identity().translate(object.getPosition());
         Matrix4f view = new Matrix4f(viewMatrix);
         return view.mul(modelMat);
     }

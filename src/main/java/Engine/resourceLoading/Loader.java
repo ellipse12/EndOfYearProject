@@ -1,11 +1,14 @@
 package Engine.resourceLoading;
 
+import Engine.MainClass;
+import Engine.models.Material;
 import Engine.models.Model;
 import Engine.resourceLoading.objectLoading.ModelDataNM;
 import Engine.resourceLoading.objectLoading.NormalMappedObjLoader;
 import Engine.resourceLoading.objectLoading.OBJFileLoader;
 import Engine.resourceLoading.objectLoading.RawModelData;
 import de.matthiasmann.twl.utils.PNGDecoder;
+import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
 import Engine.resourceLoading.Texture;
@@ -47,19 +50,13 @@ public class Loader {
 
     }
 
-    public Map<Integer, String> getResources(){
-        return resources;
-    }
-    public String getResourceFromID(int vaoID){
-        return resources.get(vaoID);
-    }
 
-    public Model loadToVAO(float[] positions, int[] indices){
+    public Model loadToVAO(float[] positions, int[] indices, Material material){
         int vaoID =createVAO();
         bindIndicesBuffer(indices);
         storeDataInAttributeList(0,3, positions);
         GL30.glBindVertexArray(0);
-        return new Model(vaoID, indices.length);
+        return new Model(vaoID, indices.length, material);
 
     }
     public Model loadToVAO(float[] positions, int[] indices, float[] textureCoords, Texture texture){
@@ -70,18 +67,6 @@ public class Loader {
         GL30.glBindVertexArray(0);
         loadTexture(texture);
         return new Model(vaoID, indices.length, texture);
-
-    }
-    public Model loadToVAO(float[] positions, float[] textureCoords,float[] normals, float[] tangents ,int[] indices, Texture texture){
-        int vaoID = createVAO();
-        bindIndicesBuffer(indices);
-        storeDataInAttributeList(0,3, positions);
-        storeDataInAttributeList(1,2, textureCoords);
-        storeDataInAttributeList(2,3, normals);
-        storeDataInAttributeList(3,3, tangents);
-        GL30.glBindVertexArray(0);
-        loadTexture(texture);
-        return new Model((vaoID), indices.length, texture);
 
     }
     public Model loadToVAO(float[] positions, float[] textureCoords,float[] normals ,int[] indices, Texture texture){
@@ -104,18 +89,22 @@ public class Loader {
      * @param resource the location of the resource (usually an .obj file)
      * @return the Model representation of the data
      */
-    public Model getModelFromResource(String resource){
+    public Model getModelFromResource(String resource, Material material){
         RawModelData data =  OBJFileLoader.loadOBJ(resource);
-        Model model = loadToVAO(data.getVertices(), data.getIndices());
-        resources.put(model.getVaoID(), resource);
-        return model;
+
+        return loadToVAO(data.getVertices(), data.getIndices(), material);
     }
 
+    /**
+     * used to load a model with normal lighting
+     * @param resource the location of the resource
+     * @param texture the texture of the resource
+     * @return the Model from the resource
+     */
     public Model getNormalModelFromResource(String resource, Texture texture){
         RawModelData data = OBJFileLoader.loadOBJ(resource);
-        Model model = loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices(), texture);
-        resources.put(model.getVaoID(), resource);
-        return model;
+
+        return loadToVAO(data.getVertices(), data.getTextureCoords(), data.getNormals(), data.getIndices(), texture);
     }
 
     /**
@@ -187,6 +176,13 @@ public class Loader {
         GL20.glVertexAttribPointer(attributeNumber,coordinateSize,GL11.GL_FLOAT,false,0,0);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
     }
+
+    /**
+     * creates a VBO with the provided data
+     * @param attributeNumber the attribute id
+     * @param coordinateSize the size of each unit of data
+     * @param data the data to store
+     */
     private void storeDataInAttributeList(int attributeNumber, int coordinateSize,FloatBuffer data){
         int vboID = GL15.glGenBuffers();
         vbos.add(vboID);

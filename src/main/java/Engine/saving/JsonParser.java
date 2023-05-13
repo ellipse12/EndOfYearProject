@@ -26,6 +26,11 @@ import java.util.function.Supplier;
 public class JsonParser {
 
 
+    /**
+     * loads a save instance from the disk
+     * @param scene the current scene
+     * @param fileName the location of the save file
+     */
     public static void loadSave(Scene scene, String fileName){
            try{
                String content = readFile(fileName);
@@ -45,6 +50,8 @@ public class JsonParser {
                        Light light = Registry.getLight().get().deserialize(obj);
                        scene.addLight(light);
 
+                   }else if(type.equals("player")){
+                       scene.getPlayer().deserialize(obj);
                    }
                }
            }catch(JSONException | IOException e){
@@ -53,13 +60,15 @@ public class JsonParser {
     }
 
 
-
-
-
+    /**
+     * @param file the file to read
+     * @return the content of the file
+     *
+     */
     private static String readFile(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceLocation.getFileStream("saves/" + file)));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ResourceLocation.getFileStream("saves/" + file))));
         StringBuilder stringBuilder = new StringBuilder();
-        String line = null;
+        String line;
         String ls = System.getProperty("line.separator");
         while ((line = reader.readLine()) != null) {
             stringBuilder.append(line);
@@ -72,79 +81,30 @@ public class JsonParser {
         return content;
     }
 
+    /**
+     * @param scene the scene to save
+     * @param name the name of the save
+     *
+     */
     public static void save(Scene scene, String name) throws IOException {
         JSONArray out = new JSONArray();
         for(WorldObject object : scene.getObjects()){
-                out.put(object.serialize());
+                out.put(object.serialize()); //serialize each object
         }
         for(Light light : scene.getLights()){
             out.put(light.serialize());
         }
+        out.put(scene.getPlayer().serialize());
         File file = null;
         try {
             file = new File(JsonParser.class.getClassLoader().getResource("saves/" + name + ".json").toURI());
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
-        FileWriter writer = new FileWriter("src/main/resources/saves/" + name + ".json");
+        FileWriter writer = new FileWriter("src/main/resources/saves/" + name + ".json"); //create a new file writer
         writer.write(out.toString());
         writer.close();
 
 
     }
-
-
-    private static JSONObject createPlayerEntry(Player player){
-        try{
-
-            JSONObject temp = new JSONObject();
-            temp.put("position", createVector3fEntry(player.getCamera().getPosition()));
-            temp.put("rotation", createVector3fEntry(player.getCamera().getRotation()));
-            return temp;
-
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static JSONArray createVector3fEntry(Vector3f vector3f){
-        JSONArray out = new JSONArray();
-        try {
-            out.put(vector3f.x).put(vector3f.y).put(vector3f.z);
-        }catch (JSONException e){
-            throw new RuntimeException(e);
-        }
-        return out;
-    }
-
-    private static JSONObject createWorldObjectEntry(WorldObject object){
-
-        try{
-
-            JSONObject temp = new JSONObject();
-            temp.put("model", new JSONObject().put("texture", object.getModel().getTexture().getFilename()).put("modelFile", MainClass.loader.getResourceFromID(object.getModel().getVaoID())));
-            temp.put("position", createVector3fEntry(object.getPosition()));
-            temp.put("rotation", createVector3fEntry(object.getRotation()));
-            temp.put("scale", createVector3fEntry(object.getScale()));
-
-            return temp;
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static JSONObject createLightEntry(Light light){
-        try{
-
-            JSONObject temp = new JSONObject();
-            temp.put("position", createVector3fEntry(light.getPosition()));
-            temp.put("color",createVector3fEntry(light.getColor()));
-            temp.put("intensity", light.getIntensity());
-
-            return temp;
-        }catch(JSONException e){
-            throw new RuntimeException(e);
-        }
-    }
-
 }

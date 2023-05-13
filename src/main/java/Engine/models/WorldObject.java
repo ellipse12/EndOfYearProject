@@ -25,6 +25,7 @@ public abstract class WorldObject implements JsonSerializable<WorldObject>, Upda
      * @param position the position of the object
      * @param rotation the rotation of the object
      * @param scale the scale of the object
+     * @param id the id of the object
      */
     public WorldObject(Model model, Vector3f position, Vector3f rotation, Vector3f scale, String id) {
         this.model = model;

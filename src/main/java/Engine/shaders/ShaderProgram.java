@@ -38,15 +38,20 @@ public abstract class ShaderProgram {
     }
 
 
-
-
-
+    /**
+     * adds a uniform to the set
+     * @param uniform the uniform to add
+     */
     public <T> void addUniform(UniformI<T> uniform) {
         uniforms.add(uniform);
     }
 
 
-
+    /**
+     * sets a uniform to a value
+     * @param name the uniform to set
+     * @param value the value to set
+     */
     public <T> void setUniform(String name, T value) {
         for(UniformI uniform:uniforms){
             if(uniform.getName().equals(name)){
@@ -116,7 +121,7 @@ public abstract class ShaderProgram {
     private static  int loadShader(String file, int type){
         StringBuilder shaderSource = new StringBuilder();
         try{
-            BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceLocation.getFileStream(file)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(ResourceLocation.getFileStream(file))); //load the file as an InputStream
             String line;
             while((line = reader.readLine())!=null){
                 shaderSource.append(line).append("\n");
@@ -129,7 +134,7 @@ public abstract class ShaderProgram {
         }
         int shaderID = GL20.glCreateShader(type);
         GL20.glShaderSource(shaderID, shaderSource);
-        GL20.glCompileShader(shaderID);
+        GL20.glCompileShader(shaderID); //compiles the shader
         if(GL20.glGetShaderi(shaderID, GL20.GL_COMPILE_STATUS)== GL11.GL_FALSE){
             System.out.println(GL20.glGetShaderInfoLog(shaderID, 500));
             System.err.println("Could not compile shader.");

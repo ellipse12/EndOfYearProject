@@ -12,11 +12,11 @@ public class TestObject extends WorldObject {
 
 
     public TestObject(Vector3f position, Vector3f rotation, Vector3f scale) {
-        super(MainClass.loader.getNormalModelFromResource("test", new Texture("black.png")), position, rotation, scale, "test");
+        super(MainClass.loader.getNormalModelFromResource("test2", new Texture("black.png")), position, rotation, scale, "test");
 
     }
 
-    private float in = 0.05f;
+    private float in = 0.04f;
     @Override
     public void update(Scene scene) {
 

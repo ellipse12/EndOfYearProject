@@ -34,7 +34,9 @@ public class TestLoop {
     public static Scene scene = new Scene(player);
 
 
-
+    /**
+     * run on startup
+     */
     public static void init(){
         registerObjects();
         scene.addRenderer(new DefaultRenderer(new StaticShader())); //has to be added otherwise nothing will render
@@ -44,6 +46,10 @@ public class TestLoop {
         JsonParser.loadSave(scene, "save.json");
 
     }
+
+    /**
+     * registers all the objects
+     */
     private static void registerObjects(){
         Registry.registerObject("test", ()->new TestObject(new Vector3f(), new Vector3f(), new Vector3f(1)));
         Registry.registerObject("plane", ()->new Plane(new Vector3f(0,-3,0), new Vector3f(), new Vector3f(10)));
@@ -51,6 +57,10 @@ public class TestLoop {
     }
 
 
+    /**
+     * main loop
+     * @param window the current window
+     */
     public static void loop(Window window){
         for(Renderer renderer : scene.getRenderers()){//updates and renders everything
             renderer.update(scene);
@@ -62,6 +72,9 @@ public class TestLoop {
         window.update();
     }
 
+    /**
+     * cleans up everything/ run after the window is closed
+     */
     public static void cleanUp() {
         MainClass.loader.cleanUp();
         try {

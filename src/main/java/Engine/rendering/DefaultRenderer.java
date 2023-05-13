@@ -72,7 +72,7 @@ public class DefaultRenderer implements Renderer{
         shader.setUniform("ambientLight", new Vector3f(.7f,.7f,.7f));
 
         shader.setUniform("camera_position", camera.getPosition());
-        shader.setUniform("numLights", 3);
+        shader.setUniform("numLights", lights.size());
         shader.setUniform("lights", lights.toArray(new Light[0]));
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
@@ -85,9 +85,7 @@ public class DefaultRenderer implements Renderer{
 
     }
 
-    private ArrayList<Light> transformLights(ArrayList<Light> lights, Matrix4f viewMatrix){
 
-    }
 
 
 
@@ -98,6 +96,7 @@ public class DefaultRenderer implements Renderer{
         shader.setUniform("viewMatrix", view);
         shader.stop();
 
+
         for(WorldObject object: scene.getObjects()){ //iterate over all of the objects in the scene
             render(object, scene.getCamera(), scene.getLights()); //render each individual object.
         }
@@ -105,15 +104,13 @@ public class DefaultRenderer implements Renderer{
 
     @Override
     public void update(Scene scene) {
-        if(!MainClass.paused) {
-            scene.getPlayer().update(); //updates the player, which checks inputs and moves around
-        }
+        scene.getPlayer().update(scene);
         scene.getObjects().forEach(r->r.update(scene));
         init();
     }
 
     @Override
     public void cleanUp() {
-
+        shader.cleanUp();
     }
 }

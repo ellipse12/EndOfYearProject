@@ -12,6 +12,13 @@ public abstract class ArrayUniform<T extends UniformI<V>, V> implements UniformI
     private final int location;
 
     private final List<T> uniforms;
+
+    /**
+     * represents an array of uniforms
+     * @param name the name of this uniform
+     * @param length the length of the array
+     * @param program the shader to load to
+     */
     public ArrayUniform(String name, int length, ShaderProgram program){
         this.name = name;
         this.length = length;
@@ -44,5 +51,11 @@ public abstract class ArrayUniform<T extends UniformI<V>, V> implements UniformI
         return length;
     }
 
+    /**
+     * allows for dynamic addition of uniforms
+     * @param name the name of the uniform
+     * @param program the shader
+     * @return a new uniform of type T
+     */
     public abstract T create(String name, ShaderProgram program);
 }

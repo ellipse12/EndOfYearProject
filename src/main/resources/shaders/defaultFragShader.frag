@@ -4,7 +4,6 @@ in vec2 outTextureCoord;
 in float visibility;
 in vec3 mvVertexPos;
 in vec3 mvVertexNormal;
-
 out vec4 color;
 
 uniform sampler2D texture_sampler;
@@ -26,7 +25,7 @@ struct Light{
 
 uniform Material material;
 uniform int numLights;
-uniform Light lights[3];
+uniform Light lights[30];
 uniform vec3 camera_position;
 uniform vec3 ambientLight;
 uniform float specularPower;
@@ -53,13 +52,13 @@ vec4 calcPointLight(Light light, vec3 position, vec3 normal)
      vec4 diffuseColour = vec4(0, 0, 0, 0);
      vec4 specColour = vec4(0, 0, 0, 0);
 
-     // Diffuse Light
+
      vec3 light_direction = light.position - position;
      vec3 to_light_source  = normalize(light_direction);
      float diffuseFactor = max(dot(normal, to_light_source ), 0.0);
      diffuseColour = diffuseC * vec4(light.color, 1.0) * light.intensity * diffuseFactor;
 
-     // Specular Light
+
      vec3 camera_direction = normalize(-position);
      vec3 from_light_source = -to_light_source;
      vec3 reflected_light = normalize(reflect(from_light_source, normal));
@@ -67,7 +66,11 @@ vec4 calcPointLight(Light light, vec3 position, vec3 normal)
      specularFactor = pow(specularFactor, specularPower);
      specColour = specularC * specularFactor * material.reflectance * vec4(light.color, 1.0);
 
-     return (diffuseColour + specColour);
+     float distance = length(light_direction);
+     float attenuationInv = 1 + 0.05 * distance +
+     0.04 * distance * distance;
+
+     return (diffuseColour + specColour) / attenuationInv;
 }
 
 

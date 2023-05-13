@@ -7,6 +7,7 @@ in vec3 vertexNormal;
 out vec2 outTextureCoord;
 out vec3 mvVertexPos;
 out vec3 mvVertexNormal;
+out vec3 toCamera;
 
 uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
@@ -23,7 +24,7 @@ void main() {
     outTextureCoord = textureCoord;
 
 
-    mvVertexNormal = normalize(vec4(vertexNormal, 0.0)).xyz;
+    mvVertexNormal = normalize(transformationMatrix * vec4(vertexNormal,0.0)).xyz;
     mvVertexPos = worldPos.xyz;
 }
 

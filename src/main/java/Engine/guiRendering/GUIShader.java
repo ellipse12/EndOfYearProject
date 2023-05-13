@@ -17,6 +17,9 @@ public class GUIShader extends ShaderProgram {
         setupUniforms();
     }
 
+    /**
+     * sets up uniforms for the shader
+     */
     private void setupUniforms(){
         addUniform(new Matrix4fU("transformation", this));
         addUniform(new IntegerU("offset", this));

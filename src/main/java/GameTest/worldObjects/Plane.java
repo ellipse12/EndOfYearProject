@@ -11,7 +11,7 @@ public class Plane extends WorldObject {
 
 
     public Plane(Vector3f position, Vector3f rotation, Vector3f scale) {
-        super(MainClass.loader.getNormalModelFromResource("plane", new Texture("plane.png")), position, rotation, scale, "plane");
+        super(MainClass.loader.getNormalModelFromResource("worldModel", new Texture("plane.png")), position, rotation, scale, "plane");
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.Map;
 public final class Mouse {
     private static double x, y;
 
-    private static double lastX, lastY;
+
     private static double dx, dy;
 
     private static boolean inWindow = false;

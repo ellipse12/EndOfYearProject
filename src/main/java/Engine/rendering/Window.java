@@ -35,7 +35,7 @@ public class Window {
     }
 
     /**
-     * creates the window with some default settings
+     * creates the window with default settings
      */
     public void create(){
         glfwDefaultWindowHints();

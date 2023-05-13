@@ -32,18 +32,30 @@ public class Scene {
     }
 
 
+    /**
+     * @param gui the gui to add
+     */
     public void addGUI(GUI gui){
         guis.add(gui);
     }
 
+    /**
+     * @param object the object to add
+     */
     public void addObject(WorldObject object){
         objects.add(object);
     }
 
+    /**
+     * @param light the light to add
+     */
     public void addLight(Light light){
         lights.add(light);
     }
 
+    /**
+     * @param renderer the renderer to add
+     */
     public void addRenderer(Renderer renderer){
         renderers.add(renderer);
     }

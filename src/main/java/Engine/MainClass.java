@@ -17,7 +17,6 @@ public class MainClass {
         public static boolean paused = false;
 
 
-
         public static void main(String[] args){
             MainClass main = new MainClass();
             main.init();
@@ -47,7 +46,9 @@ public class MainClass {
         }
 
 
-
+    /**
+     * initializes LWJGL
+     */
     public  void init(){
             GLFWErrorCallback.createPrint(System.err).set();
             if ( !glfwInit() ) {

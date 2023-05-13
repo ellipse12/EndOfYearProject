@@ -18,12 +18,20 @@ public class MultiUniform  {
     }
 
 
+    /**
+     * loads a value to all the associated uniforms
+     * @param value the value to load
+     */
     public <T> void load(T value) {
         for(Uniform uniform : uniforms){
             uniform.load(value);
         }
     }
 
+    /**
+     * @param name the name of the uniform
+     * @param value the value to load to a specific uniform
+     */
     public <T> void load(String name, T value){
         for(Uniform uniform : uniforms){
             if(uniform.getName().equals(name)){
@@ -32,6 +40,10 @@ public class MultiUniform  {
         }
     }
 
+    /**
+     * adds a uniform to the list
+     * @param uniform the uniform to add
+     */
     public void addUniform(Uniform uniform){
         uniforms.add(uniform);
     }
