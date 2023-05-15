@@ -77,10 +77,10 @@ public class TestLoop {
      */
     public static void cleanUp() {
         MainClass.loader.cleanUp();
-        try {
-            JsonParser.save(scene, "save"); //saves the scene
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        //try {
+            //JsonParser.save(scene, "save"); //saves the scene
+        //} catch (IOException e) {
+            //throw new RuntimeException(e);
+        //}
     }
 }
