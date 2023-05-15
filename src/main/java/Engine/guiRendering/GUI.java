@@ -29,6 +29,7 @@ public class GUI {
         this.scale = scale;
         this.texture = texture;
         this.model = MainClass.loader.loadToVAO(positions, texture);
+        //TODO: add a pause menu
     }
 
     public Vector2f getPosition() {
