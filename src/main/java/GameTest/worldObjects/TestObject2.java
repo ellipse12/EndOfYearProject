@@ -3,11 +3,12 @@ package GameTest.worldObjects;
 import Engine.MainClass;
 import Engine.Scene;
 import Engine.models.WorldObject;
+import Engine.rendering.Updateable;
 import Engine.resourceLoading.Texture;
 import org.joml.Vector3f;
 import org.json.JSONObject;
 
-public class TestObject2 extends WorldObject {
+public class TestObject2 extends WorldObject implements Updateable {
 
 
 

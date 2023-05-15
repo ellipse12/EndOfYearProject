@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class WorldObject implements JsonSerializable<WorldObject>, Updateable {
+public abstract class WorldObject implements JsonSerializable<WorldObject> {
     private Model model;
 
     private Vector3f position;

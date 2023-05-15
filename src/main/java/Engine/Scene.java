@@ -5,17 +5,20 @@ import Engine.models.Light;
 import Engine.models.WorldObject;
 import Engine.rendering.Camera;
 import Engine.rendering.Renderer;
+import Engine.rendering.Updateable;
 import GameTest.Player;
 
 import java.util.ArrayList;
 
 public class Scene {
-    private final ArrayList<WorldObject> objects = new ArrayList<>();
-    private final ArrayList<Light> lights  = new ArrayList<>();
+    private ArrayList<WorldObject> objects = new ArrayList<>();
+    private ArrayList<Light> lights  = new ArrayList<>();
 
-    private final ArrayList<Renderer> renderers = new ArrayList<Renderer>();
+    private ArrayList<Renderer> renderers = new ArrayList<Renderer>();
 
-    private final ArrayList<GUI> guis = new ArrayList<>();
+    private ArrayList<Updateable> updateables = new ArrayList<>();
+
+    private ArrayList<GUI> guis = new ArrayList<>();
 
     private Camera camera;
 
@@ -37,6 +40,9 @@ public class Scene {
      */
     public void addGUI(GUI gui){
         guis.add(gui);
+        if(gui instanceof Updateable){
+            updateables.add((Updateable) gui);
+        }
     }
 
     /**
@@ -44,6 +50,9 @@ public class Scene {
      */
     public void addObject(WorldObject object){
         objects.add(object);
+        if(object instanceof Updateable){
+            updateables.add((Updateable) object);
+        }
     }
 
     /**
@@ -53,10 +62,17 @@ public class Scene {
         lights.add(light);
     }
 
+    public void updateAll(){
+        updateables.forEach(r->r.update(this));
+        renderers.forEach(l->l.update(this));
+        player.update(this);
+    }
+
     /**
      * @param renderer the renderer to add
      */
     public void addRenderer(Renderer renderer){
+
         renderers.add(renderer);
     }
 

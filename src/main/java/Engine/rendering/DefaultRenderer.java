@@ -104,8 +104,7 @@ public class DefaultRenderer implements Renderer{
 
     @Override
     public void update(Scene scene) {
-        scene.getPlayer().update(scene);
-        scene.getObjects().forEach(r->r.update(scene));
+
         init();
     }
 
