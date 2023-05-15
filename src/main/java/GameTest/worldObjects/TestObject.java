@@ -24,7 +24,7 @@ public class TestObject extends WorldObject {
         if(this.getPosition().y > 3){
             in = -Math.abs(in);
 
-        }if(this.getPosition().y < -3){
+        }if(this.getPosition().y < 0){
             in = Math.abs(in);
         }
         this.increaseRotation(new Vector3f(0,1,0));
