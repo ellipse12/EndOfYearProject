@@ -9,39 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="continued: save system">
+    <list default="true" id="2b67e046-1b03-4c70-8784-dde86489cd87" name="Changes" comment="added: suzanne">
+      <change afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/Suzanne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/models/suzanne.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/textures/suzanne.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/TestLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/guiRendering/GUIShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/input/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/models/WorldObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/registration/Registry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/DefaultRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Updateable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Updateable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/rendering/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/resourceLoading/Loader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/saving/JsonSerializable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/ShaderProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/StaticShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/Uniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/UniformI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/UniformI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/ArrayUniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/collections/ArrayUniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MultiUniform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/uniforms/compound/MultiUniform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/Maths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/util/ResourceLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameTest/worldObjects/TestObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/saves/save.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/saves/save.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultFragShader.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/shaders/defaultVertShader.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textures/black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/textures/plane.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textures/plane.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +81,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -148,7 +127,7 @@
       <recent name="Engine.resourceLoading" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.EndOfYearProject [build]">
+  <component name="RunManager" selected="Application.Engine.MainClass">
     <configuration name="Engine.MainClass" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Engine.MainClass" />
       <module name="EndOfYearProject.main" />
@@ -427,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683749431433</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="cleaned up">
+      <created>1684020093646</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1684020093646</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -461,6 +447,8 @@
     <MESSAGE value="started: dynamic object adding through &quot;save&quot; files" />
     <MESSAGE value="started: save system" />
     <MESSAGE value="continued: save system" />
-    <option name="LAST_COMMIT_MESSAGE" value="continued: save system" />
+    <MESSAGE value="cleaned up" />
+    <MESSAGE value="added: suzanne" />
+    <option name="LAST_COMMIT_MESSAGE" value="added: suzanne" />
   </component>
 </project>

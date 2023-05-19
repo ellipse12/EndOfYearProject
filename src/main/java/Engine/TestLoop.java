@@ -13,6 +13,7 @@ import Engine.resourceLoading.Texture;
 import Engine.shaders.StaticShader;
 import GameTest.Player;
 import GameTest.worldObjects.Plane;
+import GameTest.worldObjects.Suzanne;
 import GameTest.worldObjects.TestObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -53,7 +54,7 @@ public class TestLoop {
     private static void registerObjects(){
         Registry.registerObject("test", ()->new TestObject(new Vector3f(), new Vector3f(), new Vector3f(1)));
         Registry.registerObject("plane", ()->new Plane(new Vector3f(0,-3,0), new Vector3f(), new Vector3f(10)));
-
+        Registry.registerObject("suzanne", ()->new Suzanne(new Vector3f(), new Vector3f(), new Vector3f(1)));
     }
 
 
